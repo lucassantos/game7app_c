@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular.cookies.js"></script>
+    <script src="js/game7_app.js"></script>
+    <script src="js/models.js"></script>
+    <script src="js/views.js"></script>
+    <script src="js/controllers.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/app.css" />
+    <title>INPE - Vistoria</title>
+</head>
+
+<body>
+  <div ng-app="game7App" ng-controller="clienteCtrl" class="app" role="main" class="content">
+    <div class="col-xs-12" style="margin:0px;padding:0px;position:relative;">
+        <div class="col-xs-12 head ttl" style="background-color:#bc2026;">
+            <span style="padding:0px 10px 0px 4px;" class="glyphicon glyphicon-arrow-left"></span>
+            Novo Cadastro
+        </div>
+        <div class="col-xs-12" style="margin-top:20px;">
+            <div class="well" style="background:none;">
+                <form enctype="multipart/form-data" method="post">
+                    Nome
+                    <input type="text" id="nome" name="nome" required="True" class="form-control"/>
+                    <br/>
+
+                    Email
+                    <input type="text" id="email" type="email" name="email" required="True" class="form-control"/>
+                    <br/>
+
+                    Senha
+                    <input type="password" id="senha" name="senha" required="True" class="form-control"/>
+                    <br/>
+
+                    Telefone
+                    <input type="number" id="telefone" name="telefone" required="True" class="form-control"/>
+                    <br/>
+
+                    Estado
+                    <select class="form-control" name="estado" id="estado" ng-change="getcidades()" ng-options="estado as estado.fields.nome for estado in et.lista_estados track by estado.pk" ng-model="sel_estado"></select>
+                    <br/>
+
+                    Cidades
+                    <select class="form-control" name="cidade" id="cidade" ng-change="getbairros()" ng-options="cidade as cidade.fields.nome for cidade in cd.lista_cidades track by cidade.pk" ng-model="sel_cidade"></select>
+                    <br/>
+
+                    Bairro
+                    <select class="form-control" name="bairro" id="bairro" ng-options="bairro as bairro.fields.nome for bairro in br.lista_bairros track by bairro.pk" ng-model="sel_bairro"></select>
+                    <br/>
+
+                    Endereço
+                    <textarea id="endereco" name="endereco" rows="5" required="true" class="form-control"></textarea>
+                    <br/>
+
+                    <a class="btn btn-sm btn-danger" ng-click="atualizar()" style="display:block;width:100%;">CADASTRAR</a>
+                </form>
+            </div>
+        </div>
+        <div class="col-xs-12 rodape">
+            <div class="btn-group btn-group-justified" role="group">
+                <a href="#" class="btn btn-default" role="button">
+                    <span class="glyphicon glyphicon-search"></span><br>
+                    Buscar
+                </a>
+                <a href="#" class="btn btn-default" role="button">
+                    <span class="glyphicon glyphicon-cutlery"></span><br>
+                    Descobrir
+                </a>
+                <a href="#" class="btn btn-default" role="button">
+                    <span class="glyphicon glyphicon-list-alt"></span><br>
+                    Pedidos
+                </a>
+                <a href="profile.html" class="btn btn-default" role="button">
+                    <span class="glyphicon glyphicon-user"></span><br>
+                    Eu
+                </a>
+            </div>
+        </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="cordova.js"></script>
+  <script type="text/javascript" src="js/index.js"></script>
+  <script type="text/javascript">
+      app.initialize();
+  </script>
+  <div class="loading" id="loading" style="display:none;"><img src="img/loader.gif"/></div>
+</body>
+
+</html>

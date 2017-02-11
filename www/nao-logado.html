@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular.cookies.js"></script>
+    <script src="js/game7_app.js"></script>
+    <script src="js/models.js"></script>
+    <script src="js/views.js"></script>
+    <script src="js/controllers.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/app.css" />
+    <title>INPE - Vistoria</title>
+</head>
+
+<body>
+  <div ng-app="game7App" ng-controller="geralCtrl" class="app" role="main" class="content">
+    <div style="margin:0px;padding:0px;">
+        <div class="col-xs-12 head" style="background-color:#bc2026;">
+            <img src="img/logo.png" class="img-circle" style="width:40px;margin:10px auto;display:block;" alt="Inpe - Vistorias">
+            <div class="form-group form-group-sm">
+                <div class="col-sm-12">
+                    <input class="form-control" type="text" placeholder="Buscar pratos e restaurantes" />
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="col-md-12" style="text-align:center; margin-top:140px;">
+                <img src="img/user.jpg" style="width:40px;margin:0 auto;display:block;" /><br/>
+                Entre ou cadastre-se para ver seus retaurantes<br/> favoritos e recomendações. <br/>
+                <a href="javascript:[0];" class="btn btn-sm btn-danger" style="margin:0 auto;display:block;">ENTRAR OU CADASTRAR</a>
+            </div>
+            <div class="col-md-12" style="display:none;">
+
+            </div>
+        </div>
+        <div class="col-xs-12 rodape">
+            <div class="btn-group btn-group-justified" role="group">
+                <a href="#" class="btn btn-default" role="button">
+                    <span class="glyphicon glyphicon-search"></span><br>
+                    Buscar
+                </a>
+                <a href="#" class="btn btn-default" role="button">
+                    <span class="glyphicon glyphicon-cutlery"></span><br>
+                    Descobrir
+                </a>
+                <a href="#" class="btn btn-default" role="button">
+                    <span class="glyphicon glyphicon-list-alt"></span><br>
+                    Pedidos
+                </a>
+                <a href="profile.html" class="btn btn-default" role="button">
+                    <span class="glyphicon glyphicon-user"></span><br>
+                    Eu
+                </a>
+            </div>
+        </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="cordova.js"></script>
+  <script type="text/javascript" src="js/index.js"></script>
+  <script type="text/javascript">
+      app.initialize();
+  </script>
+  <div class="loading" id="loading" style="display:none;"><img src="img/loader.gif"/></div>
+</body>
+
+</html>

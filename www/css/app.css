@@ -1,0 +1,42 @@
+*{
+    font-family:Arial;
+    font-size:10px;
+}
+
+.ttl{
+    font-size:16px;
+    color:#fff;
+    padding:10px 6px;
+}
+
+.loading{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  background: #fff;
+  opacity: .6;
+  z-index: 1000;
+}
+
+.loading img{
+  margin: 40% auto;
+  display: block;
+}
+
+.head{
+    background-color: #bc2026;
+}
+
+.rodape{
+    padding:0px;
+    position: absolute;
+    bottom: -56px;
+    border-top: #ddd 2px solid;
+    background-color:#fff;
+}
+
+.rodape a{
+    background-color:#fff;
+}
+
