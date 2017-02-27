@@ -102,6 +102,19 @@ game7App.factory("Bairro", function (Ajax,$http) {
             console.log("Erro");
         });
     };
+    obj.verifica_login = function () {
+      //  var logado = $cookies.getObject("logado");
+       var logado = window.localStorage.getItem("e_logado");
+       var url = window.location.pathname;
+
+       if(logado != undefined){
+         obj.logado = logado;
+//         window.location = "home.html";
+       }
+       else if (!(url.indexOf("index.html") > -1)) {
+         window.location = "index.html";
+       }
+    };
     return obj;
 });
 
@@ -199,6 +212,19 @@ game7App.factory("Categoria", function (Ajax,$http) {
             console.log("Erro");
         });
     };
+    obj.verifica_login = function () {
+      //  var logado = $cookies.getObject("logado");
+       var logado = window.localStorage.getItem("e_logado");
+       var url = window.location.pathname;
+
+       if(logado != undefined){
+         obj.logado = logado;
+//         window.location = "home.html";
+       }
+       else if (!(url.indexOf("index.html") > -1)) {
+         window.location = "index.html";
+       }
+    };
     return obj;
 });
 
@@ -286,6 +312,19 @@ game7App.factory("SubCategoria", function (Ajax,$http) {
         }, function errorCallback(response) {
             console.log("Erro");
         });
+    };
+    obj.verifica_login = function () {
+      //  var logado = $cookies.getObject("logado");
+       var logado = window.localStorage.getItem("e_logado");
+       var url = window.location.pathname;
+
+       if(logado != undefined){
+         obj.logado = logado;
+//         window.location = "home.html";
+       }
+       else if (!(url.indexOf("index.html") > -1)) {
+         window.location = "index.html";
+       }
     };
     return obj;
 });
@@ -388,6 +427,19 @@ game7App.factory("Cliente", function (Ajax,$http) {
             console.log("Erro");
         });
     };
+    obj.verifica_login = function () {
+      //  var logado = $cookies.getObject("logado");
+       var logado = window.localStorage.getItem("e_logado");
+       var url = window.location.pathname;
+
+       if(logado != undefined){
+         obj.logado = logado;
+//         window.location = "home.html";
+       }
+       else if (!(url.indexOf("index.html") > -1)) {
+         window.location = "index.html";
+       }
+    };
     return obj;
 });
 
@@ -475,6 +527,19 @@ game7App.factory("Empresa", function (Ajax,$http) {
             console.log("Erro");
         });
     };
+    obj.verifica_login = function () {
+      //  var logado = $cookies.getObject("logado");
+       var logado = window.localStorage.getItem("e_logado");
+       var url = window.location.pathname;
+
+       if(logado != undefined){
+         obj.logado = logado;
+//         window.location = "home.html";
+       }
+       else if (!(url.indexOf("index.html") > -1)) {
+         window.location = "index.html";
+       }
+    };
     return obj;
 });
 
@@ -512,6 +577,19 @@ game7App.factory("Atendimento", function (Ajax,$http) {
         }, function errorCallback(response) {
             console.log("Erro");
         });
+    };
+    obj.verifica_login = function () {
+      //  var logado = $cookies.getObject("logado");
+       var logado = window.localStorage.getItem("e_logado");
+       var url = window.location.pathname;
+
+       if(logado != undefined){
+         obj.logado = logado;
+//         window.location = "home.html";
+       }
+       else if (!(url.indexOf("index.html") > -1)) {
+         window.location = "index.html";
+       }
     };
     return obj;
 });
@@ -595,6 +673,19 @@ game7App.factory("Funcionario", function (Ajax,$http) {
         }, function errorCallback(response) {
             console.log("Erro");
         });
+    };
+    obj.verifica_login = function () {
+      //  var logado = $cookies.getObject("logado");
+       var logado = window.localStorage.getItem("e_logado");
+       var url = window.location.pathname;
+
+       if(logado != undefined){
+         obj.logado = logado;
+//         window.location = "home.html";
+       }
+       else if (!(url.indexOf("index.html") > -1)) {
+         window.location = "index.html";
+       }
     };
     return obj;
 });
@@ -744,6 +835,19 @@ game7App.factory("Produto", function (Ajax,$http) {
             console.log("Erro");
         });
     };
+    obj.verifica_login = function () {
+      //  var logado = $cookies.getObject("logado");
+       var logado = window.localStorage.getItem("e_logado");
+       var url = window.location.pathname;
+
+       if(logado != undefined){
+         obj.logado = logado;
+//         window.location = "home.html";
+       }
+       else if (!(url.indexOf("index.html") > -1)) {
+         window.location = "index.html";
+       }
+    };
     return obj;
 });
 
@@ -826,6 +930,19 @@ game7App.factory("Pedido", function (Ajax,$http) {
         }, function errorCallback(response) {
             console.log("Erro");
         });
+    };
+    obj.verifica_login = function () {
+      //  var logado = $cookies.getObject("logado");
+       var logado = window.localStorage.getItem("e_logado");
+       var url = window.location.pathname;
+
+       if(logado != undefined){
+         obj.logado = logado;
+//         window.location = "home.html";
+       }
+       else if (!(url.indexOf("index.html") > -1)) {
+         window.location = "index.html";
+       }
     };
     return obj;
 });
