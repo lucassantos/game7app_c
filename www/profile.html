@@ -21,25 +21,56 @@
 </head>
 
 <body>
-  <div ng-app="game7App" ng-controller="geralCtrl" class="app" role="main" class="content">
+  <div ng-app="game7App" ng-controller="clienteCtrl" class="app" role="main" class="content">
     <div style="margin:0px;padding:0px;">
         <div class="col-xs-12 head" style="background-color:#bc2026;">
-            <img src="img/logo.png" class="img-circle" style="width:40px;margin:10px auto;display:block;" alt="FoodExpress - Cliente">
-            <div class="form-group form-group-sm">
-                <div class="col-sm-12">
-                    <input class="form-control" type="text" placeholder="Buscar pratos e restaurantes" />
-                </div>
-            </div>
+            <a href="home.html"><img src="img/logo.png" class="img-circle" style="width:40px;margin:10px auto;display:block;" alt="FoodExpress - Restaurante"></a>
+            <h1 class="ttl col-xs-8 col-md-8">MEUS DADOS</h1>
+            <a class="btn btn-sm btn-danger col-xs-3 col-md-3" style="float: right;margin-bottom: 10px;" ng-click="atualizar()">Salvar</a>
         </div>
         <div class="col-xs-12">
-            <div class="col-md-12" style="text-align:center; margin-top:140px;">
-                <img src="img/user.jpg" style="width:40px;margin:0 auto;display:block;" /><br/>
-                Entre ou cadastre-se para ver seus retaurantes<br/> favoritos e recomendações. <br/>
-                <a href="index.html" class="btn btn-sm btn-danger" style="margin:0 auto;display:block;">ENTRAR OU CADASTRAR</a>
+            <div ng-if="cl.retorno">
+                <p class="alert alert-success" style="text-align:center;">Atualizado com sucesso!</p>
             </div>
-            <div class="col-md-12" style="display:none;">
+            <form enctype="multipart/form-data" method="post">
+                <label class="control-label">Nome</label><br/>
+                <input id="nome" name="nome" placeholder="{[cl.clienteselecionado[0].nome]}" required="True" class="form-control"/>
+                <br>
 
-            </div>
+                <label class="control-label">Email</label><br/>
+                <input id="email" name="email" placeholder="{[cl.clienteselecionado[0].email]}" required="True" class="form-control"/>
+                <br>
+
+                <label class="control-label">Telefone</label><br/>
+                <input type="number" id="telefone" name="telefone" placeholder="{[ct.clienteselecionado[0].telefone]}" required="True" class="form-control"/>
+                <br>
+
+                <label class="control-label">Estado</label> - {[cl.clienteselecionado[0].estado]}<br/>
+                <select class="form-control" name="estado" id="estado" ng-change="getcidades()" ng-options="estado as estado.fields.nome for estado in et.lista_estados track by estado.pk" ng-model="sel_estado"></select>
+                <br/>
+
+                <label class="control-label">Cidade</label> - {[cl.clienteselecionado[0].cidade]}<br/>
+                <select class="form-control" name="cidade" id="cidade" ng-change="getbairros()" ng-options="cidade as cidade.fields.nome for cidade in cd.lista_cidades track by cidade.pk" ng-model="sel_cidade"></select>
+                <br/>
+
+                <label class="control-label">Bairro</label> - {[cl.clienteselecionado[0].bairro]}<br/>
+                <select class="form-control" name="bairro" id="bairro" ng-options="bairro as bairro.fields.nome for bairro in br.lista_bairros track by bairro.pk" ng-model="sel_bairro"></select>
+                <br/>
+
+                <label class="control-label">Endereço</label><br/>
+                <textarea id="endereco" name="endereco" rows="5" required="true" class="form-control">{[cl.clienteselecionado[0].endereco]}</textarea>
+                <br/>
+
+                <label class="control-label">Descrição</label><br/>
+                <textarea id="descricao" name="descricao" rows="5" required="true" class="form-control">{[cl.clienteselecionado[0].descricao]}</textarea>
+                <br/>
+
+                <b>Senha</b>
+                <p>A Alteração de senha terá efeito imediato.</p>
+                <input id="senha" name="senha" class="form-control"/>
+                <br/><br/><br/><br/><br/>
+
+            </form>
         </div>
         <div class="col-xs-12 rodape">
             <div class="btn-group btn-group-justified" role="group">

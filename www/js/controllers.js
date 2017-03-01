@@ -40,7 +40,7 @@ game7App.controller('clienteCtrl', function($scope, Cliente, Estado, Cidade, Bai
 
     $scope.cl = Cliente;
     $scope.cl.get_cliente();
-    $scope.cl.get_clientes();
+//    $scope.cl.get_clientes();
     $scope.filtrar = function(){
         $scope.cl.get_clientes(document.getElementById("ipFiltroNome").value,document.getElementById("ipFiltroEmail").value);
     }
