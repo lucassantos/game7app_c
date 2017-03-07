@@ -69,11 +69,11 @@ game7App.controller('empresaCtrl', function($scope, Empresa, Estado, Cidade, Bai
     $scope.at = Atendimento;
 
     $scope.et.get_estados();
-    $scope.em.get_empresas();
-    $scope.em.get_empresa();
+//    $scope.em.get_empresas();
+    $scope.em.get_empresas(document.getElementById('iFiltro').value,window.localStorage.getItem("c_logado"));
 
     $scope.filtrar = function(){
-        $scope.em.get_empresas(document.getElementById("ipFiltroNome").value,document.getElementById("ipFiltroEmail").value);
+        $scope.em.get_empresas(document.getElementById('iFiltro').value,window.localStorage.getItem("c_logado"));
     }
     $scope.atualizar = function(){
         $scope.em.save_empresa(

@@ -40,7 +40,7 @@ game7App.controller('clienteCtrl', function($scope, Cliente, Estado, Cidade, Bai
 
     $scope.cl = Cliente;
     $scope.cl.get_cliente();
-    $scope.cl.get_clientes();
+//    $scope.cl.get_clientes();
     $scope.filtrar = function(){
         $scope.cl.get_clientes(document.getElementById("ipFiltroNome").value,document.getElementById("ipFiltroEmail").value);
     }
@@ -69,11 +69,11 @@ game7App.controller('empresaCtrl', function($scope, Empresa, Estado, Cidade, Bai
     $scope.at = Atendimento;
 
     $scope.et.get_estados();
-    $scope.em.get_empresas();
-    $scope.em.get_empresa();
+//    $scope.em.get_empresas();
+    $scope.em.get_empresas(document.getElementById('iFiltro').value,window.localStorage.getItem("c_logado"));
 
     $scope.filtrar = function(){
-        $scope.em.get_empresas(document.getElementById("ipFiltroNome").value,document.getElementById("ipFiltroEmail").value);
+        $scope.em.get_empresas(document.getElementById('iFiltro').value,window.localStorage.getItem("c_logado"));
     }
     $scope.atualizar = function(){
         $scope.em.save_empresa(

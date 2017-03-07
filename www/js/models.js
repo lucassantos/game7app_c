@@ -1,4 +1,5 @@
-URL_BASE = "http://192.168.1.106:8010/js/";
+URL_BASE = "http://127.0.0.1:8010/js/";
+//URL_BASE = "http://192.168.1.106:8010/js/";
 
 function getTokens(){
     var tokens = [];            // new array to hold result
@@ -371,6 +372,17 @@ game7App.factory("Cliente", function (Ajax,$http) {
         )
     };
     obj.get_cliente = function () {
+navigator.geolocation.getCurrentPosition(function(position)
+{
+    // just to show how to access latitute and longitude
+    var location = [position.coords.latitude, position.coords.longitude];
+},
+function(error)
+{
+    // error getting GPS coordinates
+    alert('code: ' + error.code + ' with message: ' + error.message + '\n');
+},
+{ enableHighAccuracy: true, maximumAge: 3000, timeout: 5000 });
         //Get relação de clientes
         var url = URL_BASE + "clientes";
         var params = {
@@ -452,12 +464,11 @@ game7App.factory("Empresa", function (Ajax,$http) {
         empresaselecionado: [],
         retorno : false,
     };
-    obj.get_empresas = function (nome_empresa, email_empresa) {
-        var url = URL_BASE + "empresas";
+    obj.get_empresas = function (nome_empresa, c_id) {
+        var url = URL_BASE + "getrestaurantes";
         var params = {
-            nome:nome_empresa,
-            email:email_empresa,
-            id:TOKENS["e_id"]
+            id:c_id,
+            texto:nome_empresa
         }
         $http({
             method: "GET",
