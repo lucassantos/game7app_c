@@ -498,7 +498,7 @@ game7App.factory("Empresa", function (Ajax,$http) {
                 'Content-Type': 'application/json'
             }
         }).then(function successCallback(response) {
-            obj.empresaselecionado = response.data;
+            obj.empresaselecionado = response.data[0];
         }, function errorCallback(response) {
             console.log("Erro");
         });
@@ -709,6 +709,7 @@ game7App.factory("Produto", function (Ajax,$http) {
         lista_produtos: [],
         produtoselecionado: [],
         retorno : false,
+        caminho_foto: 'http://127.0.0.1:8010/static/media/produto/',
         foto_principal:123
     };
     obj.get_produtos= function (nome_produto) {
