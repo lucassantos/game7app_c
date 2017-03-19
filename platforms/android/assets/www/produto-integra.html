@@ -21,37 +21,27 @@
 </head>
 
 <body>
-  <div ng-app="game7App" ng-controller="empresaCtrl" class="app" role="main" class="content">
+  <div ng-app="game7App" ng-controller="produtoCtrl" class="app" role="main" class="content">
     <div style="margin:0px;padding:0px;">
-        <div class="col-xs-12 head" style="background-color:#bc2026;">
-            <img src="img/logo.png" class="img-circle" style="width:40px;margin:10px auto;display:block;" alt="FoodExpress - Cliente">
-            <div class="form-group form-group-sm">
-                <div class="col-sm-12">
-                    <input class="form-control" type="text" id="iFiltro" ng-keyup="filtrar();" placeholder="Buscar pratos e restaurantes" />
-                </div>
-            </div>
+        <div class="col-xs-12 head" style="background-color:#bc2026;padding:15px;">
+            <a style="color:#fff;" href="home.html"><i class="glyphicon glyphicon-arrow-left"></i></a>
+            <b class="ttl" style="margin-left:20px;">{[pt.produtoselecionado[0].nome]}</b>
         </div>
         <div class="col-xs-12" style="padding:0px;">
-            <ul class="col-md-12">
-                <li class="list-group-item col-md-12 col-xs-12" ng-repeat="emp in em.lista_empresas">
-                    <a href="restaurante-integra.html?e_id={[emp.id]}">
-                        <div class="col-md-12 col-xs-12" style="padding:2px;color:#bc2026;text-transform:uppercase;padding:0px; margin-bottom:2px;font-weight:bold;">
-                            <div class="col-md-2 col-xs-2" style="padding:0px;">
-                                <img class="img-rounded" ng-src="img/restaurante-sm.jpg" width="40" />
-                            </div>
-                            <div class="col-md-10 col-xs-10" style="padding:0px;">
-                                <b>{[emp.nome]}</b>
-                                <p style="color:#333;">
-                                    {[emp.tipocozinha]}
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-md-12 col-xs-12" style="padding:0px 2px;font-size:9px;">
-                            <div class="label label-primary" style="font-size:10px;margin:2px;display:inline-block;" ng-repeat="subs in prod.subcategorias">{[subs.categoria]} - {[subs.subcategoria]}</div>
-                        </div>
-                    </a>
-                </li>
-            </ul>
+            <div class="col-xs-12">
+
+                <img class="img-rounded" ng-src="img/restaurante-sm.jpg" width="200" style="display:block;margin:0 auto;"/>
+
+                <div class="col-xs-8">
+                    <b style="text-transform:uppercase;">{[em.empresaselecionado.nome]}</b>
+                    <p style="color:#333;">
+                        {[em.empresaselecionado.tipo_cozinha]}
+                    </p>
+                </div>
+                <div class="col-xs-1">
+                    {[em.empresaselecionado.nota]}
+                </div>
+            </div>
         </div>
         <div class="col-xs-12 rodape">
             <div class="btn-group btn-group-justified" role="group">

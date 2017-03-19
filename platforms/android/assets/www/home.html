@@ -31,40 +31,31 @@
                 </div>
             </div>
         </div>
-        <div class="col-xs-12">
-            <ul>
+        <div class="col-xs-12" style="padding:0px;">
+            <ul class="col-md-12">
                 <li class="list-group-item col-md-12 col-xs-12" ng-repeat="emp in em.lista_empresas">
-                    <div class="col-md-12 col-xs-12" style="padding:2px;color:#bc2026;text-transform:uppercase;padding:0px; margin-bottom:2px;border-bottom:1px solid;font-weight:bold;">
-                        <div class="col-md-8 col-xs-8" style="padding:0px;">
-                            {[emp.fields.nome]}
+                    <a href="restaurante-integra.html?e_id={[emp.id]}">
+                        <div class="col-md-12 col-xs-12" style="padding:2px;color:#bc2026;text-transform:uppercase;padding:0px; margin-bottom:2px;font-weight:bold;">
+                            <div class="col-md-2 col-xs-2" style="padding:0px;">
+                                <img class="img-rounded" ng-src="img/restaurante-sm.jpg" width="40" />
+                            </div>
+                            <div class="col-md-10 col-xs-10" style="padding:0px;">
+                                <b>{[emp.nome]}</b>
+                                <p style="color:#333;">
+                                    {[emp.tipocozinha]}
+                                </p>
+                            </div>
                         </div>
-                        <div class="col-md-4 col-xs-4" style="padding:0px;text-align:right;color:#000;">
-                            R$ {[prod.preco]}
+                        <div class="col-md-12 col-xs-12" style="padding:0px 2px;font-size:9px;">
+                            <div class="label label-primary" style="font-size:10px;margin:2px;display:inline-block;" ng-repeat="subs in prod.subcategorias">{[subs.categoria]} - {[subs.subcategoria]}</div>
                         </div>
-                    </div>
-                     <div class="col-md-12 col-xs-12" style="padding:0px;">
-                         <div class="col-md-4 col-xs-4" style="padding-left:0px;padding-right:2px;">
-                            <img class="img-thumbnail" ng-src="{[pt.burl]}static/media/produto/{[prod.foto]}" />
-                         </div>
-                         <div class="col-md-6 col-xs-6" style="padding:0px 2px;font-size:9px;height: 60px;overflow: hidden;width:91px;">
-                            {[prod.descricao]}
-                         </div>
-                         <div class="col-md-2 col-xs-2 btn-group-vertical btns">
-                            <a href="editar-produto.html?p_id={[prod.id]}" class="btn-xs btn btn-default">Editar</a>
-                            <a href="categorias-produto.html?p_id={[prod.id]}" class="btn-xs btn btn-primary">Categorias</a>
-                            <a href="galeria-produto.html?p_id={[prod.id]}" class="btn-xs btn btn-primary">Fotos</a>
-                            <a href="excluir-produto.html?p_id={[prod.id]}" class="btn-xs btn btn-danger">Excluir</a>
-                         </div>
-                    </div>
-                     <div class="col-md-12 col-xs-12" style="padding:0px 2px;font-size:9px;">
-                        <div class="label label-primary" style="font-size:10px;margin:2px;display:inline-block;" ng-repeat="subs in prod.subcategorias">{[subs.categoria]} - {[subs.subcategoria]}</div>
-                     </div>
+                    </a>
                 </li>
             </ul>
         </div>
         <div class="col-xs-12 rodape">
             <div class="btn-group btn-group-justified" role="group">
-                <a href="#" class="btn btn-danger" role="button">
+                <a href="home.html" class="btn btn-danger" role="button">
                     <span class="glyphicon glyphicon-search"></span><br>
                     Buscar
                 </a>

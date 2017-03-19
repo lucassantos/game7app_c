@@ -61,16 +61,21 @@ game7App.controller('clienteCtrl', function($scope, Cliente, Estado, Cidade, Bai
     }
 });
 
-game7App.controller('empresaCtrl', function($scope, Empresa, Estado, Cidade, Bairro, Atendimento) {
+game7App.controller('empresaCtrl', function($scope, Empresa, Estado, Cidade, Bairro, Atendimento, Produto) {
     $scope.et = Estado;
     $scope.cd = Cidade;
     $scope.br = Bairro;
     $scope.em = Empresa;
     $scope.at = Atendimento;
+    $scope.pt = Produto;
 
     $scope.et.get_estados();
-//    $scope.em.get_empresas();
-    $scope.em.get_empresas(document.getElementById('iFiltro').value,window.localStorage.getItem("c_logado"));
+    $scope.em.get_empresa();
+    $scope.pt.get_produtos();
+
+    if(document.getElementById('iFiltro')){
+        $scope.em.get_empresas(document.getElementById('iFiltro').value,window.localStorage.getItem("c_logado"));
+    }
 
     $scope.filtrar = function(){
         $scope.em.get_empresas(document.getElementById('iFiltro').value,window.localStorage.getItem("c_logado"));
