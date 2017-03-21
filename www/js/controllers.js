@@ -201,10 +201,31 @@ game7App.controller('pedidoCtrl', function($scope, Pedido, Empresa) {
     }
 });
 
-
 game7App.controller('loginCtrl', function($scope, Cliente) {
     $scope.cl = Cliente;
     $scope.logar = function(){
         $scope.cl.logar_cliente(document.getElementById("ipEmail").value,document.getElementById("ipSenha").value);
+    }
+});
+
+game7App.controller('carrinhoCtrl', function($scope, Produto, Carrinho) {
+    $scope.pt = Produto;
+    $scope.pt.get_produtos();
+    $scope.pt.get_produto();
+
+    $scope.cr = Carrinho;
+
+    $scope.add_quantidade = function(){
+        $scope.cr.qtd_atual = $scope.cr.qtd_atual + 1;
+    }
+
+    $scope.rm_quantidade = function(){
+        if($scope.cr.qtd_atual > 1){
+            $scope.cr.qtd_atual = $scope.cr.qtd_atual - 1;
+        }
+    }
+
+    $scope.add_lista = function(){
+        $scope.cr.add_lista();
     }
 });

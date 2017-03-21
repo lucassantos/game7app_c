@@ -28,6 +28,27 @@ function getTokens(){
 
 TOKENS = getTokens();
 
+
+game7App.factory("Carrinho", function (Ajax,$http) {
+    var obj = {
+        lista_compra: [],
+        qtd_atual:1,
+        retorno : false,
+        val_total:0.0
+    };
+    obj.add_lista= function () {
+        r = {
+            "produto_id":1,
+            "quantidade":1,
+            "obs":"teste"
+        }
+
+        lista_compra.push(r);
+    };
+    return obj;
+});
+
+
 game7App.factory("Estado", function (Ajax,$http) {
     var obj = {
         lista_estados: [],

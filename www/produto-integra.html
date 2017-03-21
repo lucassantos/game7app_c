@@ -21,47 +21,43 @@
 </head>
 
 <body>
-  <div ng-app="game7App" ng-controller="produtoCtrl" class="app" role="main" class="content">
+  <div ng-app="game7App" ng-controller="carrinhoCtrl" class="app" role="main" class="content">
     <div style="margin:0px;padding:0px;">
         <div class="col-xs-12 head" style="background-color:#bc2026;padding:15px;">
             <a style="color:#fff;" href="home.html"><i class="glyphicon glyphicon-arrow-left"></i></a>
             <b class="ttl" style="margin-left:20px;">{[pt.produtoselecionado[0].nome]}</b>
         </div>
-        <div class="col-xs-12" style="padding:0px;">
+        <div class="col-xs-12" style="padding:0px;font-size:10px;">
             <div class="col-xs-12">
 
-                <img class="img-rounded" ng-src="img/restaurante-sm.jpg" width="200" style="display:block;margin:0 auto;"/>
-
-                <div class="col-xs-8">
-                    <b style="text-transform:uppercase;">{[em.empresaselecionado.nome]}</b>
+                <div class="col-md-12 col-xs-12" style="padding:0px;">
+                    <b style="text-transform:uppercase;">{[pt.produtoselecionado[0].nome]}</b>
                     <p style="color:#333;">
-                        {[em.empresaselecionado.tipo_cozinha]}
+                        {[pt.produtoselecionado[0].descricao]}
                     </p>
                 </div>
-                <div class="col-xs-1">
-                    {[em.empresaselecionado.nota]}
+                <div class="col-md-12 col-xs-12" style="padding:0px 0px 10px 0px;border-bottom: #c3c1c1 1px solid;">
+                    <div class="col-xs-7" style="padding:0px;">
+                        <b>Valor Unitário: R$ {[pt.produtoselecionado[0].preco]}</b>
+                    </div>
+                    <div class="col-xs-5" style="padding:0px;width:98px;float:right;">
+                        <a ng-click="rm_quantidade();" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-minus-sign"></i></a>
+                        <p style="display:inline-block;margin:0 15px;">{[cr.qtd_atual]}</p>
+                        <a ng-click="add_quantidade();" class="btn btn-xs btn-success"><i class="glyphicon glyphicon-plus-sign"></i></a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-xs-12 rodape">
-            <div class="btn-group btn-group-justified" role="group">
-                <a href="home.html" class="btn btn-danger" role="button">
-                    <span class="glyphicon glyphicon-search"></span><br>
-                    Buscar
-                </a>
-                <a href="#" class="btn btn-danger" role="button">
-                    <span class="glyphicon glyphicon-cutlery"></span><br>
-                    Descobrir
-                </a>
-                <a href="#" class="btn btn-danger" role="button">
-                    <span class="glyphicon glyphicon-list-alt"></span><br>
-                    Pedidos
-                </a>
-                <a href="profile.html" class="btn btn-danger" role="button">
-                    <span class="glyphicon glyphicon-user"></span><br>
-                    Eu
-                </a>
+
+            <div class="col-md-12 col-xs-12" style="margin-top: 20px;text-align:right;">
+                <p style="font-size:12px;color:#15ab15;">
+                    <b style="font-size:12px;color:#000;">Total:</b> R$ {[cr.qtd_atual * pt.produtoselecionado[0].preco]}
+                </p>
+
+                <textarea class="form-control" rows="6" style="font-size:10px;" placeholder="Observações"></textarea>
             </div>
+        </div>
+        <div class="col-xs-12 rodape" style="background-color:#bc2026;padding:15px;text-align:center;">
+            <a style="color:#fff;" ng-click="cr.add_lista();">ADICIONAR AO CARRINHO <i class="glyphicon glyphicon-shopping-cart"></i></a>
         </div>
     </div>
   </div>
