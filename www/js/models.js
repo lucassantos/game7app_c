@@ -2,6 +2,10 @@
 //URL_BASE = "http://192.168.1.106:8010/js/";
 URL_BASE = "https://serene-atoll-63219.herokuapp.com/js/"
 
+if(!lista_compra_geral){
+lista_compra_geral = [];
+}
+
 function getTokens(){
     var tokens = [];            // new array to hold result
     var query = location.search; // everything from the '?' onward
@@ -31,19 +35,33 @@ TOKENS = getTokens();
 
 game7App.factory("Carrinho", function (Ajax,$http) {
     var obj = {
-        lista_compra: [],
+        lista_compra: lista_compra_geral,
         qtd_atual:1,
         retorno : false,
         val_total:0.0
     };
-    obj.add_lista= function () {
+
+//    if(sessionStorage.getItem("listacompra")){
+//        obj.lista_compra = sessionStorage.getItem("listacompra");
+//    }
+
+
+    obj.add_lista= function (produto, observacao) {
+
+//        alert(produto_id);
+//        alert(observacao);
+
         r = {
-            "produto_id":1,
-            "quantidade":1,
-            "obs":"teste"
+            "i":(obj.lista_compra.length + 1),
+            "produto":produto,
+            "quantidade":obj.qtd_atual,
+            "obs":observacao
         }
 
-        lista_compra.push(r);
+        obj.lista_compra.push(r);
+        lista_compra_geral = obj.lista_compra;
+
+        window.location = "carrinho.html";
     };
     return obj;
 });

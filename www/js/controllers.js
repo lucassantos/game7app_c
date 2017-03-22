@@ -226,6 +226,6 @@ game7App.controller('carrinhoCtrl', function($scope, Produto, Carrinho) {
     }
 
     $scope.add_lista = function(){
-        $scope.cr.add_lista();
+        $scope.cr.add_lista($scope.pt.produtoselecionado[0], document.getElementById("ipObservacao").value);
     }
 });
