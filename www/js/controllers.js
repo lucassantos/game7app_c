@@ -214,6 +214,7 @@ game7App.controller('carrinhoCtrl', function($scope, Produto, Carrinho) {
     $scope.pt.get_produto();
 
     $scope.cr = Carrinho;
+    $scope.cr.get_carrinhos();
 
     $scope.add_quantidade = function(){
         $scope.cr.qtd_atual = $scope.cr.qtd_atual + 1;
@@ -226,6 +227,14 @@ game7App.controller('carrinhoCtrl', function($scope, Produto, Carrinho) {
     }
 
     $scope.add_lista = function(){
-        $scope.cr.add_lista($scope.pt.produtoselecionado[0], document.getElementById("ipObservacao").value);
+        $scope.cr.save_carrinho($scope.pt.produtoselecionado[0].id, $scope.cr.qtd_atual ,document.getElementById("ipObservacao").value);
+
+        window.location = "carrinho.html";
+    }
+
+    $scope.rm_lista = function(car_id){
+        $scope.cr.excluir_carrinho(car_id);
+
+        window.location = "carrinho.html";
     }
 });

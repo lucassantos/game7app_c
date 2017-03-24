@@ -34,21 +34,81 @@ game7App.factory("Carrinho", function (Ajax,$http) {
         lista_compra: [],
         qtd_atual:1,
         retorno : false,
-        val_total:0.0
+        val_total:0.0,
+        var_total_geral:0.0
     };
 
 
 
-    obj.add_lista= function (produto, observacao) {
+//    obj.add_lista= function (produto, observacao) {
+//
+//        r = {
+//            "produto":produto,
+//            "quantidade":obj.qtd_atual,
+//            "obs":observacao
+//        }
+//
+//        window.location = "carrinho.html";
+//    };
 
-        r = {
-            "produto":produto,
-            "quantidade":obj.qtd_atual,
-            "obs":observacao
+    obj.get_carrinhos = function () {
+        var url = URL_BASE + "carrinhos";
+        var params = {
+            cliente_id:window.localStorage.getItem("c_logado")
         }
+        $http({
+            method: "GET",
+            params: params,
+            url: url,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(function successCallback(response) {
+            obj.lista_compra = response.data;
 
-        window.location = "carrinho.html";
+            if(obj.lista_compra.length > 0){
+                obj.var_total_geral = obj.lista_compra[0].total_compra;
+
+            }
+        }, function errorCallback(response) {
+            console.log("Erro");
+        });
     };
+
+    obj.save_carrinho = function (produto_id, quantidade, observacao) {
+        var url = URL_BASE + "savecarrinho";
+
+        var f = new FormData();
+        f.append('produto_id', produto_id);
+        f.append('quantidade', quantidade);
+        f.append('observacao', observacao);
+        f.append('cliente_id', window.localStorage.getItem("c_logado"));
+        $http.post(url, f, {headers: {'Content-Type': undefined}}).success(
+          function(response){
+            obj.retorno = response;
+          }
+        )
+
+    };
+    obj.excluir_carrinho = function (car_id) {
+        var url = URL_BASE + "excluircarrinho";
+        var params = {
+          id:car_id
+        }
+        $http({
+            method: "GET",
+            params: params,
+            url: url,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(function successCallback(response) {
+            obj.retorno = response.data;
+        }, function errorCallback(response) {
+            console.log("Erro");
+        });
+    };
+
     return obj;
 });
 
