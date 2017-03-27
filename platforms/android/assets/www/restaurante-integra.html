@@ -62,7 +62,7 @@
                                             <p style="color:#333;font-size:7px;">{[prod.descricao]}</p>
                                         </div>
                                         <div class="col-md-3 col-xs-3">
-                                            R$ {[prod.preco]}
+                                            R$ {[prod.preco.toFixed(2)]}
                                         </div>
                                     </div>
                                 </a>
@@ -78,10 +78,13 @@
                 <div class="tab-pane" id="informacoes">
                     <div class="col-md-12 col-xs-12">
                         <b>Descrição</b><br/>
-                        {[pt.descricao]}
+                        {[em.empresaselecionado.descricao]}
+                        <br/><br/>
 
                         <b>Endereço</b><br/>
-                        {[pt.endereco]},{[pt.bairro]} - {[pt.cidade]}
+                        {[em.empresaselecionado.endereco]},{[em.empresaselecionado.bairro]} - {[em.empresaselecionado.cidade]}
+
+                        <br/><br/>
                     </div>
                 </div>
             </div>
@@ -92,9 +95,9 @@
                     <span class="glyphicon glyphicon-search"></span><br>
                     Buscar
                 </a>
-                <a href="#" class="btn btn-danger" role="button">
-                    <span class="glyphicon glyphicon-cutlery"></span><br>
-                    Descobrir
+                <a href="carrinho.html" class="btn btn-danger" role="button">
+                    <span class="glyphicon glyphicon-shopping-cart"></span><br>
+                    Carrinho
                 </a>
                 <a href="#" class="btn btn-danger" role="button">
                     <span class="glyphicon glyphicon-list-alt"></span><br>

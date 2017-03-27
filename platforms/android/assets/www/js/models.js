@@ -28,6 +28,79 @@ function getTokens(){
 
 TOKENS = getTokens();
 
+
+game7App.factory("Carrinho", function (Ajax,$http) {
+    var obj = {
+        lista_compra: [],
+        qtd_atual:1,
+        retorno : false,
+        val_total:0.0,
+        var_total_geral:0.0
+    };
+
+
+    obj.get_carrinhos = function () {
+        var url = URL_BASE + "carrinhos";
+        var params = {
+            cliente_id:window.localStorage.getItem("c_logado")
+        }
+        $http({
+            method: "GET",
+            params: params,
+            url: url,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(function successCallback(response) {
+            obj.lista_compra = response.data;
+
+            if(obj.lista_compra.length > 0){
+                obj.var_total_geral = obj.lista_compra[0].total_compra;
+
+            }
+        }, function errorCallback(response) {
+            console.log("Erro");
+        });
+    };
+
+    obj.save_carrinho = function (produto_id, quantidade, observacao) {
+        var url = URL_BASE + "savecarrinho";
+
+        var f = new FormData();
+        f.append('produto_id', produto_id);
+        f.append('quantidade', quantidade);
+        f.append('observacao', observacao);
+        f.append('cliente_id', window.localStorage.getItem("c_logado"));
+        $http.post(url, f, {headers: {'Content-Type': undefined}}).success(
+          function(response){
+            obj.retorno = response;
+          }
+        )
+
+    };
+    obj.excluir_carrinho = function (car_id) {
+        var url = URL_BASE + "excluircarrinho";
+        var params = {
+          id:car_id
+        }
+        $http({
+            method: "GET",
+            params: params,
+            url: url,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(function successCallback(response) {
+            obj.retorno = response.data;
+        }, function errorCallback(response) {
+            console.log("Erro");
+        });
+    };
+
+    return obj;
+});
+
+
 game7App.factory("Estado", function (Ajax,$http) {
     var obj = {
         lista_estados: [],
@@ -377,6 +450,7 @@ navigator.geolocation.getCurrentPosition(function(position)
 {
     // just to show how to access latitute and longitude
     var location = [position.coords.latitude, position.coords.longitude];
+    alert(location);
 },
 function(error)
 {
@@ -748,6 +822,7 @@ game7App.factory("Produto", function (Ajax,$http) {
             }
         }).then(function successCallback(response) {
             obj.produtoselecionado = response.data;
+//            obj.produtoselecionado[0].preco = formatReal(obj.produtoselecionado[0].preco*100)
         }, function errorCallback(response) {
             console.log("Erro");
         });

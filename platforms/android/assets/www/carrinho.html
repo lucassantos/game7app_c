@@ -18,28 +18,45 @@
     <script src="js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/app.css" />
     <title>FoodExpress - Cliente</title>
+
 </head>
 
 <body>
-  <div ng-app="game7App" ng-controller="geralCtrl" class="app" role="main" class="content">
+  <div ng-app="game7App" ng-controller="carrinhoCtrl" class="app" role="main" class="content">
+
     <div style="margin:0px;padding:0px;">
-        <div class="col-xs-12 head" style="background-color:#bc2026;">
-            <img src="img/logo.png" class="img-circle" style="width:40px;margin:10px auto;display:block;" alt="FoodExpress - Cliente">
-            <div class="form-group form-group-sm">
-                <div class="col-sm-12">
-                    <input class="form-control" type="text" placeholder="Buscar pratos e restaurantes" />
+        <div class="col-xs-12 head" style="background-color:#bc2026;padding:15px;">
+            <b class="ttl">LISTA DE COMPRAS</b>
+        </div>
+        <div class="col-xs-12" style="padding:0px;font-size:10px;">
+            <div class="col-xs-12">
+                <div class="col-md-12 col-xs-12" style="padding:0px 0px 10px 0px;border-bottom: #c3c1c1 1px solid;">
+                    <table class="table">
+                        <tr>
+                            <th>Produto</th>
+                            <th>Qtd</th>
+                            <th>Preço</th>
+                            <th></th>
+                        </tr>
+                        <tr ng-repeat="item in cr.lista_compra">
+                            <td>{[item.produto]}</td>
+                            <td>{[item.quantidade]}</td>
+                            <td>R$ {[(item.produto_preco * item.quantidade).toFixed(2)]}</td>
+                            <td><a ng-click="rm_lista(item.id);" class="btn-xs btn btn-danger">x</a> </td>
+                        </tr>
+                    </table>
                 </div>
             </div>
-        </div>
-        <div class="col-xs-12">
-            <div class="col-md-12" style="text-align:center; margin-top:140px;">
-                <img src="img/user.jpg" style="width:40px;margin:0 auto;display:block;" /><br/>
-                Entre ou cadastre-se para ver seus retaurantes<br/> favoritos e recomendações. <br/>
-                <a href="index.html" class="btn btn-sm btn-danger" style="margin:0 auto;display:block;">ENTRAR OU CADASTRAR</a>
-            </div>
-            <div class="col-md-12" style="display:none;">
 
+            <div class="col-md-12 col-xs-12" style="margin-top: 20px;text-align:right;">
+                <p style="font-size:12px;color:#15ab15;">
+                    <b style="font-size:12px;color:#000;">Total:</b> R$ {[(cr.var_total_geral).toFixed(2)]}
+                </p>
+
+                <a href="" class="btn btn-danger" style="margin:0 auto;display:block;margin-top:50px;">Fechar Pedido</a>
             </div>
+
+
         </div>
         <div class="col-xs-12 rodape">
             <div class="btn-group btn-group-justified" role="group">
