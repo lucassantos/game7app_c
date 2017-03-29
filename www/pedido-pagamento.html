@@ -6,7 +6,7 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
-    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+
     <script src="js/jquery-1.11.1.min.js"></script>
     <script src="js/angular.min.js"></script>
     <script src="js/angular.cookies.js"></script>
@@ -19,42 +19,93 @@
     <link rel="stylesheet" type="text/css" href="css/app.css" />
     <script src="https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js"></script>
     <title>FoodExpress - Cliente</title>
+    <script>
+        Mercadopago.setPublishableKey("TEST-c73ef1ee-64be-4b13-ac37-e78029c455ed");
+
+        Mercadopago.getInstallments({
+            "payment_method_id":"visa",
+            "amount": 100
+        }, function (status, response){
+            console.log(response);
+        });
+    </script>
 
 </head>
 
 <body>
   <div ng-app="game7App" ng-controller="pedidoCtrl" class="app" role="main" class="content">
 
+
+
     <div style="margin:0px;padding:0px;">
         <div class="col-xs-12 head" style="background-color:#bc2026;padding:15px;">
             <b class="ttl">PAGAMENTO</b>
         </div>
         <div class="col-xs-12" style="font-size:10px;">
-            <p></p>
-
-            <label class="control-label">Estado</label> - {[cl.clienteselecionado[0].estado]}<br/>
-            <select class="form-control" name="estado" id="estado" ng-change="getcidades()" ng-options="estado as estado.fields.nome for estado in et.lista_estados track by estado.pk" ng-model="sel_estado"></select>
-            <br/>
-
-            <label class="control-label">Cidade</label> - {[cl.clienteselecionado[0].cidade]}<br/>
-            <select class="form-control" name="cidade" id="cidade" ng-change="getbairros()" ng-options="cidade as cidade.fields.nome for cidade in cd.lista_cidades track by cidade.pk" ng-model="sel_cidade"></select>
-            <br/>
-
-            <label class="control-label">Bairro</label> - {[cl.clienteselecionado[0].bairro]}<br/>
-            <select class="form-control" name="bairro" id="bairro" ng-options="bairro as bairro.fields.nome for bairro in br.lista_bairros track by bairro.pk" ng-model="sel_bairro"></select>
-            <br/>
-
-            <label class="control-label">Endereço</label><br/>
-            <textarea id="endereco" name="endereco" rows="5" required="true" class="form-control">{[cl.clienteselecionado[0].endereco]}</textarea>
-            <br/>
-
-            <label class="control-label">Complemento</label><br/>
-            <input id="complemento" name="complemento" required="true" style="margin-bottom:65px;" class="form-control">{[cl.clienteselecionado[0].complemento]}</input>
 
 
+            <div>
+                <ul class="nav nav-tabs" id="myTabs" role="tablist">
+                    <li role="presentation" class="active">
+                        <a href="#pagar_entrega" id="pagar_entrega-tab" role="tab" data-toggle="tab" aria-controls="pagar_entrega" aria-expanded="true">Pagar na Entrega</a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="#mercado_pago" role="tab" id="mercado_pago-tab" data-toggle="tab" aria-controls="mercado_pago" aria-expanded="false">Pagar Agora</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade active in" role="tabpanel" id="pagar_entrega" aria-labelledby="pagar_entrega-tab">
+                        <br>
+                        <p>Selecione a forma de pagamento desejado</p>
+                        <input type="radio" name="gender" value="dinheiro"> Dinheiro<br>
+                        <input type="radio" name="gender" value="cartao"> Cartão<br>
+                    </div>
+                    <div class="tab-pane fade" role="tabpanel" id="mercado_pago" aria-labelledby="mercado_pago-tab">
+                        <br>
+                        <p>O sistema do Mercado pago é utilizado como forma de pagamento online do aplicativo</p>
+                        <form action="" method="post" id="pay" name="pay" >
+                            <fieldset>
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <label for="cardNumber">Número do Cartão de Crédito:</label>
+                                        <input type="text" id="cardNumber" data-checkout="cardNumber" placeholder="4509 9535 6623 3704" class="form-control"/>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <label for="securityCode">Código de Segurança:</label>
+                                        <input type="text" id="securityCode" data-checkout="securityCode" placeholder="123" class="form-control"/>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <label for="cardExpirationMonth">Mês de Vencimento:</label>
+                                        <input type="text" id="cardExpirationMonth" data-checkout="cardExpirationMonth" placeholder="12" class="form-control"/>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <label for="cardExpirationYear">Ano de Vencimento:</label>
+                                        <input type="text" id="cardExpirationYear" data-checkout="cardExpirationYear" placeholder="2015" class="form-control"/>
+                                    </li>
+                                    <li class="list-group-item"
+                                        <label for="cardholderName">Nome no Cartão de Crédito:</label>
+                                        <input type="text" id="cardholderName" data-checkout="cardholderName" placeholder="APRO" class="form-control"/>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <label for="docType">Tipo de Documento:</label>
+                                        <select id="docType" data-checkout="docType" class="form-control"></select>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <label for="docNumber">Número de Documento:</label>
+                                        <input type="text" id="docNumber" data-checkout="docNumber" placeholder="12345678" class="form-control" />
+                                    </li>
+                                </ul>
+                                <input type="submit" value="Pay!" />
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
         </div>
         <div class="col-xs-12 rodape" style="background-color:#bc2026;padding:15px;text-align:center;">
-            <a style="color:#fff;" ng-click="atualizar();">CONFIRMAR ENDEREÇO <i class="glyphicon glyphicon-map-marker"></i></a>
+            <a style="color:#fff;" ng-click="atualizar();">CONCLUIR PAGAMENTO <i class="glyphicon glyphicon-credit-card"></i></a>
         </div>
     </div>
   </div>
