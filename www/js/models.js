@@ -943,6 +943,7 @@ game7App.factory("Produto", function (Ajax,$http) {
     return obj;
 });
 
+
 game7App.factory("Pedido", function (Ajax,$http) {
     var obj = {
         lista_pedidos: [],
@@ -999,11 +1000,26 @@ game7App.factory("Pedido", function (Ajax,$http) {
         f.append('complemento', complemento);
         $http.post(url, f, {headers: {'Content-Type': undefined}}).success(
           function(response){
-            obj.retorno = response;
+            alert(response);
+            window.localStorage.setItem("pedido_id", response.data);
+            window.location = "pedido-tipo-pagamento.html";
           }
         )
-
     };
+
+    obj.save_tipo_pagamento = function (tipo_pagamento) {
+        var url = URL_BASE + "savetipopagamentopedido";
+        var f = new FormData();
+        f.append('id', window.localStorage.getItem("pedido_id"));
+        f.append('tipopagamento', tipo_pagamento);
+        $http.post(url, f, {headers: {'Content-Type': undefined}}).success(
+          function(response){
+            obj.retorno = response.data;
+            window.location = "pedido-pagamento.html";
+          }
+        )
+    };
+
     obj.excluir_pedido= function () {
         var url = URL_BASE + "excluirpedido";
         var params = {

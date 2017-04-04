@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular.cookies.js"></script>
+    <script src="js/game7_app.js"></script>
+    <script src="js/models.js"></script>
+    <script src="js/views.js"></script>
+    <script src="js/controllers.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/app.css" />
+    <script src="https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js"></script>
+    <title>FoodExpress - Cliente</title>
+</head>
+
+<body>
+  <div ng-app="game7App" ng-controller="pedidoCtrl" class="app" role="main" class="content">
+    <div style="margin:0px;padding:0px;">
+        <div class="col-xs-12 head" style="background-color:#bc2026;padding:15px;">
+            <b class="ttl">TIPO DE PAGAMENTO</b>
+        </div>
+        <div class="col-xs-12" style="font-size:10px;">
+            <p>Selecione a forma de pagamento desejado</p>
+            <input type="radio" name="rd_pagamento_tipo" value="na_entrega" checked="true" > Pagar na entrega<br>
+            <input type="radio" name="rd_pagamento_tipo" value="mercado_pago"> Mercado Pago<br>
+        </div>
+        <div class="col-xs-12 rodape" style="background-color:#bc2026;padding:15px;text-align:center;">
+            <a style="color:#fff;" ng-click="atualizar_tipo_pagamento();">CONFIRMAR TIPO DE PAGAMENTO <i class="glyphicon glyphicon-credit-card"></i></a>
+        </div>
+    </div>
+  </div>
+</body>
+
+</html>

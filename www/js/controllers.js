@@ -176,22 +176,19 @@ game7App.controller('produtoCtrl', function($scope, Produto, Empresa, Categoria,
     }
 });
 
-game7App.controller('pedidoCtrl', function($scope, Pedido, Empresa, Cliente, Estado, Cidade, Bairro) {
-    $scope.em = Empresa;
-    $scope.em.get_empresas();
-
+game7App.controller('pedidoCtrl', function($scope, Pedido, Cliente, Estado, Cidade, Bairro) {
     $scope.pe = Pedido;
     $scope.pe.get_pedidos();
+    console.log($scope.pe.pedidoselecionado);
 
     $scope.cl = Cliente;
     $scope.cl.get_cliente();
 
     $scope.et = Estado;
+    $scope.et.get_estados();
+
     $scope.cd = Cidade;
     $scope.br = Bairro;
-
-    $scope.et.get_estados();
-    $scope.em.get_empresa();
 
     $scope.filtrar = function(){
         $scope.pe.get_pedidos(document.getElementById("ipFiltrodata").value);
@@ -202,6 +199,11 @@ game7App.controller('pedidoCtrl', function($scope, Pedido, Empresa, Cliente, Est
             document.getElementById("cidade").value,
             document.getElementById("bairro").value,
             document.getElementById("complemento").value);
+    }
+    $scope.atualizar_tipo_pagamento = function(){
+        $scope.pe.save_tipo_pagamento(
+                $('input[name="rd_pagamento_tipo"]:checked').val()
+            );
     }
     $scope.excluir = function(){
       $scope.pt.excluir_produto();
@@ -231,6 +233,9 @@ game7App.controller('carrinhoCtrl', function($scope, Produto, Carrinho) {
 
     $scope.cr = Carrinho;
     $scope.cr.get_carrinhos();
+
+//    $scope.tp = TipoPagamento;
+//    $scope.tp.get_tipospagamentos();
 
     $scope.add_quantidade = function(){
         $scope.cr.qtd_atual = $scope.cr.qtd_atual + 1;
