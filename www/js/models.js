@@ -1001,7 +1001,7 @@ game7App.factory("Pedido", function (Ajax,$http) {
         $http.post(url, f, {headers: {'Content-Type': undefined}}).success(
           function(response){
             alert(response);
-            window.localStorage.setItem("pedido_id", response.data);
+            window.localStorage.setItem("pedido_id", response);
             window.location = "pedido-tipo-pagamento.html";
           }
         )
