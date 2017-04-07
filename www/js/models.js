@@ -1015,7 +1015,30 @@ game7App.factory("Pedido", function (Ajax,$http) {
         $http.post(url, f, {headers: {'Content-Type': undefined}}).success(
           function(response){
             obj.retorno = response.data;
-            window.location = "pedido-pagamento.html";
+            if(tipo_pagamento == 'na_entrega'){
+                window.location = "pedido-pagamento-naentrega.html?p_id="+window.localStorage.getItem("pedido_id");
+            }
+            if(tipo_pagamento == 'mercado_pago'){
+            window.location = "pedido-pagamento.html?p_id="+window.localStorage.getItem("pedido_id");
+            }
+
+          }
+        )
+    };
+
+    obj.save_pagamento_obs = function (obs) {
+
+        alert(window.localStorage.getItem("pedido_id"));
+        alert(obs);
+
+        var url = URL_BASE + "saveobspagamentopedido";
+        var f = new FormData();
+        f.append('id', window.localStorage.getItem("pedido_id"));
+        f.append('obs', obs);
+        $http.post(url, f, {headers: {'Content-Type': undefined}}).success(
+          function(response){
+            obj.retorno = response.data;
+            window.location = "pedido_concluido.html";
           }
         )
     };

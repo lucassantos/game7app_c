@@ -179,7 +179,6 @@ game7App.controller('produtoCtrl', function($scope, Produto, Empresa, Categoria,
 game7App.controller('pedidoCtrl', function($scope, Pedido, Cliente, Estado, Cidade, Bairro) {
     $scope.pe = Pedido;
     $scope.pe.get_pedidos();
-    console.log($scope.pe.pedidoselecionado);
 
     $scope.cl = Cliente;
     $scope.cl.get_cliente();
@@ -204,6 +203,16 @@ game7App.controller('pedidoCtrl', function($scope, Pedido, Cliente, Estado, Cida
         $scope.pe.save_tipo_pagamento(
                 $('input[name="rd_pagamento_tipo"]:checked').val()
             );
+    }
+    $scope.atualizar_pagamento = function(tipo){
+        if(tipo == 'na_entrega'){
+            $scope.pe.save_pagamento_obs(
+                $('input[name="rd_forma_pagamento"]:checked').val()
+            );
+        }
+        if(tipo == 'mercado_pago'){
+            alert('outro;')
+        }
     }
     $scope.excluir = function(){
       $scope.pt.excluir_produto();
