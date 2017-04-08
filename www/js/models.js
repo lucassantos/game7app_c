@@ -997,7 +997,7 @@ game7App.factory("Pedido", function (Ajax,$http) {
         f.append('endereco', pedido_endereco);
         f.append('cidade_id', pedido_cidade);
         f.append('bairro_id', pedido_bairro);
-        f.append('complemento', complemento);
+        f.append('complemento', pedido_complemento);
         $http.post(url, f, {headers: {'Content-Type': undefined}}).success(
           function(response){
             alert(response);
@@ -1038,7 +1038,7 @@ game7App.factory("Pedido", function (Ajax,$http) {
         $http.post(url, f, {headers: {'Content-Type': undefined}}).success(
           function(response){
             obj.retorno = response.data;
-            window.location = "pedido_concluido.html";
+            window.location = "pedido-concluido.html";
           }
         )
     };
