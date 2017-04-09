@@ -2,14 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fd56a991-c328-4cc0-98c0-64ba07868093" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/pedido-concluido.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/pedidos.html" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/www/pedido-concluido.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/carrinho.html" afterPath="$PROJECT_DIR$/www/carrinho.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/home.html" afterPath="$PROJECT_DIR$/www/home.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/controllers.js" afterPath="$PROJECT_DIR$/www/js/controllers.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/models.js" afterPath="$PROJECT_DIR$/www/js/models.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/pedido-endereco.html" afterPath="$PROJECT_DIR$/www/pedido-endereco.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/pedido-pagamento-naentrega.html" afterPath="$PROJECT_DIR$/www/pedido-pagamento-naentrega.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/pedido-pagamento.html" afterPath="$PROJECT_DIR$/www/pedido-pagamento.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/pedido-tipo-pagamento.html" afterPath="$PROJECT_DIR$/www/pedido-tipo-pagamento.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/produto-integra.html" afterPath="$PROJECT_DIR$/www/produto-integra.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/pedido-integra.html" afterPath="$PROJECT_DIR$/www/pedido-integra.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/profile.html" afterPath="$PROJECT_DIR$/www/profile.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/restaurante-integra.html" afterPath="$PROJECT_DIR$/www/restaurante-integra.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -27,63 +29,40 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="pedido-endereco.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/pedido-endereco.html">
+      <file leaf-file-name="models.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/js/models.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="494">
-              <caret line="56" column="84" lean-forward="true" selection-start-line="56" selection-start-column="65" selection-end-line="56" selection-end-column="84" />
+            <state relative-caret-position="180">
+              <caret line="927" column="11" lean-forward="true" selection-start-line="927" selection-start-column="11" selection-end-line="927" selection-end-column="11" />
               <folding>
-                <element signature="n#head#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="e#0#33020#0" expanded="false" />
+                <element signature="e#0#33020#0" expanded="false" />
+                <element signature="e#0#33020#0" expanded="false" />
+                <element signature="e#0#33020#0" expanded="false" />
+                <element signature="e#0#33020#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pedido-tipo-pagamento.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/pedido-tipo-pagamento.html">
+      <file leaf-file-name="carrinho.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/carrinho.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="36" column="97" lean-forward="false" selection-start-line="36" selection-start-column="97" selection-end-line="36" selection-end-column="97" />
-              <folding />
+            <state relative-caret-position="208">
+              <caret line="34" column="41" lean-forward="true" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
+              <folding>
+                <element signature="n#head#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="profile.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/profile.html">
+      <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="26" column="12" lean-forward="false" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="162" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="quero-cadastrar.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/quero-cadastrar.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="restaurante-integra.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/restaurante-integra.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="20" column="7" lean-forward="true" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pedido-concluido.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/pedido-concluido.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="28" column="12" lean-forward="false" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
+            <state relative-caret-position="756">
+              <caret line="73" column="18" lean-forward="false" selection-start-line="73" selection-start-column="18" selection-end-line="73" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -92,38 +71,46 @@
       <file leaf-file-name="pedido-integra.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/pedido-integra.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="117">
-              <caret line="9" column="7" lean-forward="false" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
-              <folding />
+            <state relative-caret-position="787">
+              <caret line="79" column="14" lean-forward="true" selection-start-line="31" selection-start-column="8" selection-end-line="79" selection-end-column="14" />
+              <folding>
+                <element signature="n#style#0;n#table#0;n#li#3;n#ul#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#b#0;n#li#6;n#ul#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="produto-integra.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="pedidos.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/www/pedidos.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="327">
+              <caret line="57" column="59" lean-forward="true" selection-start-line="57" selection-start-column="59" selection-end-line="57" selection-end-column="59" />
+              <folding>
+                <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#table#0;n#li#3;n#ul#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#b#0;n#li#6;n#ul#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="produto-integra.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/produto-integra.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="743">
-              <caret line="61" column="82" lean-forward="false" selection-start-line="61" selection-start-column="82" selection-end-line="61" selection-end-column="82" />
+            <state relative-caret-position="271">
+              <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pedido-pagamento.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/pedido-pagamento.html">
+      <file leaf-file-name="restaurante-integra.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/restaurante-integra.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="748">
-              <caret line="107" column="82" lean-forward="false" selection-start-line="107" selection-start-column="82" selection-end-line="107" selection-end-column="82" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pedido-pagamento-naentrega.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/pedido-pagamento-naentrega.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="494">
-              <caret line="38" column="104" lean-forward="false" selection-start-line="38" selection-start-column="104" selection-end-line="38" selection-end-column="104" />
+            <state relative-caret-position="1107">
+              <caret line="109" column="18" lean-forward="false" selection-start-line="109" selection-start-column="18" selection-end-line="109" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -140,8 +127,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>log</find>
-      <find>:3000</find>
       <find>e_logado</find>
       <find>save_cliente</find>
       <find>get_empresas</find>
@@ -163,12 +148,15 @@
       <find>window.localStorage</find>
       <find>pedidos</find>
       <find>window.localStorage.setItem</find>
-      <find>save_tipo_pagamento</find>
+      <find>savepedido</find>
+      <find>get_pedido</find>
       <find>atualizar_pagamento</find>
-      <find>atualizar</find>
       <find>save_pagamento_obs</find>
-      <find>atualizar_tipo_pagamento</find>
+      <find>saveobspagamentopedido</find>
+      <find>atualizar</find>
       <find>save_pedido</find>
+      <find>atualizar_tipo_pagamento</find>
+      <find>save_tipo_pagamento</find>
     </findStrings>
     <replaceStrings>
       <replace>c_logado</replace>
@@ -189,20 +177,21 @@
         <option value="$PROJECT_DIR$/www/css/app.css" />
         <option value="$PROJECT_DIR$/config.xml" />
         <option value="$PROJECT_DIR$/www/nao-logado.html" />
-        <option value="$PROJECT_DIR$/www/home.html" />
-        <option value="$PROJECT_DIR$/www/profile.html" />
-        <option value="$PROJECT_DIR$/www/restaurante-integra.html" />
         <option value="$PROJECT_DIR$/www/pedido-produtos.html" />
-        <option value="$PROJECT_DIR$/www/pedido-integra.html" />
-        <option value="$PROJECT_DIR$/www/carrinho.html" />
-        <option value="$PROJECT_DIR$/www/js/controllers.js" />
-        <option value="$PROJECT_DIR$/www/js/models.js" />
-        <option value="$PROJECT_DIR$/www/pedido-concluido.html" />
         <option value="$PROJECT_DIR$/www/pedido-endereco.html" />
         <option value="$PROJECT_DIR$/www/pedido-pagamento.html" />
         <option value="$PROJECT_DIR$/www/pedido-pagamento-naentrega.html" />
         <option value="$PROJECT_DIR$/www/pedido-tipo-pagamento.html" />
         <option value="$PROJECT_DIR$/www/produto-integra.html" />
+        <option value="$PROJECT_DIR$/www/js/controllers.js" />
+        <option value="$PROJECT_DIR$/www/pedido-concluido.html" />
+        <option value="$PROJECT_DIR$/www/carrinho.html" />
+        <option value="$PROJECT_DIR$/www/home.html" />
+        <option value="$PROJECT_DIR$/www/profile.html" />
+        <option value="$PROJECT_DIR$/www/restaurante-integra.html" />
+        <option value="$PROJECT_DIR$/www/pedido-integra.html" />
+        <option value="$PROJECT_DIR$/www/js/models.js" />
+        <option value="$PROJECT_DIR$/www/pedidos.html" />
       </list>
     </option>
   </component>
@@ -433,7 +422,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1400" y="39" width="943" height="1041" extended-state="4" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2635575" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32921812" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -492,13 +481,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/www/css/app.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="27" column="10" lean-forward="false" selection-start-line="27" selection-start-column="10" selection-end-line="27" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/js/angular.cookies.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -730,90 +712,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/carrinho.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="51" column="57" lean-forward="true" selection-start-line="51" selection-start-column="57" selection-end-line="51" selection-end-column="57" />
-          <folding>
-            <element signature="n#head#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#p#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#b#0;n#p#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/controllers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="195" column="29" lean-forward="false" selection-start-line="195" selection-start-column="18" selection-end-line="195" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/models.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="1001" column="29" lean-forward="true" selection-start-line="1001" selection-start-column="29" selection-end-line="1001" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="40" column="34" lean-forward="true" selection-start-line="40" selection-start-column="34" selection-end-line="40" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/pedido-concluido.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="28" column="12" lean-forward="false" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/pedido-integra.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="9" column="7" lean-forward="false" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/profile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="26" column="12" lean-forward="false" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="162" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/quero-cadastrar.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
+        <state relative-caret-position="154">
           <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/restaurante-integra.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="20" column="7" lean-forward="true" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/pedido-endereco.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="56" column="84" lean-forward="true" selection-start-line="56" selection-start-column="65" selection-end-line="56" selection-end-column="84" />
-          <folding>
-            <element signature="n#head#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -825,27 +728,128 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/pedido-pagamento-naentrega.html">
+    <entry file="file://$PROJECT_DIR$/www/pedido-endereco.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="494">
-          <caret line="38" column="104" lean-forward="false" selection-start-line="38" selection-start-column="104" selection-end-line="38" selection-end-column="104" />
-          <folding />
+          <caret line="56" column="54" lean-forward="false" selection-start-line="56" selection-start-column="45" selection-end-line="56" selection-end-column="54" />
+          <folding>
+            <element signature="n#head#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/pedido-tipo-pagamento.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="468">
-          <caret line="36" column="97" lean-forward="false" selection-start-line="36" selection-start-column="97" selection-end-line="36" selection-end-column="97" />
+          <caret line="36" column="69" lean-forward="false" selection-start-line="36" selection-start-column="45" selection-end-line="36" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/controllers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="203" column="37" lean-forward="false" selection-start-line="203" selection-start-column="18" selection-end-line="203" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/pedido-pagamento-naentrega.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="28" column="12" lean-forward="false" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="756">
+          <caret line="73" column="18" lean-forward="false" selection-start-line="73" selection-start-column="18" selection-end-line="73" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="756">
+          <caret line="92" column="18" lean-forward="false" selection-start-line="92" selection-start-column="18" selection-end-line="92" selection-end-column="18" />
+          <folding>
+            <element signature="n#style#0;n#a#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/pedido-concluido.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="379">
+          <caret line="50" column="32" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/models.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="927" column="11" lean-forward="true" selection-start-line="927" selection-start-column="11" selection-end-line="927" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#33020#0" expanded="false" />
+            <element signature="e#0#33020#0" expanded="false" />
+            <element signature="e#0#33020#0" expanded="false" />
+            <element signature="e#0#33020#0" expanded="false" />
+            <element signature="e#0#33020#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/pedido-integra.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="787">
+          <caret line="79" column="14" lean-forward="true" selection-start-line="31" selection-start-column="8" selection-end-line="79" selection-end-column="14" />
+          <folding>
+            <element signature="n#style#0;n#table#0;n#li#3;n#ul#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#b#0;n#li#6;n#ul#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/carrinho.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="34" column="41" lean-forward="true" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
+          <folding>
+            <element signature="n#head#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/restaurante-integra.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1107">
+          <caret line="109" column="18" lean-forward="false" selection-start-line="109" selection-start-column="18" selection-end-line="109" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/produto-integra.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="743">
-          <caret line="61" column="82" lean-forward="false" selection-start-line="61" selection-start-column="82" selection-end-line="61" selection-end-column="82" />
+        <state relative-caret-position="271">
+          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/pedidos.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="57" column="59" lean-forward="true" selection-start-line="57" selection-start-column="59" selection-end-line="57" selection-end-column="59" />
+          <folding>
+            <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#li#3;n#ul#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#b#0;n#li#6;n#ul#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

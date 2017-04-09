@@ -953,7 +953,7 @@ game7App.factory("Pedido", function (Ajax,$http) {
     obj.get_pedidos= function (data_pedido) {
         var url = URL_BASE + "pedidos";
         var params = {
-            empresa_id:TOKENS["e_id"],
+            cliente_id:window.localStorage.getItem("c_logado"),
             data:data_pedido
         }
         $http({
@@ -997,7 +997,7 @@ game7App.factory("Pedido", function (Ajax,$http) {
         f.append('endereco', pedido_endereco);
         f.append('cidade_id', pedido_cidade);
         f.append('bairro_id', pedido_bairro);
-        f.append('complemento', pedido_complemento);
+        f.append('complemento', complemento);
         $http.post(url, f, {headers: {'Content-Type': undefined}}).success(
           function(response){
             alert(response);
@@ -1027,10 +1027,6 @@ game7App.factory("Pedido", function (Ajax,$http) {
     };
 
     obj.save_pagamento_obs = function (obs) {
-
-        alert(window.localStorage.getItem("pedido_id"));
-        alert(obs);
-
         var url = URL_BASE + "saveobspagamentopedido";
         var f = new FormData();
         f.append('id', window.localStorage.getItem("pedido_id"));
@@ -1038,7 +1034,7 @@ game7App.factory("Pedido", function (Ajax,$http) {
         $http.post(url, f, {headers: {'Content-Type': undefined}}).success(
           function(response){
             obj.retorno = response.data;
-            window.location = "pedido-concluido.html";
+            window.location = "pedido-integra.html?p_id="+window.localStorage.getItem("pedido_id");
           }
         )
     };

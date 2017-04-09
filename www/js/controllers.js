@@ -179,6 +179,7 @@ game7App.controller('produtoCtrl', function($scope, Produto, Empresa, Categoria,
 game7App.controller('pedidoCtrl', function($scope, Pedido, Cliente, Estado, Cidade, Bairro) {
     $scope.pe = Pedido;
     $scope.pe.get_pedidos();
+    $scope.pe.get_pedido();
 
     $scope.cl = Cliente;
     $scope.cl.get_cliente();
