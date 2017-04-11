@@ -23,12 +23,11 @@
 <body>
   <div ng-app="game7App" ng-controller="empresaCtrl" class="app" role="main" class="content">
     <div style="margin:0px;padding:0px;">
-        <div class="col-xs-12 head" style="background-color:#bc2026;">
-            <img src="img/logo.png" class="img-circle" style="width:40px;margin:10px auto;display:block;" alt="FoodExpress - Cliente">
-            <div class="form-group form-group-sm">
-                <div class="col-sm-12">
-                    <input class="form-control" type="text" id="iFiltro" ng-keyup="filtrar();" placeholder="Buscar pratos e restaurantes" />
-                </div>
+        <div class="col-xs-12 head" style="background-color:#FB4000;">
+            <!--<img src="img/logo.png" class="img-circle" style="width:40px;margin:10px auto;display:block;" alt="FoodExpress - Cliente">-->
+            <div class="input-group input-group-lg filtro">
+                <span class="input-group-addon lupa" id="sizing-addon1"><i class="glyphicon glyphicon-search"></i></span>
+                <input class="form-control" type="text" id="iFiltro" ng-keyup="filtrar();" placeholder="Buscar pratos e restaurantes" />
             </div>
         </div>
         <div class="col-xs-12" style="padding:0px;">
