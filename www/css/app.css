@@ -41,7 +41,7 @@
 .rodape a{
     background-color:#B4B4B4;
     border:0px;
-    color:#545253;
+    color:#4b494a;
     border-radius:0px;
 }
 
@@ -61,4 +61,33 @@
 .filtro #iFiltro{
     background-color: #fff;
     border: 0px;
+}
+
+
+.menu-categorias{
+  padding: 0px;
+}
+
+.menu-categorias ul{
+  list-style: none;
+  padding: 0px;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 0px;
+}
+
+.menu-categorias li{
+  display: inline-block;
+  padding: 10px 7px;
+}
+
+.menu-categorias li a{
+  width: 56px;
+  padding: 0px;
+}
+
+.menu-categorias li img{
+  display: block;
+  margin: 0 auto;
+  vertical-align: middle;
 }
