@@ -45,6 +45,10 @@
     border-radius:0px;
 }
 
+.rodape .active{
+  background-color: #727272;
+}
+
 .menu-empresa a{
     color:#bc2026;
 }
