@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="game7.cliente" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>Game 7 - Clientes</name>
+<widget id="webmenu.cliente" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>WebMenu</name>
     <description>
         Aplicativo de acesso dos clientes, para realização de pedidos e controle de pagamentos.
     </description>
