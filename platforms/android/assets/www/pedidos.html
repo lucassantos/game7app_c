@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular.cookies.js"></script>
+    <script src="js/game7_app.js"></script>
+    <script src="js/models.js"></script>
+    <script src="js/views.js"></script>
+    <script src="js/controllers.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/app.css" />
+    <title>WebMenu</title>
+</head>
+
+<body>
+  <div ng-app="game7App" ng-controller="pedidoCtrl" class="app" role="main" class="content">
+    <div style="margin:0px;padding:0px;">
+        <div class="col-xs-12 head" style="background-color:#FB4000;">
+            <img src="img/logo.png" class="img-circle" style="width:80px;margin:0px auto;display:block;" alt="FoodExpress - Cliente">
+            <h1 class="ttl col-xs-8 col-md-8" style="margin-bottom:20px;">PEDIDOS</h1>
+        </div>
+        <div class="col-xs-12" style="padding:0px;margin-bottom:50px;">
+            <div class="col-xs-12" style="font-size:10px;" ng-repeat="ped in pe.lista_pedidos">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <b>DATA</b><br>
+                        {[ped.data]}
+                    </li>
+                    <li class="list-group-item">
+                        <b>RESTAURANTE</b><br>
+                        {[ped.empresa]}
+                    </li>
+                    <li class="list-group-item">
+                        <b>ENTREGA</b><br>
+                        {[ped.endereco]}, {[ped.bairro]} -
+                        {[ped.cidade]}
+                    </li>
+                    <li class="list-group-item">
+                        <b>ITENS</b>
+                        <table class="table" style="margin-bottom:0px;">
+                            <thead>
+                                <tr>
+                                    <th>Produto</th>
+                                    <th>Quantidade</th>
+                                    <th>Preço</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="it in ped.itens">
+                                    <td>{[it.produto]}</td>
+                                    <td>{[it.quantidade]}</td>
+                                    <td>R$ {[it.preco_parcial.toFixed(2)]}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </li>
+                    <li class="list-group-item">
+                        <b>PAGAMENTO</b><br>
+                        {[ped.pagamento_obs]} - {[ped.pagamento_tipo]}
+                    </li>
+                    <li class="list-group-item">
+                        <b>STATUS</b><br>
+                        {[ped.status]}
+                    </li>
+                    <li class="list-group-item">
+                        <b class="label label-primary" style="font-size: 16PX;padding: 14PX 0PX;text-align: center;display: block;">
+                        R$ {[ped.total.toFixed(2)]}
+                        </b>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-xs-12 rodape">
+            <div class="btn-group btn-group-justified" role="group">
+                <a href="home.html" class="btn btn-danger" role="button">
+                    <img src="img/ico-restaurantes.png"/>
+                </a>
+                <a href="carrinho.html" class="btn btn-danger" role="button">
+                    <img src="img/ico-carrinho.png"/>
+                </a>
+                <a href="pedidos.html" class="btn btn-danger active" role="button">
+                    <img src="img/ico-pedidos-active.png"/>
+                </a>
+                <a href="profile.html" class="btn btn-danger" role="button">
+                    <img src="img/ico-meuperfil.png"/>
+                </a>
+            </div>
+        </div>
+    </div>
+  </div>
+</body>
+
+</html>

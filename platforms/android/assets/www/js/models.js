@@ -1,4 +1,5 @@
 //URL_BASE = "http://127.0.0.1:8010/js/";
+//URL_BASE = "http://127.0.0.1:8000/js/";
 //URL_BASE = "http://192.168.1.106:8010/js/";
 URL_BASE = "https://serene-atoll-63219.herokuapp.com/js/"
 
@@ -446,18 +447,18 @@ game7App.factory("Cliente", function (Ajax,$http) {
         )
     };
     obj.get_cliente = function () {
-navigator.geolocation.getCurrentPosition(function(position)
-{
-    // just to show how to access latitute and longitude
-    var location = [position.coords.latitude, position.coords.longitude];
-    alert(location);
-},
-function(error)
-{
-    // error getting GPS coordinates
-    alert('code: ' + error.code + ' with message: ' + error.message + '\n');
-},
-{ enableHighAccuracy: true, maximumAge: 3000, timeout: 5000 });
+//navigator.geolocation.getCurrentPosition(function(position)
+//{
+//    // just to show how to access latitute and longitude
+//    var location = [position.coords.latitude, position.coords.longitude];
+//    alert(location);
+//},
+//function(error)
+//{
+//    // error getting GPS coordinates
+//    alert('code: ' + error.code + ' with message: ' + error.message + '\n');
+//},
+//{ enableHighAccuracy: true, maximumAge: 3000, timeout: 5000 });
         //Get relação de clientes
         var url = URL_BASE + "clientes";
         var params = {
@@ -942,6 +943,7 @@ game7App.factory("Produto", function (Ajax,$http) {
     return obj;
 });
 
+
 game7App.factory("Pedido", function (Ajax,$http) {
     var obj = {
         lista_pedidos: [],
@@ -951,7 +953,7 @@ game7App.factory("Pedido", function (Ajax,$http) {
     obj.get_pedidos= function (data_pedido) {
         var url = URL_BASE + "pedidos";
         var params = {
-            empresa_id:TOKENS["e_id"],
+            cliente_id:window.localStorage.getItem("c_logado"),
             data:data_pedido
         }
         $http({
@@ -987,25 +989,58 @@ game7App.factory("Pedido", function (Ajax,$http) {
             console.log("Erro");
         });
     };
-    obj.save_pedido = function (produto_nome, produto_preco, produto_descricao, empresa) {
+    obj.save_pedido = function (pedido_endereco, pedido_cidade, pedido_bairro, pedido_complemento) {
         var url = URL_BASE + "savepedido";
-
         var f = new FormData();
         f.append('id', TOKENS['p_id']);
-        f.append('nome', produto_nome);
-        f.append('preco', produto_preco);
-        f.append('descricao', produto_descricao);
-        f.append('foto', obj.foto_principal);
-        f.append('empresa_id', empresa);
+        f.append('cliente_id', window.localStorage.getItem("c_logado"));
+        f.append('endereco', pedido_endereco);
+        f.append('cidade_id', pedido_cidade);
+        f.append('bairro_id', pedido_bairro);
+        f.append('complemento', complemento);
         $http.post(url, f, {headers: {'Content-Type': undefined}}).success(
           function(response){
-            obj.retorno = response;
+            alert(response);
+            window.localStorage.setItem("pedido_id", response);
+            window.location = "pedido-tipo-pagamento.html";
           }
         )
-
     };
-    obj.excluir_produto= function () {
-        var url = URL_BASE + "excluirproduto";
+
+    obj.save_tipo_pagamento = function (tipo_pagamento) {
+        var url = URL_BASE + "savetipopagamentopedido";
+        var f = new FormData();
+        f.append('id', window.localStorage.getItem("pedido_id"));
+        f.append('tipopagamento', tipo_pagamento);
+        $http.post(url, f, {headers: {'Content-Type': undefined}}).success(
+          function(response){
+            obj.retorno = response.data;
+            if(tipo_pagamento == 'na_entrega'){
+                window.location = "pedido-pagamento-naentrega.html?p_id="+window.localStorage.getItem("pedido_id");
+            }
+            if(tipo_pagamento == 'mercado_pago'){
+            window.location = "pedido-pagamento.html?p_id="+window.localStorage.getItem("pedido_id");
+            }
+
+          }
+        )
+    };
+
+    obj.save_pagamento_obs = function (obs) {
+        var url = URL_BASE + "saveobspagamentopedido";
+        var f = new FormData();
+        f.append('id', window.localStorage.getItem("pedido_id"));
+        f.append('obs', obs);
+        $http.post(url, f, {headers: {'Content-Type': undefined}}).success(
+          function(response){
+            obj.retorno = response.data;
+            window.location = "pedido-integra.html?p_id="+window.localStorage.getItem("pedido_id");
+          }
+        )
+    };
+
+    obj.excluir_pedido= function () {
+        var url = URL_BASE + "excluirpedido";
         var params = {
           id:TOKENS['p_id']
         }
@@ -1022,6 +1057,7 @@ game7App.factory("Pedido", function (Ajax,$http) {
             console.log("Erro");
         });
     };
+
     obj.verifica_login = function () {
       //  var logado = $cookies.getObject("logado");
        var logado = window.localStorage.getItem("c_logado");

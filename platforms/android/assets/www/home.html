@@ -17,19 +17,49 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
     <script src="js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/app.css" />
-    <title>FoodExpress - Cliente</title>
+    <title>WebMenu</title>
 </head>
 
 <body>
   <div ng-app="game7App" ng-controller="empresaCtrl" class="app" role="main" class="content">
     <div style="margin:0px;padding:0px;">
-        <div class="col-xs-12 head" style="background-color:#bc2026;">
-            <img src="img/logo.png" class="img-circle" style="width:40px;margin:10px auto;display:block;" alt="FoodExpress - Cliente">
-            <div class="form-group form-group-sm">
-                <div class="col-sm-12">
-                    <input class="form-control" type="text" id="iFiltro" ng-keyup="filtrar();" placeholder="Buscar pratos e restaurantes" />
-                </div>
+        <div class="col-xs-12 head" style="background-color:#FB4000;">
+            <!--<img src="img/logo.png" class="img-circle" style="width:40px;margin:10px auto;display:block;" alt="FoodExpress - Cliente">-->
+            <div class="input-group input-group-lg filtro">
+                <span class="input-group-addon lupa" id="sizing-addon1"><i class="glyphicon glyphicon-search"></i></span>
+                <input class="form-control" type="text" id="iFiltro" ng-keyup="filtrar();" placeholder="Buscar pratos e restaurantes" />
             </div>
+
+            <div class="col-md-12 col-xs-12 menu-categorias">
+              <ul>
+                <li class="col-md-3 col-xs-3">
+                  <a href="home.html" role="button">
+                      <img src="img/img-categoria-oriental.png"/>
+                  </a>
+                </li>
+                <li class="col-md-3 col-xs-3">
+                  <a href="carrinho.html" role="button">
+                      <img src="img/img-categoria-pizzas.png"/>
+                  </a>
+                </li>
+                <li class="col-md-3 col-xs-3">
+                  <a href="pedidos.html" role="button">
+                      <img src="img/img-categoria-massas.png"/>
+                  </a>
+                </li>
+                <li class="col-md-3 col-xs-3">
+                  <a href="profile.html" role="button">
+                      <img src="img/img-categoria-lanches.png"/>
+                  </a>
+                </li>
+                <!--<li>-->
+                  <!--<a href="profile.html" class="col-md-3 col-xs-3" role="button">-->
+                      <!--<img src="img/img-categoria-proximos.png"/>-->
+                  <!--</a>-->
+                <!--</li>-->
+              </ul>
+            </div>
+
         </div>
         <div class="col-xs-12" style="padding:0px;">
             <ul class="col-md-12">
@@ -55,21 +85,17 @@
         </div>
         <div class="col-xs-12 rodape">
             <div class="btn-group btn-group-justified" role="group">
-                <a href="home.html" class="btn btn-danger" role="button">
-                    <span class="glyphicon glyphicon-search"></span><br>
-                    Buscar
+                <a href="home.html" class="btn btn-danger active" role="button">
+                    <img src="img/ico-restaurantes-active.png"/>
                 </a>
                 <a href="carrinho.html" class="btn btn-danger" role="button">
-                    <span class="glyphicon glyphicon-shopping-cart"></span><br>
-                    Carrinho
+                    <img src="img/ico-carrinho.png"/>
                 </a>
-                <a href="#" class="btn btn-danger" role="button">
-                    <span class="glyphicon glyphicon-list-alt"></span><br>
-                    Pedidos
+                <a href="pedidos.html" class="btn btn-danger" role="button">
+                    <img src="img/ico-pedidos.png"/>
                 </a>
                 <a href="profile.html" class="btn btn-danger" role="button">
-                    <span class="glyphicon glyphicon-user"></span><br>
-                    Eu
+                    <img src="img/ico-meuperfil.png"/>
                 </a>
             </div>
         </div>

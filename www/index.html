@@ -20,28 +20,29 @@
     <title>WebMenu</title>
 </head>
 
-<body>
+<body style="background:url('img/fd_login.jpg') no-repeat;">
   <div ng-app="game7App" ng-controller="loginCtrl" class="app" role="main" class="content">
-    <div style="margin:0px;padding:0px;">
-        <div class="col-xs-12" style="margin-top:20px;">
-          <img src="img/logo.png" class="img-circle" style="width:80px;margin:0px auto;display:block;" alt="WebMenu">
-          
-            <div style="background:none;">
+    <div class="col-xs-12">
+        <img src="img/logo.png" class="img-circle" style="width:250px;margin:80px auto 0px;display:block;" alt="WebMenu">
+
+        <div id="genlogin" style="display:none;">
+            <div class="well col-md-12 col-xs-12" style="border-radius:10px;background-color:#fff;">
                 <form enctype="multipart/form-data" method="post">
                     E-mail
                     <input type="text" id="ipEmail" class="form-control"/><br>
                     Senha
                     <input type="password" id="ipSenha" class="form-control"/><br>
-                    <a class="btn btn-sm btn-danger" style="display:block;width:100%;" ng-click="logar()">ENTRAR</a>
+                    <a class="btn btn-sm btn-default col-md-6 col-xs-6" ng-click="logar()">ENTRAR</a>
+                    <a class="btn btn-sm btn-danger col-md-6 col-xs-6" onclick="$('#genbtns').show();$('#genlogin').hide();" >VOLTAR</a>
 
                 </form>
                 <a style="margin-top: 5px;display: block;">ESQUECI MINHA SENHA</a>
             </div>
+        </div>
 
-            <div class="well" style="background:none;text-align:center;">
-                Ainda não tem uma conta?
-                <a class="btn btn-sm btn-danger" href="quero-cadastrar.html" style="display:block;width:100%;">QUERO ME CADASTRAR</a>
-            </div>
+        <div id="genbtns">
+            <a class="btn btn-default" onclick="$('#genlogin').show();$('#genbtns').hide();" style="display:block;width:100%;margin-bottom:20px;color:#727272;font-weight:bold;text-transform:uppercase;">Fazer Login</a>
+            <a class="btn btn-default" href="quero-cadastrar.html" style="display:block;width:100%;color:#727272;font-weight:bold;text-transform:uppercase;">Fazer Inscrição</a>
         </div>
     </div>
   </div>

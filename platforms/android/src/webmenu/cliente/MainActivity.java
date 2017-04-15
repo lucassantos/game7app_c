@@ -17,7 +17,7 @@
        under the License.
  */
 
-package game7.cliente;
+package webmenu.cliente;
 
 import android.os.Bundle;
 import org.apache.cordova.*;

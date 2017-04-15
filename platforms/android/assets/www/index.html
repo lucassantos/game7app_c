@@ -17,33 +17,28 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
     <script src="js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/app.css" />
-    <title>FoodExpress - Cliente</title>
+    <title>WebMenu</title>
 </head>
 
 <body>
   <div ng-app="game7App" ng-controller="loginCtrl" class="app" role="main" class="content">
-    <div style="margin:0px;padding:0px;">
-        <div class="col-xs-12 head" style="background-color:#bc2026;">
-            <img src="img/logo.png" class="img-circle" style="width:40px;margin:10px auto;display:block;" alt="FoodExpress - Cliente">
-        </div>
-        <div class="col-xs-12" style="margin-top:20px;">
-            <div class="well" style="background:none;">
-                <form enctype="multipart/form-data" method="post">
-                    E-mail
-                    <input type="text" id="ipEmail" class="form-control"/><br>
-                    Senha
-                    <input type="password" id="ipSenha" class="form-control"/><br>
-                    <a class="btn btn-sm btn-danger" style="display:block;width:100%;" ng-click="logar()">ENTRAR</a>
+    <div class="col-xs-12" style="background:url('img/fd_login.jpg');">
+        <img src="img/logo.png" class="img-circle" style="width:200px;margin:0px auto;display:block;" alt="WebMenu">
 
-                </form>
-                <a style="margin-top: 5px;display: block;">ESQUECI MINHA SENHA</a>
-            </div>
+        <div id="genlogin" style="display:none;">
+            <form enctype="multipart/form-data" method="post">
+                E-mail
+                <input type="text" id="ipEmail" class="form-control"/><br>
+                Senha
+                <input type="password" id="ipSenha" class="form-control"/><br>
+                <a class="btn btn-sm btn-danger" style="display:block;width:100%;" ng-click="logar()">ENTRAR</a>
 
-            <div class="well" style="background:none;text-align:center;">
-                Ainda não tem uma conta?
-                <a class="btn btn-sm btn-danger" href="quero-cadastrar.html" style="display:block;width:100%;">QUERO ME CADASTRAR</a>
-            </div>
+            </form>
+            <a style="margin-top: 5px;display: block;">ESQUECI MINHA SENHA</a>
         </div>
+
+        <a class="btn btn-sm btn-danger" href="quero-cadastrar.html" style="display:block;width:100%;">Fazer Login</a>
+        <a class="btn btn-sm btn-danger" href="quero-cadastrar.html" style="display:block;width:100%;">Fazer Inscrição</a>
     </div>
   </div>
   <script type="text/javascript" src="cordova.js"></script>

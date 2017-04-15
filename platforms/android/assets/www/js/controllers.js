@@ -176,28 +176,56 @@ game7App.controller('produtoCtrl', function($scope, Produto, Empresa, Categoria,
     }
 });
 
-game7App.controller('pedidoCtrl', function($scope, Pedido, Empresa) {
-    $scope.em = Empresa;
-    $scope.em.get_empresas();
-
+game7App.controller('pedidoCtrl', function($scope, Pedido, Cliente, Estado, Cidade, Bairro) {
     $scope.pe = Pedido;
     $scope.pe.get_pedidos();
+    $scope.pe.get_pedido();
+
+    $scope.cl = Cliente;
+    $scope.cl.get_cliente();
+
+    $scope.et = Estado;
+    $scope.et.get_estados();
+
+    $scope.cd = Cidade;
+    $scope.br = Bairro;
 
     $scope.filtrar = function(){
         $scope.pe.get_pedidos(document.getElementById("ipFiltrodata").value);
     }
     $scope.atualizar = function(){
         $scope.pe.save_pedido(
-            document.getElementById("nome").value,
-            document.getElementById("preco").value,
-            document.getElementById("descricao").value,
-            document.getElementById("empresa").value);
+            document.getElementById("endereco").value,
+            document.getElementById("cidade").value,
+            document.getElementById("bairro").value,
+            document.getElementById("complemento").value);
+    }
+    $scope.atualizar_tipo_pagamento = function(){
+        $scope.pe.save_tipo_pagamento(
+                $('input[name="rd_pagamento_tipo"]:checked').val()
+            );
+    }
+    $scope.atualizar_pagamento = function(tipo){
+        if(tipo == 'na_entrega'){
+            $scope.pe.save_pagamento_obs(
+                $('input[name="rd_forma_pagamento"]:checked').val()
+            );
+        }
+        if(tipo == 'mercado_pago'){
+            alert('outro;')
+        }
     }
     $scope.excluir = function(){
       $scope.pt.excluir_produto();
     }
     $scope.getsubs= function(){
         $scope.sc.get_subcategorias("",$scope.sc.sel_categoria.pk);
+    }
+    $scope.getcidades = function(){
+        $scope.cd.get_cidades(document.getElementById("estado").value);
+    }
+    $scope.getbairros = function(){
+        $scope.br.get_bairros(document.getElementById("cidade").value);
     }
 });
 
@@ -215,6 +243,9 @@ game7App.controller('carrinhoCtrl', function($scope, Produto, Carrinho) {
 
     $scope.cr = Carrinho;
     $scope.cr.get_carrinhos();
+
+//    $scope.tp = TipoPagamento;
+//    $scope.tp.get_tipospagamentos();
 
     $scope.add_quantidade = function(){
         $scope.cr.qtd_atual = $scope.cr.qtd_atual + 1;

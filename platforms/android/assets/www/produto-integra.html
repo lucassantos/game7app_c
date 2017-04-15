@@ -17,7 +17,7 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
     <script src="js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/app.css" />
-    <title>FoodExpress - Cliente</title>
+    <title>WebMenu</title>
 
 </head>
 
@@ -25,7 +25,7 @@
   <div ng-app="game7App" ng-controller="carrinhoCtrl" class="app" role="main" class="content">
 
     <div style="margin:0px;padding:0px;">
-        <div class="col-xs-12 head" style="background-color:#bc2026;padding:15px;">
+        <div class="col-xs-12 head" style="background-color:#FB4000;padding:15px;">
             <a style="color:#fff;" href="home.html"><i class="glyphicon glyphicon-arrow-left"></i></a>
             <b class="ttl" style="margin-left:20px;">{[pt.produtoselecionado[0].nome]}</b>
         </div>
@@ -58,8 +58,8 @@
                 <textarea class="form-control" id="ipObservacao" rows="6" style="font-size:10px;" placeholder="Observações"></textarea>
             </div>
         </div>
-        <div class="col-xs-12 rodape" style="background-color:#bc2026;padding:15px;text-align:center;">
-            <a style="color:#fff;" ng-click="add_lista();">ADICIONAR AO CARRINHO <i class="glyphicon glyphicon-shopping-cart"></i></a>
+        <div class="col-xs-12 rodape-pedido" >
+            <a ng-click="add_lista();" href="javascript:void(0);">ADICIONAR AO CARRINHO <i class="glyphicon glyphicon-shopping-cart"></i></a>
         </div>
     </div>
   </div>
