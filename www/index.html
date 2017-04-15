@@ -17,7 +17,7 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
     <script src="js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/app.css" />
-    <title>WebMenu</title>
+    <title>MenuWeb</title>
 </head>
 
 <body style="background:url('img/fd_login.jpg') no-repeat;">
@@ -26,14 +26,14 @@
         <img src="img/logo.png" class="img-circle" style="width:250px;margin:80px auto 0px;display:block;" alt="WebMenu">
 
         <div id="genlogin" style="display:none;">
-            <div class="well col-md-12 col-xs-12" style="border-radius:10px;background-color:#fff;">
+            <div class="well col-md-12 col-xs-12">
                 <form enctype="multipart/form-data" method="post">
                     E-mail
                     <input type="text" id="ipEmail" class="form-control"/><br>
                     Senha
                     <input type="password" id="ipSenha" class="form-control"/><br>
-                    <a class="btn btn-sm btn-default col-md-6 col-xs-6" ng-click="logar()">ENTRAR</a>
-                    <a class="btn btn-sm btn-danger col-md-6 col-xs-6" onclick="$('#genbtns').show();$('#genlogin').hide();" >VOLTAR</a>
+                    <a class="btn btn-sm btn-default col-md-6 col-xs-6" style="display:block;width:100%;" ng-click="logar()">ENTRAR</a>
+                    <a class="btn btn-sm btn-danger col-md-6 col-xs-6" style="display:block;width:100%;" onclick="$('#genbtns').show();$('#genlogin').hide();" >VOLTAR</a>
 
                 </form>
                 <a style="margin-top: 5px;display: block;">ESQUECI MINHA SENHA</a>
