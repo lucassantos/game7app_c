@@ -80,6 +80,13 @@ game7App.controller('empresaCtrl', function($scope, Empresa, Estado, Cidade, Bai
     $scope.filtrar = function(){
         $scope.em.get_empresas(document.getElementById('iFiltro').value,window.localStorage.getItem("c_logado"));
     }
+
+    $scope.set_tipocozinha = function(nTipoCozinha){
+        $scope.em.set_tipocozinha(nTipoCozinha);
+
+        $scope.filtrar();
+    }
+
     $scope.atualizar = function(){
         $scope.em.save_empresa(
             document.getElementById("nome").value,

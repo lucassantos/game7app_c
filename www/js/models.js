@@ -539,12 +539,19 @@ game7App.factory("Empresa", function (Ajax,$http) {
         lista_empresas: [],
         empresaselecionado: [],
         retorno : false,
+        var_tipocozinha_id:0
     };
+
+    obj.set_tipocozinha = function (tipocozinha_id){
+        obj.var_tipocozinha_id=tipocozinha_id;
+    }
+
     obj.get_empresas = function (nome_empresa, c_id) {
         var url = URL_BASE + "getrestaurantes";
         var params = {
             id:c_id,
-            texto:nome_empresa
+            texto:nome_empresa,
+            tipocozinha_id:obj.var_tipocozinha_id,
         }
         $http({
             method: "GET",
