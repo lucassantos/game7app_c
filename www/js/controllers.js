@@ -234,6 +234,21 @@ game7App.controller('pedidoCtrl', function($scope, Pedido, Cliente, Estado, Cida
     $scope.getbairros = function(){
         $scope.br.get_bairros(document.getElementById("cidade").value);
     }
+
+    $scope.pagarmercadopago = function(){
+        $scope.list = [];
+
+        console.log($scope);
+
+        if ($scope.text) {
+            $scope.list.push(this.text);
+            $scope.text = '';
+
+            alert($scope.list);
+        }
+        //http://127.0.0.1:8010/js/efetuar-pagamento
+
+    }
 });
 
 game7App.controller('loginCtrl', function($scope, Cliente) {
@@ -275,4 +290,13 @@ game7App.controller('carrinhoCtrl', function($scope, Produto, Carrinho) {
 
         window.location = "carrinho.html";
     }
+});
+
+game7App.controller('pagamentoCtrl', function($scope, Pedido, Pagamento) {
+    $scope.pe = Pedido;
+    $scope.pe.get_pedido();
+
+    $scope.pg = Pagamento;
+    $scope.pg.get_pagamento();
+
 });
