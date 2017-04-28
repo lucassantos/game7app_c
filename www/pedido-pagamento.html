@@ -175,7 +175,7 @@ function sdkResponseHandler(status, response) {
 
 function enviandoPagamento(response, token){
     $.ajax({
-       url : 'http://127.0.0.1:8010/js/efetuar-pagamento',
+       url : 'https://serene-atoll-63219.herokuapp.com/js/efetuar-pagamento',
        dataType : 'html',
        type : 'POST',
        data : {'resultado' : JSON.stringify(response), 'token':token, 'paymentMethodId':document.querySelector("input[name=paymentMethodId]").value, 'pedido_id':$("#pedido_id").val()},
