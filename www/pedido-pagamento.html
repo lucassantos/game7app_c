@@ -180,7 +180,7 @@ function enviandoPagamento(response, token){
        type : 'POST',
        data : {'resultado' : JSON.stringify(response), 'token':token, 'paymentMethodId':document.querySelector("input[name=paymentMethodId]").value, 'pedido_id':$("#pedido_id").val()},
        success : function(retorno){
-           if(retorno == "Aguardando Entrega"){
+           if(retorno == "Aguardando Preparo"){
                 alert("Pagamento Confirmado!");
                 window.location = 'pedidos.html';
            }
