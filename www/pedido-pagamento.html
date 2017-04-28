@@ -18,6 +18,7 @@
     <script src="js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/app.css" />
     <script src="https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js" type="text/javascript"></script>
     <script>Mercadopago.setPublishableKey("TEST-c73ef1ee-64be-4b13-ac37-e78029c455ed");</script>
     <title>WebMenu</title>
 </head>
@@ -25,75 +26,52 @@
 <body>
   <div ng-app="game7App" ng-controller="pedidoCtrl" class="app" role="main" class="content">
     <div style="margin:0px;padding:0px;">
-        <div class="col-xs-12 head" style="background-color:#bc2026;padding:15px;">
-            <a href="home.html"><img src="img/logo.png" class="img-circle" style="width:40px;margin:10px auto;display:block;" alt="FoodExpress - Restaurante"></a>
+        <div class="col-xs-12 head" style="background-color:#FB4000;padding:15px;">
+            <a href="home.html"><img src="img/logo.png" class="img-circle" style="width:80px;margin:0px auto;display:block;" alt="FoodExpress - Restaurante"></a>
             <b class="ttl">PAGAMENTO</b>
         </div>
-        <div class="col-xs-12" style="font-size:10px;">
-            <div id="pagar_entrega">
-                <p>Selecione a forma de pagamento desejado</p>
-                <input type="radio" name="gender" value="dinheiro"> Dinheiro<br>
-                <input type="radio" name="gender" value="cartao"> Cartão<br>
-            </div>
-            <div id="mercado_pago">
-                <p>O sistema do Mercado pago é utilizado como forma de pagamento online do aplicativo</p>
-                <form action="http://127.0.0.1:8010/js/efetuar-pagamento" method="post" id="pay" name="pay" >
-                    <fieldset>
-                        <ul class="list-group">
-                            <li class="list-group-item">
-                                <label for="email">Email</label>
-                                <input id="email" value="test_user_19653727@testuser.com" type="email" placeholder="your email"/>
-                            </li>
-                            <li class="list-group-item">
-                                <label for="cardNumber">Número do Cartão de Crédito:</label>
-                                <input type="text" id="cardNumber" data-checkout="cardNumber" placeholder="4509 9535 6623 3704" class="form-control"/>
-                            </li>
-                            <li class="list-group-item">
-                                <label for="securityCode">Código de Segurança:</label>
-                                <input type="text" id="securityCode" data-checkout="securityCode" placeholder="123" class="form-control"/>
-                            </li>
-                            <li class="list-group-item">
-                                <label for="cardExpirationMonth">Mês de Vencimento:</label>
-                                <input type="text" id="cardExpirationMonth" name="cardExpirationMonth" data-checkout="cardExpirationMonth" placeholder="12" class="form-control"/>
-                            </li>
-                            <li class="list-group-item">
-                                <label for="cardExpirationYear">Ano de Vencimento:</label>
-                                <input type="text" id="cardExpirationYear" name="cardExpirationYear" data-checkout="cardExpirationYear" placeholder="2015" class="form-control"/>
-                            </li>
-                            <li class="list-group-item">
-                                <label for="cardholderName">Nome no Cartão de Crédito:</label>
-                                <input type="text" id="cardholderName" data-checkout="cardholderName" placeholder="APRO" class="form-control"/>
-                            </li>
-                            <!--<li class="list-group-item">-->
-                                <!--<label for="docType">Tipo de Documento:</label>-->
-                                <!--<select id="docType" data-checkout="docType" class="form-control"></select>-->
-                                <input data-checkout="docType" id="docType" type="hidden" value="CPF" />
-                            <!--</li>-->
-                            <li class="list-group-item">
-                                <label for="docNumber">Número de Documento:</label>
-                                <input type="text" id="docNumber" data-checkout="docNumber" placeholder="12345678" class="form-control" />
-                            </li>
-                            <li>
-                                <select id="issuer" name="issuer"></select>
-                            </li>
+        <form method="post" class="col-md-12 col-sm-12" id="pay" name="pay" style="padding:0px;" >
+            <fieldset>
+                <div style="font-size:10px;">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <label for="cardNumber">Número do Cartão de Crédito:</label>
+                            <input type="text" id="cardNumber" data-checkout="cardNumber" placeholder="4509 9535 6623 3704" class="form-control"/>
+                        </li>
+                        <li class="list-group-item">
+                            <label for="securityCode">Código de Segurança:</label>
+                            <input type="text" id="securityCode" data-checkout="securityCode" placeholder="123" class="form-control"/>
+                        </li>
+                        <li class="list-group-item">
+                            <label for="cardExpirationMonth">Mês de Vencimento:</label>
+                            <input type="text" id="cardExpirationMonth" name="cardExpirationMonth" data-checkout="cardExpirationMonth" placeholder="12" class="form-control"/>
+                        </li>
+                        <li class="list-group-item">
+                            <label for="cardExpirationYear">Ano de Vencimento:</label>
+                            <input type="text" id="cardExpirationYear" name="cardExpirationYear" data-checkout="cardExpirationYear" placeholder="2015" class="form-control"/>
+                        </li>
+                        <li class="list-group-item">
+                            <label for="cardholderName">Nome no Cartão de Crédito:</label>
+                            <input type="text" id="cardholderName" data-checkout="cardholderName" placeholder="João da Silva" class="form-control"/>
+                        </li>
 
-                            <li>
-                                <input id="amount" type="hidden" value="100"/>
-                            </li>
-                            <!--<li style="display:none;">-->
-                                <select id="installments" name="installments"></select>
-                                <!--<input name="installments" id="installments" type="hidden" value="1" />-->
+                        <input data-checkout="docType" id="docType" type="hidden" value="CPF" />
 
-                            <!--</li>-->
-                        </ul>
-                        <input type="submit" value="Pay!" />
-                    </fieldset>
-                </form>
-            </div>
-        </div>
-        <div class="col-xs-12 rodape" style="background-color:#bc2026;padding:15px;text-align:center;">
-            <a style="color:#fff;" ng-click="atualizar();" href="javascript:void(0);">CONCLUIR PAGAMENTO <i class="glyphicon glyphicon-credit-card"></i></a>
-        </div>
+                        <li class="list-group-item">
+                            <label for="docNumber">CPF:</label>
+                            <input type="text" id="docNumber" data-checkout="docNumber" placeholder="12345678" class="form-control" />
+                        </li>
+                    </ul>
+                    <select id="issuer" name="issuer"></select>
+                    <input id="amount" type="hidden" value="{[pe.pedidoselecionado[0].total]}"/>
+                    <input id="pedido_id" type="hidden" value="{[pe.pedidoselecionado[0].id]}"/>
+                    <select id="installments" style="display:none;" name="installments"></select>
+                </div>
+                <div class="col-xs-12 rodape-pedido">
+                    <input type="submit" value="CONCLUIR PAGAMENTO" />
+                </div>
+            </fieldset>
+        </form>
     </div>
   </div>
 </body>
@@ -185,8 +163,33 @@ function sdkResponseHandler(status, response) {
         card.setAttribute('value',response.id);
         form.appendChild(card);
         doSubmit=true;
-        form.submit();
+
+
+        enviandoPagamento(response, card.value)
     }
+};
+
+
+function enviandoPagamento(response, token){
+    $.ajax({
+       url : 'http://127.0.0.1:8010/js/efetuar-pagamento',
+       dataType : 'html',
+       type : 'POST',
+       data : {'resultado' : JSON.stringify(response), 'token':token, 'paymentMethodId':document.querySelector("input[name=paymentMethodId]").value, 'pedido_id':$("#pedido_id").val()},
+       success : function(retorno){
+           if(retorno == "Aguardando Entrega"){
+                alert("Pagamento Confirmado!");
+                window.location = 'pedidos.html';
+           }
+           else{
+                alert("Pagamento Recusado.");
+                window.location = window.location.href;
+           }
+       },
+       error : function(a,b,c){
+           alert('Erro: '+a[status]+' '+c);
+       }
+    });
 };
 
 

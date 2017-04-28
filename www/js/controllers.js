@@ -235,10 +235,10 @@ game7App.controller('pedidoCtrl', function($scope, Pedido, Cliente, Estado, Cida
         $scope.br.get_bairros(document.getElementById("cidade").value);
     }
 
-    $scope.pagarmercadopago = function(){
+    $scope.pagarmercadopago = function(request){
         $scope.list = [];
 
-        console.log($scope);
+        console.log(request);
 
         if ($scope.text) {
             $scope.list.push(this.text);
