@@ -27,44 +27,55 @@
   <div ng-app="game7App" ng-controller="pedidoCtrl" class="app" role="main" class="content">
     <div style="margin:0px;padding:0px;">
         <div class="col-xs-12 head" style="background-color:#FB4000;padding:15px;">
-            <a href="home.html"><img src="img/logo.png" class="img-circle" style="width:80px;margin:0px auto;display:block;" alt="FoodExpress - Restaurante"></a>
+            <a href="home.html"><img src="img/logo.png" class="img-circle" style="width:80px;margin:0px auto;display:block;"></a>
             <b class="ttl">PAGAMENTO</b>
         </div>
         <form method="post" class="col-md-12 col-xs-12" id="pay" name="pay" style="padding:0px;" >
             <fieldset>
                 <div style="font-size:10px;">
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            <label for="cardNumber">Número do Cartão de Crédito:</label>
+                    <div class="col-md-12 col-xs-12" style="margin-bottom:10px;">
+                        <div class="col-md-12 col-xs-12">
+                            <label for="cardNumber">Número do Cartão</label>
                             <input type="text" id="cardNumber" data-checkout="cardNumber" placeholder="4509 9535 6623 3704" class="form-control"/>
-                        </li>
-                        <li class="list-group-item">
-                            <label for="securityCode">Código de Segurança:</label>
-                            <input type="text" id="securityCode" data-checkout="securityCode" placeholder="123" class="form-control"/>
-                        </li>
-                        <li class="list-group-item">
-                            <label for="cardExpirationMonth">Mês de Vencimento:</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-xs-12" style="margin-bottom:10px;">
+                        <div class="col-md-3 col-xs-3" style="padding-right:2px;">
+                            <label for="cardExpirationMonth">Mês</label>
                             <input type="text" id="cardExpirationMonth" name="cardExpirationMonth" data-checkout="cardExpirationMonth" placeholder="12" class="form-control"/>
-                        </li>
-                        <li class="list-group-item">
-                            <label for="cardExpirationYear">Ano de Vencimento:</label>
+                        </div>
+                        <div class="col-md-3 col-xs-3"  style="padding-left:2px;">
+                            <label for="cardExpirationYear">Ano</label>
                             <input type="text" id="cardExpirationYear" name="cardExpirationYear" data-checkout="cardExpirationYear" placeholder="2015" class="form-control"/>
-                        </li>
-                        <li class="list-group-item">
-                            <label for="cardholderName">Nome no Cartão de Crédito:</label>
+                        </div>
+                        <div class="col-md-6 col-xs-6" >
+                            <label for="securityCode">CVC</label><br>
+                            <input type="text" id="securityCode" data-checkout="securityCode" style="width:92px;display:inline-block;" placeholder="123" class="form-control"/>
+                            <img src="img/credit-card-cvv.png" style="width:50px;margin-top:-6px;">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-xs-12" style="margin-bottom:10px;">
+                        <div class="col-md-12 col-xs-12">
+                            <label for="cardholderName">Nome no Cartão</label>
                             <input type="text" id="cardholderName" data-checkout="cardholderName" placeholder="João da Silva" class="form-control"/>
-                        </li>
+                        </div>
+                    </div>
 
-                        <input data-checkout="docType" id="docType" type="hidden" value="CPF" />
-
-                        <li class="list-group-item">
-                            <label for="docNumber">CPF:</label>
+                    <div class="col-md-12 col-xs-12"  style="margin-bottom:80px;">
+                        <div class="col-md-12 col-xs-12">
+                            <label for="docNumber">CPF</label>
                             <input type="text" id="docNumber" data-checkout="docNumber" placeholder="12345678" class="form-control" />
-                        </li>
-                    </ul>
-                    <br>
-                    <br>
-                    <br>
+
+                            <br>
+
+                            <label for="cpf_nota">CPF na nota?</label><br>
+                            <input type="checkbox" name="cpf_nota" id="cpf_nota" value="1"> Sim
+                        </div>
+                    </div>
+
+                    <input data-checkout="docType" id="docType" type="hidden" value="CPF" />
                     <select id="issuer" name="issuer"></select>
                     <input id="amount" type="hidden" value="{[pe.pedidoselecionado[0].total]}"/>
                     <input id="pedido_id" type="hidden" value="{[pe.pedidoselecionado[0].id]}"/>
@@ -178,7 +189,7 @@ function enviandoPagamento(response, token){
        url : 'https://serene-atoll-63219.herokuapp.com/js/efetuar-pagamento',
        dataType : 'html',
        type : 'POST',
-       data : {'resultado' : JSON.stringify(response), 'token':token, 'paymentMethodId':document.querySelector("input[name=paymentMethodId]").value, 'pedido_id':$("#pedido_id").val()},
+       data : {'resultado' : JSON.stringify(response), 'token':token, 'paymentMethodId':document.querySelector("input[name=paymentMethodId]").value, 'pedido_id':$("#pedido_id").val(), 'cpfnanota':$("#cpf_nota:checked").val()},
        success : function(retorno){
            if(retorno == "Aguardando Preparo"){
                 alert("Pagamento Confirmado!");

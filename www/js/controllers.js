@@ -212,15 +212,13 @@ game7App.controller('pedidoCtrl', function($scope, Pedido, Cliente, Estado, Cida
                 $('input[name="rd_pagamento_tipo"]:checked').val()
             );
     }
-    $scope.atualizar_pagamento = function(tipo){
-        if(tipo == 'na_entrega'){
+    $scope.atualizar_pagamento = function(){
             $scope.pe.save_pagamento_obs(
-                $('input[name="rd_forma_pagamento"]:checked').val()
+                $('#troco_para').val(),
+                $('#outro_cartao').val(),
+                $('input[name="cpf_nota"]:checked').val(),
+                $('#selbandeira').val()
             );
-        }
-        if(tipo == 'mercado_pago'){
-            alert('outro;')
-        }
     }
     $scope.excluir = function(){
       $scope.pt.excluir_produto();

@@ -25,13 +25,32 @@
   <div ng-app="game7App" ng-controller="pedidoCtrl" class="app" role="main" class="content">
     <div style="margin:0px;padding:0px;">
         <div class="col-xs-12 head" style="background-color:#FB4000;padding:15px;">
-            <a href="home.html"><img src="img/logo.png" class="img-circle" style="width:80px;margin:0px auto;display:block;" alt="FoodExpress - Restaurante"></a>
+            <a href="home.html"><img src="img/logo.png" class="img-circle" style="width:80px;margin:0px auto;display:block;" alt="webMenu"></a>
             <b class="ttl">TIPO DE PAGAMENTO</b>
         </div>
-        <div class="col-xs-12" style="font-size:10px;">
-            <p>Selecione a forma de pagamento desejado</p>
-            <input type="radio" name="rd_pagamento_tipo" value="na_entrega" checked="true" > Pagar na entrega<br>
-            <input type="radio" name="rd_pagamento_tipo" value="mercado_pago"> Mercado Pago<br>
+        <div style="font-size:10px;">
+            <div style="padding: 10px 12px;background-color:#F2F2F2;">
+                <img src="img/ico-wifi.png" class="img-rounded" style="width:20px;margin-right:5px" alt="webMenu">
+                Pague Online
+            </div>
+
+            <ul class="list-group">
+              <li class="list-group-item" style="border-radius:0px; border-left:0px; border-right:0px;"><input type="radio" name="rd_pagamento_tipo" value="mercado_pago"> Cartão de Crédito<br></li>
+            </ul>
+
+
+            <div style="padding: 10px 12px;background-color:#F2F2F2;">
+                <img src="img/ico-wallet.png" class="img-rounded" style="width:20px;margin-right:5px" alt="webMenu">
+                Pague na Entrega
+            </div>
+
+            <ul class="list-group">
+              <li class="list-group-item" style="border-radius:0px; border-left:0px; border-right:0px;"><input type="radio" name="rd_pagamento_tipo" value="na_entrega_cartao" checked="true" > Cartão de débito/crédito<br></li>
+              <li class="list-group-item" style="border-radius:0px; border-left:0px; border-right:0px;"><input type="radio" name="rd_pagamento_tipo" value="na_entrega_dinheiro" checked="true" > Dinheiro<br></li>
+            </ul>
+
+
+
         </div>
         <div class="col-xs-12 rodape-pedido">
             <a ng-click="atualizar_tipo_pagamento();" href="javascript:void(0);">CONFIRMAR TIPO DE PAGAMENTO <i class="glyphicon glyphicon-credit-card"></i></a>

@@ -955,7 +955,8 @@ game7App.factory("Pedido", function (Ajax,$http) {
     var obj = {
         lista_pedidos: [],
         pedidoselecionado: [],
-        retorno : false
+        retorno : false,
+        na_entrega_tipo:TOKENS['t']
     };
     obj.get_pedidos= function (data_pedido) {
         var url = URL_BASE + "pedidos";
@@ -1022,10 +1023,13 @@ game7App.factory("Pedido", function (Ajax,$http) {
         $http.post(url, f, {headers: {'Content-Type': undefined}}).success(
           function(response){
             obj.retorno = response.data;
-            if(tipo_pagamento == 'na_entrega'){
-                window.location = "pedido-pagamento-naentrega.html?p_id="+window.localStorage.getItem("pedido_id");
+            if(tipo_pagamento == 'na_entrega_dinheiro'){
+                window.location = "pedido-pagamento-naentrega.html?p_id="+window.localStorage.getItem("pedido_id")+"&t=dinheiro";
             }
-            if(tipo_pagamento == 'mercado_pago'){
+            else if(tipo_pagamento == 'na_entrega_cartao'){
+            window.location = "pedido-pagamento-naentrega.html?p_id="+window.localStorage.getItem("pedido_id")+"&t=cartao";
+            }
+            else if(tipo_pagamento == 'mercado_pago'){
             window.location = "pedido-pagamento.html?p_id="+window.localStorage.getItem("pedido_id");
             }
 
@@ -1033,11 +1037,15 @@ game7App.factory("Pedido", function (Ajax,$http) {
         )
     };
 
-    obj.save_pagamento_obs = function (obs) {
+    obj.save_pagamento_obs = function (troco,outro,cpfnanota,bandeira) {
         var url = URL_BASE + "saveobspagamentopedido";
         var f = new FormData();
         f.append('id', window.localStorage.getItem("pedido_id"));
-        f.append('obs', obs);
+        f.append('troco', troco);
+        f.append('outro', outro);
+        f.append('cpfnanota', cpfnanota);
+        f.append('bandeira', bandeira);
+        f.append('tipo', TOKENS['t']);
         $http.post(url, f, {headers: {'Content-Type': undefined}}).success(
           function(response){
             obj.retorno = response.data;
