@@ -61,20 +61,29 @@ game7App.controller('clienteCtrl', function($scope, Cliente, Estado, Cidade, Bai
     }
 });
 
-game7App.controller('empresaCtrl', function($scope, Empresa, Estado, Cidade, Bairro, Atendimento, Produto) {
+game7App.controller('empresaCtrl', function($scope, Empresa, Estado, Cidade, Bairro, Atendimento, Produto, Pedido) {
     $scope.et = Estado;
     $scope.cd = Cidade;
     $scope.br = Bairro;
     $scope.em = Empresa;
     $scope.at = Atendimento;
     $scope.pt = Produto;
+    $scope.pe = Pedido;
 
     $scope.et.get_estados();
     $scope.em.get_empresa();
     $scope.pt.get_produtos();
+    $scope.pe.get_pedidos_concluidos();
 
     if(document.getElementById('iFiltro')){
         $scope.em.get_empresas(document.getElementById('iFiltro').value,window.localStorage.getItem("c_logado"));
+    }
+
+    $scope.set_avaliacao_pedido = function(nota, pedido_id){
+        alert("teste");
+        alert(nota);
+        alert(pedido_id);
+//        $scope.em.get_empresas(document.getElementById('iFiltro').value,window.localStorage.getItem("c_logado"));
     }
 
     $scope.filtrar = function(){

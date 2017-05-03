@@ -100,6 +100,49 @@
             </div>
         </div>
     </div>
+      <div class="cortina" ng-if="pe.lista_pedidos_concluidos"></div>
+      <div class="avaliacoes col-md-12 col-xs-12" ng-if="pe.lista_pedidos_concluidos">
+        <ul class="col-md-12" style="padding:0px;">
+            <li class="list-group-item col-md-12 col-xs-12" ng-repeat="ped in pe.lista_pedidos_concluidos">
+                <div class="col-md-12 col-xs-12">
+                    <div class="col-md-12 col-xs-12" style="padding:0px;">
+                        <div class="col-md-2 col-xs-2" style="padding:0px;">
+                            # {[ped.id]}
+                        </div>
+                        <b class="col-md-6 col-xs-6">{[ped.empresa]}</b>
+                        <div class="col-md-4 col-xs-4">
+                            {[ped.data]}
+                        </div>
+
+                        <table class="table" style="margin-bottom:0px;">
+                            <thead>
+                                <tr>
+                                    <th>Produto</th>
+                                    <th>Quantidade</th>
+                                    <th>Preço</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="it in ped.itens">
+                                    <td>{[it.produto]}</td>
+                                    <td>{[it.quantidade]}</td>
+                                    <td>R$ {[it.preco_parcial.toFixed(2)]}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="rating">
+                            <a ng-click="set_avaliacao_pedido(1,ped.id);" href="javascript:void(0);"><span>☆</span></a>
+                            <a ng-click="set_avaliacao_pedido(2,ped.id);" href="javascript:void(0);"><span>☆</span></a>
+                            <a ng-click="set_avaliacao_pedido(3,ped.id);" href="javascript:void(0);"><span>☆</span></a>
+                            <a ng-click="set_avaliacao_pedido(4,ped.id);" href="javascript:void(0);"><span>☆</span></a>
+                            <a ng-click="set_avaliacao_pedido(5,ped.id);" href="javascript:void(0);"><span>☆</span></a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+      </div>
   </div>
 </body>
 

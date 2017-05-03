@@ -1,7 +1,7 @@
-//URL_BASE = "http://127.0.0.1:8010/js/";
+URL_BASE = "http://127.0.0.1:8010/js/";
 //URL_BASE = "http://127.0.0.1:8000/js/";
 //URL_BASE = "http://192.168.1.106:8010/js/";
-URL_BASE = "https://serene-atoll-63219.herokuapp.com/js/"
+//URL_BASE = "https://serene-atoll-63219.herokuapp.com/js/"
 
 function getTokens(){
     var tokens = [];            // new array to hold result
@@ -954,6 +954,7 @@ game7App.factory("Produto", function (Ajax,$http) {
 game7App.factory("Pedido", function (Ajax,$http) {
     var obj = {
         lista_pedidos: [],
+        lista_pedidos_concluidos: [],
         pedidoselecionado: [],
         retorno : false,
         na_entrega_tipo:TOKENS['t']
@@ -973,6 +974,26 @@ game7App.factory("Pedido", function (Ajax,$http) {
             }
         }).then(function successCallback(response) {
             obj.lista_pedidos= response.data;
+        }, function errorCallback(response) {
+            console.log("Erro");
+        });
+    };
+
+    obj.get_pedidos_concluidos= function (data_pedido) {
+        var url = URL_BASE + "pedidos";
+        var params = {
+            cliente_id:window.localStorage.getItem("c_logado"),
+            status:'Concluido'
+        }
+        $http({
+            method: "GET",
+            params: params,
+            url: url,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(function successCallback(response) {
+            obj.lista_pedidos_concluidos= response.data;
         }, function errorCallback(response) {
             console.log("Erro");
         });
