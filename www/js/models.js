@@ -1036,6 +1036,20 @@ game7App.factory("Pedido", function (Ajax,$http) {
         )
     };
 
+    obj.save_avaliacao = function (nota, pedido_id) {
+        var url = URL_BASE + "saveavaliacao";
+        var f = new FormData();
+        f.append('nota', nota);
+        f.append('pedido_id', pedido_id);
+        $http.post(url, f, {headers: {'Content-Type': undefined}}).success(
+          function(response){
+            alert(response);
+            window.location = "home.html";
+          }
+        )
+    };
+
+
     obj.save_tipo_pagamento = function (tipo_pagamento) {
         var url = URL_BASE + "savetipopagamentopedido";
         var f = new FormData();

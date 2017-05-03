@@ -100,8 +100,8 @@
             </div>
         </div>
     </div>
-      <div class="cortina" ng-if="pe.lista_pedidos_concluidos"></div>
-      <div class="avaliacoes col-md-12 col-xs-12" ng-if="pe.lista_pedidos_concluidos">
+      <div class="cortina" ng-show="pe.lista_pedidos_concluidos.length"></div>
+      <div class="avaliacoes col-md-12 col-xs-12" ng-show="pe.lista_pedidos_concluidos.length">
         <ul class="col-md-12" style="padding:0px;">
             <li class="list-group-item col-md-12 col-xs-12" ng-repeat="ped in pe.lista_pedidos_concluidos">
                 <div class="col-md-12 col-xs-12">
