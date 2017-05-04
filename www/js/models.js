@@ -440,9 +440,14 @@ game7App.factory("Cliente", function (Ajax,$http) {
         f.append('senha', senha_cliente);
         $http.post(url, f, {headers: {'Content-Type': undefined}}).success(
           function(response){
-            obj.clientelogado = response;
-            window.localStorage.setItem("c_logado", response[0].id);
-            window.location = "home.html";
+            if(response.length > 0){
+                obj.clientelogado = response;
+                window.localStorage.setItem("c_logado", response[0].id);
+                window.location = "home.html";
+            }
+            else{
+                alert("Usuário ou senha incorretos");
+            }
           }
         )
     };
@@ -1036,14 +1041,15 @@ game7App.factory("Pedido", function (Ajax,$http) {
         )
     };
 
-    obj.save_avaliacao = function (nota, pedido_id) {
+    obj.save_avaliacao = function (nota, pedido_id,mensagem) {
         var url = URL_BASE + "saveavaliacao";
         var f = new FormData();
         f.append('nota', nota);
         f.append('pedido_id', pedido_id);
+        f.append('mensagem', mensagem);
         $http.post(url, f, {headers: {'Content-Type': undefined}}).success(
           function(response){
-            alert(response);
+            alert("Avaliação enviada!");
             window.location = "home.html";
           }
         )
@@ -1075,6 +1081,13 @@ game7App.factory("Pedido", function (Ajax,$http) {
     obj.save_pagamento_obs = function (troco,outro,cpfnanota,bandeira) {
         var url = URL_BASE + "saveobspagamentopedido";
         var f = new FormData();
+
+        if (troco > 0){
+            if(troco <= obj.pedidoselecionado[0].total){
+                alert("O valor de troco deve ser maior que o total do pedido");
+                return
+            }
+        }
         f.append('id', window.localStorage.getItem("pedido_id"));
         f.append('troco', troco);
         f.append('outro', outro);

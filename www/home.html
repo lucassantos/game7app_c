@@ -69,11 +69,15 @@
                             <div class="col-md-2 col-xs-2" style="padding:0px;">
                                 <img class="img-rounded" ng-src="img/restaurante-sm.jpg" width="40" />
                             </div>
-                            <div class="col-md-10 col-xs-10" style="padding:0px;">
+                            <div class="col-md-9 col-xs-9" style="padding:0px;">
                                 <b>{[emp.nome]}</b>
                                 <p style="color:#333;">
                                     {[emp.tipocozinha]}
                                 </p>
+                            </div>
+                            <div class="col-md-1 col-xs-1" style="padding:0px;">
+                                <img src="img/estrela_amarela.png" style="width:18px;">
+                                {[emp.nota_atual.toFixed(2)]}
                             </div>
                         </div>
                         <div class="col-md-12 col-xs-12" style="padding:0px 2px;font-size:9px;">
@@ -104,42 +108,56 @@
       <div class="avaliacoes col-md-12 col-xs-12" ng-show="pe.lista_pedidos_concluidos.length">
         <ul class="col-md-12" style="padding:0px;">
             <li class="list-group-item col-md-12 col-xs-12" ng-repeat="ped in pe.lista_pedidos_concluidos">
-                <div class="col-md-12 col-xs-12">
-                    <div class="col-md-12 col-xs-12" style="padding:0px;">
-                        <div class="col-md-2 col-xs-2" style="padding:0px;">
-                            # {[ped.id]}
-                        </div>
-                        <b class="col-md-6 col-xs-6">{[ped.empresa]}</b>
-                        <div class="col-md-4 col-xs-4">
-                            {[ped.data]}
-                        </div>
-
-                        <table class="table" style="margin-bottom:0px;">
-                            <thead>
-                                <tr>
-                                    <th>Produto</th>
-                                    <th>Quantidade</th>
-                                    <th>Preço</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="it in ped.itens">
-                                    <td>{[it.produto]}</td>
-                                    <td>{[it.quantidade]}</td>
-                                    <td>R$ {[it.preco_parcial.toFixed(2)]}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <div class="rating">
-                            <a ng-click="set_avaliacao_pedido(1,ped.id);" href="javascript:void(0);"><span>☆</span></a>
-                            <a ng-click="set_avaliacao_pedido(2,ped.id);" href="javascript:void(0);"><span>☆</span></a>
-                            <a ng-click="set_avaliacao_pedido(3,ped.id);" href="javascript:void(0);"><span>☆</span></a>
-                            <a ng-click="set_avaliacao_pedido(4,ped.id);" href="javascript:void(0);"><span>☆</span></a>
-                            <a ng-click="set_avaliacao_pedido(5,ped.id);" href="javascript:void(0);"><span>☆</span></a>
-                        </div>
-                    </div>
-                </div>
+                <table class="table">
+                    <tr>
+                        <th>#</th>
+                        <th>Restaurante</th>
+                        <th>Data</th>
+                    </tr>
+                    <tr>
+                        <td>{[ped.id]}</td>
+                        <td>{[ped.empresa]}</td>
+                        <td>{[ped.data]}</td>
+                    </tr>
+                </table>
+                <table class="table">
+                    <tr>
+                        <th>Lista</th>
+                    </tr>
+                    <tr>
+                        <td style="border:0px;">
+                            <table class="table" style="margin-bottom:0px;">
+                                <tbody>
+                                    <tr ng-repeat="it in ped.itens">
+                                        <td>{[it.produto]}</td>
+                                        <td>{[it.quantidade]}</td>
+                                        <td>R$ {[it.preco_parcial.toFixed(2)]}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <table class="table">
+                    <tr>
+                        <th style="width:70%">Mensagem</th>
+                        <th>Avaliação</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <textarea rows="3" id="ipMensagem{[ped.id]}" name="ipMensagem{[ped.id]}" class="form-control"></textarea>
+                        </td>
+                        <td>
+                            <div class="rating">
+                                <span ng-click="set_avaliacao_pedido(5,ped.id);">☆</span>
+                                <span ng-click="set_avaliacao_pedido(4,ped.id);">☆</span>
+                                <span ng-click="set_avaliacao_pedido(3,ped.id);">☆</span>
+                                <span ng-click="set_avaliacao_pedido(2,ped.id);">☆</span>
+                                <span ng-click="set_avaliacao_pedido(1,ped.id);">☆</span>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
             </li>
         </ul>
       </div>

@@ -80,7 +80,7 @@ game7App.controller('empresaCtrl', function($scope, Empresa, Estado, Cidade, Bai
     }
 
     $scope.set_avaliacao_pedido = function(nota, pedido_id){
-        $scope.pe.save_avaliacao(nota,pedido_id);
+        $scope.pe.save_avaliacao(nota,pedido_id,$('#ipMensagem'+pedido_id).val());
     }
 
     $scope.filtrar = function(){
