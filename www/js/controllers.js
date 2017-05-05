@@ -189,7 +189,7 @@ game7App.controller('produtoCtrl', function($scope, Produto, Empresa, Categoria,
     }
 });
 
-game7App.controller('pedidoCtrl', function($scope, Pedido, Cliente, Estado, Cidade, Bairro) {
+game7App.controller('pedidoCtrl', function($scope, Pedido, Cliente, Estado, Cidade, Bairro, Empresa) {
     $scope.pe = Pedido;
     $scope.pe.get_pedidos();
     $scope.pe.get_pedido();
@@ -202,6 +202,9 @@ game7App.controller('pedidoCtrl', function($scope, Pedido, Cliente, Estado, Cida
 
     $scope.cd = Cidade;
     $scope.br = Bairro;
+    $scope.em = Empresa;
+    $scope.em.get_empresabypedido();
+
 
     $scope.filtrar = function(){
         $scope.pe.get_pedidos(document.getElementById("ipFiltrodata").value);
@@ -212,6 +215,8 @@ game7App.controller('pedidoCtrl', function($scope, Pedido, Cliente, Estado, Cida
             document.getElementById("cidade").value,
             document.getElementById("bairro").value,
             document.getElementById("complemento").value);
+
+
     }
     $scope.atualizar_tipo_pagamento = function(){
         $scope.pe.save_tipo_pagamento(

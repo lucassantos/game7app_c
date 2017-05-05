@@ -1,7 +1,7 @@
-URL_BASE = "http://127.0.0.1:8010/js/";
+//URL_BASE = "http://127.0.0.1:8010/js/";
 //URL_BASE = "http://127.0.0.1:8000/js/";
 //URL_BASE = "http://192.168.1.106:8010/js/";
-//URL_BASE = "https://serene-atoll-63219.herokuapp.com/js/"
+URL_BASE = "https://serene-atoll-63219.herokuapp.com/js/"
 
 function getTokens(){
     var tokens = [];            // new array to hold result
@@ -543,6 +543,7 @@ game7App.factory("Empresa", function (Ajax,$http) {
     var obj = {
         lista_empresas: [],
         empresaselecionado: [],
+        empresapedido: [],
         retorno : false,
         var_tipocozinha_id:0
     };
@@ -591,6 +592,29 @@ game7App.factory("Empresa", function (Ajax,$http) {
             console.log("Erro");
         });
     };
+
+
+    obj.get_empresabypedido = function () {
+        //Get relação de clientes
+        var url = URL_BASE + "getrestaurantebypedido";
+        var params = {
+          pedido_id:window.localStorage.getItem("pedido_id")
+        }
+        $http({
+            method: "GET",
+            params: params,
+            url: url,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(function successCallback(response) {
+            console.log(response.data);
+            obj.empresapedido = response.data;
+        }, function errorCallback(response) {
+            console.log("Erro");
+        });
+    };
+
     obj.save_empresa = function (empresa_nome, empresa_email, empresa_senha, empresa_telefone, empresa_estado, empresa_cidade, empresa_bairro, empresa_endereco, empresa_descricao) {
         var url = URL_BASE + "saveempresa";
 
@@ -1068,10 +1092,13 @@ game7App.factory("Pedido", function (Ajax,$http) {
                 window.location = "pedido-pagamento-naentrega.html?p_id="+window.localStorage.getItem("pedido_id")+"&t=dinheiro";
             }
             else if(tipo_pagamento == 'na_entrega_cartao'){
-            window.location = "pedido-pagamento-naentrega.html?p_id="+window.localStorage.getItem("pedido_id")+"&t=cartao";
+                window.location = "pedido-pagamento-naentrega.html?p_id="+window.localStorage.getItem("pedido_id")+"&t=cartao";
             }
             else if(tipo_pagamento == 'mercado_pago'){
-            window.location = "pedido-pagamento.html?p_id="+window.localStorage.getItem("pedido_id");
+                window.location = "pedido-pagamento.html?p_id="+window.localStorage.getItem("pedido_id");
+            }
+            else{
+                window.location = "pedido-integra.html?p_id="+window.localStorage.getItem("pedido_id");
             }
 
           }

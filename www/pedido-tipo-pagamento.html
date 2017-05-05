@@ -34,7 +34,7 @@
                 Pague Online
             </div>
 
-            <ul class="list-group">
+            <ul class="list-group" style="margin-bottom:0px;">
               <li class="list-group-item" style="border-radius:0px; border-left:0px; border-right:0px;"><input type="radio" name="rd_pagamento_tipo" value="mercado_pago"> Cartão de Crédito<br></li>
             </ul>
 
@@ -44,11 +44,20 @@
                 Pague na Entrega
             </div>
 
-            <ul class="list-group">
-              <li class="list-group-item" style="border-radius:0px; border-left:0px; border-right:0px;"><input type="radio" name="rd_pagamento_tipo" value="na_entrega_cartao" checked="true" > Cartão de débito/crédito<br></li>
+            <ul class="list-group" style="margin-bottom:0px;">
+              <li ng-show="em.empresapedido.aceita_cartao" class="list-group-item" style="border-radius:0px; border-left:0px; border-right:0px;"><input type="radio" name="rd_pagamento_tipo" value="na_entrega_cartao" checked="true" > Cartão de débito/crédito<br></li>
               <li class="list-group-item" style="border-radius:0px; border-left:0px; border-right:0px;"><input type="radio" name="rd_pagamento_tipo" value="na_entrega_dinheiro" checked="true" > Dinheiro<br></li>
             </ul>
 
+            <div style="padding: 10px 12px;background-color:#F2F2F2;">
+                <img src="img/ico-vr.png" class="img-rounded" style="width:20px;margin-right:5px" alt="webMenu">
+                Vale Refeição
+            </div>
+
+            <ul class="list-group" style="margin-bottom:80px;">
+              <li class="list-group-item" style="border-radius:0px; border-left:0px; border-right:0px;"><input type="radio" name="rd_pagamento_tipo" value="na_entrega_valerefeicao_sodexo" checked="true" > Sodexo<br></li>
+              <li class="list-group-item" style="border-radius:0px; border-left:0px; border-right:0px;"><input type="radio" name="rd_pagamento_tipo" value="na_entrega_valerefeicao_visavale" checked="true" > Visa Vale<br></li>
+            </ul>
 
 
         </div>
