@@ -36,13 +36,20 @@
                     <a class="btn btn-sm btn-danger col-md-6 col-xs-6" style="display:block;width:100%;" onclick="$('#genbtns').show();$('#genlogin').hide();" >VOLTAR</a>
 
                 </form>
-                <a style="margin-top: 5px;display: block;">ESQUECI MINHA SENHA</a>
+                <a onclick="$('#genesqueceu').show();$('#genbtns').hide();$('#genlogin').hide();" style="margin-top: 5px;display: block;">ESQUECI MINHA SENHA</a>
             </div>
         </div>
 
         <div id="genbtns">
             <a class="btn btn-default" onclick="$('#genlogin').show();$('#genbtns').hide();" style="display:block;width:100%;margin-bottom:20px;color:#727272;font-weight:bold;text-transform:uppercase;">Fazer Login</a>
             <a class="btn btn-default" href="quero-cadastrar.html" style="display:block;width:100%;color:#727272;font-weight:bold;text-transform:uppercase;">Fazer Inscrição</a>
+        </div>
+        <div id="genesqueceu" style="display:none;">
+            <div class="well col-md-12 col-xs-12">
+                E-mail
+                <input type="text" id="ipEmailEsqueceu" class="form-control"/><br>
+                <a class="btn btn-default" ng-click="esqueceusenha();" style="display:block;width:100%;color:#727272;font-weight:bold;text-transform:uppercase;">Recuperar Senha</a>
+            </div>
         </div>
     </div>
   </div>

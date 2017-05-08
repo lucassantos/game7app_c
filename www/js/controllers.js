@@ -265,6 +265,9 @@ game7App.controller('loginCtrl', function($scope, Cliente) {
     $scope.logar = function(){
         $scope.cl.logar_cliente(document.getElementById("ipEmail").value,document.getElementById("ipSenha").value);
     }
+    $scope.esqueceusenha = function(){
+        $scope.cl.esqueceusenha(document.getElementById("ipEmailEsqueceu").value);
+    }
 });
 
 game7App.controller('carrinhoCtrl', function($scope, Produto, Carrinho) {
