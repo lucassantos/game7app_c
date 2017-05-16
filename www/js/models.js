@@ -37,7 +37,8 @@ game7App.factory("Carrinho", function (Ajax,$http) {
         qtd_atual:1,
         retorno : false,
         val_total:0.0,
-        var_total_geral:0.0
+        var_total_geral:0.0,
+        frete:0.0
     };
 
 
@@ -54,10 +55,14 @@ game7App.factory("Carrinho", function (Ajax,$http) {
                 'Content-Type': 'application/json'
             }
         }).then(function successCallback(response) {
-            obj.lista_compra = response.data;
+
+            obj.lista_compra = response.data.lista_compra;
+            obj.frete = response.data.frete;
 
             if(obj.lista_compra.length > 0){
-                obj.var_total_geral = obj.lista_compra[0].total_compra;
+                obj.var_total_geral = obj.lista_compra[0].total_compra + obj.frete;
+
+
 
             }
         }, function errorCallback(response) {
