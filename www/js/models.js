@@ -846,7 +846,7 @@ game7App.factory("Produto", function (Ajax,$http) {
         lista_produtos: [],
         produtoselecionado: [],
         retorno : false,
-        caminho_foto: 'http://menuweb.com.br/static/media/produto/',
+        caminho_foto: 'http://menuweb.com.br/game7api/static/media/produto/',
         foto_principal:123
     };
     obj.get_produtos= function (nome_produto) {
