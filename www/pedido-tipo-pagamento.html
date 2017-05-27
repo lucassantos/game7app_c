@@ -29,17 +29,19 @@
             <b class="ttl">TIPO DE PAGAMENTO</b>
         </div>
         <div style="font-size:10px;">
-            <div style="padding: 10px 12px;background-color:#F2F2F2;">
-                <img src="img/ico-wifi.png" class="img-rounded" style="width:20px;margin-right:5px" alt="webMenu">
-                Pague Online
+
+            <div ng-show="em.empresapedido.aceita_pagamentoonline">
+                <div style="padding: 10px 12px;background-color:#F2F2F2;">
+                    <img src="img/ico-wifi.png" class="img-rounded" style="width:20px;margin-right:5px" alt="webMenu">
+                    Pague Online
+                </div>
+
+                <ul class="list-group" style="margin-bottom:0px;">
+                    <li class="list-group-item" style="border-radius:0px; border-left:0px; border-right:0px;"><input type="radio" name="rd_pagamento_tipo" value="mercado_pago"> Cartão de Crédito<br></li>
+                </ul>
             </div>
 
-            <ul class="list-group" style="margin-bottom:0px;">
-              <li class="list-group-item" style="border-radius:0px; border-left:0px; border-right:0px;"><input type="radio" name="rd_pagamento_tipo" value="mercado_pago"> Cartão de Crédito<br></li>
-            </ul>
-
-
-            <div ng-show="em.empresapedido.restaurante_status == 'OK'">
+            <div ng-show="em.empresapedido.restaurante_status == 'ok'">
                 <div style="padding: 10px 12px;background-color:#F2F2F2;">
                     <img src="img/ico-wallet.png" class="img-rounded" style="width:20px;margin-right:5px" alt="webMenu">
                     Pague na Entrega
