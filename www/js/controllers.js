@@ -46,6 +46,7 @@ game7App.controller('clienteCtrl', function($scope, Cliente, Estado, Cidade, Bai
     }
     $scope.atualizar = function(){
         $scope.cl.save_cliente(document.getElementById("nome").value, document.getElementById("email").value,document.getElementById("senha").value, document.getElementById("telefone").value, document.getElementById("estado").value, document.getElementById("cidade").value,document.getElementById("bairro").value,document.getElementById("endereco").value);
+        window.location = "index.html";
     }
     $scope.excluir = function(){
       $scope.cl.excluir_cliente();
