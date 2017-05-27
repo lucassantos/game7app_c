@@ -570,7 +570,8 @@ game7App.factory("Empresa", function (Ajax,$http) {
         empresaselecionado: [],
         empresapedido: [],
         retorno : false,
-        var_tipocozinha_id:0
+        var_tipocozinha_id:0,
+        caminho_foto: 'http://menuweb.com.br/game7api/static/media/empresa/'
     };
 
     obj.set_tipocozinha = function (tipocozinha_id){
