@@ -553,7 +553,7 @@ game7App.factory("Cliente", function (Ajax,$http) {
 
        if(logado != undefined){
          obj.logado = logado;
-//         window.location = "home.html";
+         window.location = "home.html";
        }
        else if (!(url.indexOf("index.html") > -1)) {
          window.location = "index.html";
