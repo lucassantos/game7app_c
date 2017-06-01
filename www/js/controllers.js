@@ -263,6 +263,7 @@ game7App.controller('pedidoCtrl', function($scope, Pedido, Cliente, Estado, Cida
 
 game7App.controller('loginCtrl', function($scope, Cliente) {
     $scope.cl = Cliente;
+    $scope.cl.verifica_login();
     $scope.logar = function(){
         $scope.cl.logar_cliente(document.getElementById("ipEmail").value,document.getElementById("ipSenha").value);
     }
