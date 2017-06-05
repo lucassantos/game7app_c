@@ -45,7 +45,19 @@ game7App.controller('clienteCtrl', function($scope, Cliente, Estado, Cidade, Bai
         $scope.cl.get_clientes(document.getElementById("ipFiltroNome").value,document.getElementById("ipFiltroEmail").value);
     }
     $scope.atualizar = function(){
-        $scope.cl.save_cliente(document.getElementById("nome").value, document.getElementById("email").value,document.getElementById("senha").value, document.getElementById("telefone").value, document.getElementById("estado").value, document.getElementById("cidade").value,document.getElementById("bairro").value,document.getElementById("endereco").value);
+        $scope.cl.save_cliente(
+            document.getElementById("nome").value,
+            document.getElementById("email").value,
+            document.getElementById("senha").value,
+            document.getElementById("telefone").value,
+            document.getElementById("estado").value,
+            document.getElementById("cidade").value,
+            document.getElementById("bairro").value,
+            document.getElementById("endereco").value,
+            document.getElementById("numero").value,
+            document.getElementById("complemento").value,
+            document.getElementById("cep").value
+            );
         window.location = "index.html";
     }
     $scope.excluir = function(){
