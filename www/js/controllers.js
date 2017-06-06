@@ -60,7 +60,7 @@ game7App.controller('clienteCtrl', function($scope,$http, Cliente, Estado, Cidad
             document.getElementById("complemento").value,
             document.getElementById("cep").value
             );
-        window.location = "index.html";
+//        window.location = "index.html";
     }
     $scope.excluir = function(){
       $scope.cl.excluir_cliente();
@@ -94,6 +94,7 @@ game7App.controller('clienteCtrl', function($scope,$http, Cliente, Estado, Cidad
             $("#endereco").val(enderecocep.logradouro);
 
             //Estado
+            $scope.et.get_estados();
             if(enderecocep.uf = "SP"){
                 $("#estado").val("1");
             }
