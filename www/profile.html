@@ -45,20 +45,26 @@
                 <input type="number" id="telefone" name="telefone" value="{[ct.clienteselecionado[0].telefone]}" required="True" class="form-control"/>
                 <br>
 
-                <label class="control-label">Cep</label><br/>
-                <input type="text" id="cep" type="text" name="cep" value="{[cl.clienteselecionado[0].cep]}" required="True" class="form-control"/>
-                <br/>
+                <div class="col-md-12 col-xs-12" style="padding-left:0px;padding-right:0px;margin-bottom:20px;">
+                    <div class="col-md-9 col-xs-9" style="padding-left:0px;padding-right:0px;">
+                        <label class="control-label">Cep</label><br/>
+                        <input type="text" id="cep" type="text" name="cep" required="True" class="form-control"/>
+                    </div>
+                    <div class="col-md-3 col-xs-3" style="padding-right:0px;margin-top:18px;">
+                        <a class="btn btn-primary" ng-click="getcep();">Localizar</a>
+                    </div>
+                </div>
 
                 <label class="control-label">Estado</label> - {[cl.clienteselecionado[0].estado]}<br/>
-                <select class="form-control" name="estado" id="estado" ng-change="getcidades()" ng-options="estado as estado.fields.nome for estado in et.lista_estados track by estado.pk" ng-model="sel_estado"></select>
+                <select class="form-control" name="estado" id="estado" ng-change="getcidades()" ng-options="estado as estado.fields.nome for estado in et.lista_estados track by estado.pk" ng-model="et.estado_selecionado"></select>
                 <br/>
 
                 <label class="control-label">Cidade</label> - {[cl.clienteselecionado[0].cidade]}<br/>
-                <select class="form-control" name="cidade" id="cidade" ng-change="getbairros()" ng-options="cidade as cidade.fields.nome for cidade in cd.lista_cidades track by cidade.pk" ng-model="sel_cidade"></select>
+                <select class="form-control" name="cidade" id="cidade" ng-change="getbairros()" ng-options="cidade as cidade.fields.nome for cidade in cd.lista_cidades track by cidade.pk" ng-model="cd.cidade_selecionado"></select>
                 <br/>
 
                 <label class="control-label">Bairro</label> - {[cl.clienteselecionado[0].bairro]}<br/>
-                <select class="form-control" name="bairro" id="bairro" ng-options="bairro as bairro.fields.nome for bairro in br.lista_bairros track by bairro.pk" ng-model="sel_bairro"></select>
+                <select class="form-control" name="bairro" id="bairro" ng-options="bairro as bairro.fields.nome for bairro in br.lista_bairros track by bairro.pk" ng-model="br.bairro_selecionado"></select>
                 <br/>
 
                 <label class="control-label">Endereço</label><br/>

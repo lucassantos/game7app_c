@@ -112,6 +112,7 @@ game7App.factory("Estado", function (Ajax,$http) {
     var obj = {
         lista_estados: [],
         retorno : false,
+        estado_selecionado:[]
     };
     obj.get_estados= function () {
         var url = URL_BASE + "estados";
@@ -130,6 +131,24 @@ game7App.factory("Estado", function (Ajax,$http) {
             console.log("Erro");
         });
     };
+    obj.get_estados_by_nome= function (nome) {
+        var url = URL_BASE + "estados";
+        var params = {
+            nome:nome
+        }
+        $http({
+            method: "GET",
+            params: params,
+            url: url,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(function successCallback(response) {
+            obj.estado_selecionado= response.data[0];
+        }, function errorCallback(response) {
+            console.log("Erro");
+        });
+    };
     return obj;
 });
 
@@ -137,6 +156,7 @@ game7App.factory("Cidade", function (Ajax,$http) {
     var obj = {
         lista_cidades: [],
         retorno : false,
+        cidade_selecionado :[]
     };
     obj.get_cidades= function (estado_id) {
         var url = URL_BASE + "cidades";
@@ -157,6 +177,24 @@ game7App.factory("Cidade", function (Ajax,$http) {
             console.log("Erro");
         });
     };
+    obj.get_cidades_by_nome= function (nome) {
+        var url = URL_BASE + "cidades";
+        var params = {
+            nome:nome
+        }
+        $http({
+            method: "GET",
+            params: params,
+            url: url,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(function successCallback(response) {
+            obj.cidade_selecionado=response.data[0];
+        }, function errorCallback(response) {
+            console.log("Erro");
+        });
+    };
     return obj;
 });
 
@@ -164,6 +202,7 @@ game7App.factory("Bairro", function (Ajax,$http) {
     var obj = {
         lista_bairros: [],
         retorno : false,
+        bairro_selecionado: []
     };
     obj.get_bairros= function (cidade_id) {
         var url = URL_BASE + "bairros";
@@ -196,6 +235,24 @@ game7App.factory("Bairro", function (Ajax,$http) {
        else if (!(url.indexOf("index.html") > -1)) {
          window.location = "index.html";
        }
+    };
+    obj.get_bairros_by_nome= function (nome) {
+        var url = URL_BASE + "bairros";
+        var params = {
+            nome:nome
+        }
+        $http({
+            method: "GET",
+            params: params,
+            url: url,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(function successCallback(response) {
+            obj.bairro_selecionado= response.data[0];
+        }, function errorCallback(response) {
+            console.log("Erro");
+        });
     };
     return obj;
 });

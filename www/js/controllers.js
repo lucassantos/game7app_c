@@ -30,7 +30,9 @@ game7App.controller('subcategoriaCtrl', function($scope, SubCategoria, Categoria
     }
 });
 
-game7App.controller('clienteCtrl', function($scope, Cliente, Estado, Cidade, Bairro) {
+game7App.controller('clienteCtrl', function($scope,$http, Cliente, Estado, Cidade, Bairro) {
+    enderecocep = [];
+
     $scope.et = Estado;
     $scope.et.get_estados();
 
@@ -71,6 +73,45 @@ game7App.controller('clienteCtrl', function($scope, Cliente, Estado, Cidade, Bai
     }
     $scope.logar = function(){
         $scope.cl.logar_cliente(document.getElementById("ipEmail").value,document.getElementById("ipSenha").value);
+    }
+    $scope.getcep = function(){
+        cep = $("#cep").val();
+        //Get relação de clientes
+        var url = "http://viacep.com.br/ws/"+ cep + "/json/";
+        var params = {
+        }
+        $http({
+            method: "GET",
+            params: params,
+            url: url,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(function successCallback(response) {
+            enderecocep = response.data;
+
+            //Endereco
+            $("#endereco").val(enderecocep.logradouro);
+
+            //Estado
+            if(enderecocep.uf = "SP"){
+                $("#estado").val("1");
+            }
+
+            //Cidade
+            $scope.cd.get_cidades($("#estado").val());
+            $scope.cd.get_cidades_by_nome(enderecocep.cidade);
+
+            //Bairro
+            $scope.br.get_bairros($scope.cd.cidade_selecionado.id);
+            $scope.br.get_bairros_by_nome(enderecocep.bairro);
+
+
+
+
+        }, function errorCallback(response) {
+            console.log("Erro");
+        });
     }
 });
 
