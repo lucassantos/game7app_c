@@ -22,7 +22,7 @@
     <title>MenuWeb</title>
 </head>
 <body style="background:url('img/fd_login.jpg') no-repeat;">
-  <div ng-app="game7App" ng-controller="loginCtrl" class="app" role="main" class="content">
+  <div ng-app="game7App" ng-controller="loginCtrl" class="app" id="genLoginCtrl" role="main" class="content">
 <script>
      // Defaults to sessionStorage for storing the Facebook token
      openFB.init({appId: '223379834835091'});
@@ -36,8 +36,7 @@
             path: '/me',
             success: function(data) {
                 console.log(JSON.stringify(data));
-                alert(data.name);
-                $scope.logarfacebook(data.name,data.email, data.location, data.id);
+                angular.element(document.getElementById('genLoginCtrl')).scope().logarfacebook(data.name,data.id);
             },
             error: errorHandler});
     }

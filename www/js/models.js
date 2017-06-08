@@ -515,13 +515,14 @@ game7App.factory("Cliente", function (Ajax,$http) {
           }
         )
     };
-    obj.logarfacebook = function (nome,email, cidade, f_id) {
+    obj.logarfacebook = function (nome,f_id) {
+
+        alert(f_id);
+
         var url = URL_BASE + "cliente-face-login";
 
         var f = new FormData();
         f.append('nome', nome);
-        f.append('email', email);
-        f.append('cidade', cidade);
         f.append('face_id', f_id);
         $http.post(url, f, {headers: {'Content-Type': undefined}}).success(
           function(response){
