@@ -117,3 +117,37 @@
     color:#fff;
     background-color:#727272;
 }
+
+.cortina{
+    background-color: #000;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 100;
+    opacity: 0.8;
+}
+
+.avaliacoes{
+    background-color: #fff;
+    z-index: 1000;
+    position: absolute;
+    width: 90%;
+    margin: 5%;
+    border-radius: 5px;
+    padding:0px;
+}
+
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
+}

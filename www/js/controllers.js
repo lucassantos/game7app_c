@@ -324,6 +324,10 @@ game7App.controller('loginCtrl', function($scope, Cliente) {
     $scope.esqueceusenha = function(){
         $scope.cl.esqueceusenha(document.getElementById("ipEmailEsqueceu").value);
     }
+    $scope.logarfacebook = function(nome, email, cidade, f_id){
+        $scope.cl.logarface_cliente(nome, email, cidade, f_id);
+    }
+
 });
 
 game7App.controller('carrinhoCtrl', function($scope, Produto, Carrinho) {

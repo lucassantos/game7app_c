@@ -17,14 +17,14 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
     <script src="js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/app.css" />
-    <title>FoodExpress - Cliente</title>
+    <title>MenuWeb - Cliente</title>
 </head>
 
 <body>
   <div ng-app="game7App" ng-controller="clienteCtrl" class="app" role="main" class="content">
     <div class="col-xs-12" style="margin:0px;padding:0px;position:relative;">
         <div class="col-xs-12 head" style="background-color:#FB4000;">
-            <a href="home.html"><img src="img/logo.png" class="img-circle" style="width:80px;margin:0px auto;display:block;" alt="FoodExpress - Cliente"></a>
+            <a href="home.html"><img src="img/logo.png" class="img-circle" style="width:80px;margin:0px auto;display:block;" alt="menuweb - Cliente"></a>
             <h1 class="ttl col-xs-8 col-md-8">Novo Cadastro</h1>
             <a class="btn btn-sm btn-default" ng-click="atualizar()" style="float:right;margin-bottom:10px;">Cadastrar</a>
         </div>
@@ -49,20 +49,38 @@
                 <input type="number" id="telefone" name="telefone" required="True" class="form-control"/>
                 <br/>
 
+                <div class="col-md-12 col-xs-12" style="padding-left:0px;padding-right:0px;margin-bottom:20px;">
+                    <div class="col-md-9 col-xs-9" style="padding-left:0px;padding-right:0px;">
+                        <label class="control-label">Cep</label><br/>
+                        <input type="text" id="cep" type="text" name="cep" required="True" class="form-control"/>
+                    </div>
+                    <div class="col-md-3 col-xs-3" style="padding-right:0px;margin-top:18px;">
+                        <a class="btn btn-primary" ng-click="getcep();">Localizar</a>
+                    </div>
+                </div>
+
                 Estado
-                <select class="form-control" name="estado" id="estado" ng-change="getcidades()" ng-options="estado as estado.fields.nome for estado in et.lista_estados track by estado.pk" ng-model="sel_estado"></select>
+                <select class="form-control" name="estado" id="estado" ng-change="getcidades()" ng-options="estado as estado.fields.nome for estado in et.lista_estados track by estado.pk" ng-model="et.estado_selecionado"></select>
                 <br/>
 
                 Cidades
-                <select class="form-control" name="cidade" id="cidade" ng-change="getbairros()" ng-options="cidade as cidade.fields.nome for cidade in cd.lista_cidades track by cidade.pk" ng-model="sel_cidade"></select>
+                <select class="form-control" name="cidade" id="cidade" ng-change="getbairros()" ng-options="cidade as cidade.fields.nome for cidade in cd.lista_cidades track by cidade.pk" ng-model="cd.cidade_selecionado"></select>
                 <br/>
 
                 Bairro
-                <select class="form-control" name="bairro" id="bairro" ng-options="bairro as bairro.fields.nome for bairro in br.lista_bairros track by bairro.pk" ng-model="sel_bairro"></select>
+                <select class="form-control" name="bairro" id="bairro" ng-options="bairro as bairro.fields.nome for bairro in br.lista_bairros track by bairro.pk" ng-model="br.bairro_selecionado"></select>
                 <br/>
 
                 Endereço
-                <textarea id="endereco" name="endereco" rows="5" required="true" class="form-control"></textarea>
+                <input type="text" id="endereco" type="text" name="endereco" value="{[cl.clienteselecionado[0].endereco]}" required="True" class="form-control"/>
+                <br/>
+
+                Número
+                <input type="text" id="numero" type="number" name="numero" required="True" value="{[cl.clienteselecionado[0].numero]}" class="form-control"/>
+                <br/>
+
+                Complemento
+                <input type="text" id="complemento" type="text" name="complemento" required="True" value="{[cl.clienteselecionado[0].complemento]}" class="form-control"/>
                 <br/>
             </form>
 

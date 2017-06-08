@@ -6,8 +6,9 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
-    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <meta http-equiv="X-Frame-Options" content="allow" />
     <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="http://connect.facebook.net/pt_BR/sdk.js"></script>
     <script src="js/angular.min.js"></script>
     <script src="js/angular.cookies.js"></script>
     <script src="js/game7_app.js"></script>
@@ -17,11 +18,87 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
     <script src="js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/app.css" />
+    <script src="js/openfb.js"></script>
     <title>MenuWeb</title>
 </head>
 <body style="background:url('img/fd_login.jpg') no-repeat;">
-
   <div ng-app="game7App" ng-controller="loginCtrl" class="app" role="main" class="content">
+<script>
+     // Defaults to sessionStorage for storing the Facebook token
+     openFB.init({appId: '223379834835091'});
+
+    //  Uncomment the line below to store the Facebook token in localStorage instead of sessionStorage
+    //  openFB.init({appId: '223379834835091', tokenStore: window.localStorage});
+
+
+    function getInfo() {
+        openFB.api({
+            path: '/me',
+            success: function(data) {
+                console.log(JSON.stringify(data));
+                $scope.logarfacebook(data.name,data.email, data.location, data.id);
+            },
+            error: errorHandler});
+    }
+
+    function login() {
+        openFB.login('email',
+                function(response) {
+                    if(response.status === 'connected') {
+                        alert('Facebook login succeeded, got access token: ' + response.authResponse.accessToken);
+                        this.getInfo();
+                    } else {
+                        alert('Facebook login failed: ' + response.error);
+                    }
+                }, {scope: 'email,read_stream,publish_actions'});
+    }
+
+    function share() {
+        openFB.api({
+            method: 'POST',
+            path: '/me/feed',
+            params: {
+                message: document.getElementById('Message').value || 'Testing Facebook APIs'
+            },
+            success: function() {
+                alert('the item was posted on Facebook');
+            },
+            error: errorHandler});
+    }
+
+    function readPermissions() {
+        openFB.api({
+            method: 'GET',
+            path: '/me/permissions',
+            success: function(result) {
+                alert(JSON.stringify(result.data));
+            },
+            error: errorHandler
+        });
+    }
+
+    function revoke() {
+        openFB.revokePermissions(
+                function() {
+                    alert('Permissions revoked');
+                },
+                errorHandler);
+    }
+
+    function logout() {
+        openFB.logout(
+                function() {
+                    alert('Logout successful');
+                },
+                errorHandler);
+    }
+
+    function errorHandler(error) {
+        alert(error.message);
+    }
+
+</script>
+
     <div class="col-xs-12">
         <img src="img/logo.png" class="img-circle" style="width:250px;margin:80px auto 0px;display:block;" alt="WebMenu">
 
@@ -42,61 +119,9 @@
 
         <div id="genbtns">
 
-            <a class="btn btn-default" onclick="$('#genlogin').show();$('#genbtns').hide();" style="display:block;width:100%;margin-bottom:20px;color:#727272;font-weight:bold;text-transform:uppercase;">Fazer Login</a>
-            <a class="btn btn-default" href="quero-cadastrar.html" style="display:block;width:100%;color:#727272;font-weight:bold;text-transform:uppercase;">Fazer Inscrição</a>
-
-            <button id="loginBtn">Facebook Login</button>
-            <div id="response"></div>
-            <script>
-                function getUserData() {
-                    FB.api('/me', function(response) {
-                        document.getElementById('response').innerHTML = 'Hello ' + response.name;
-                    });
-                }
-
-                window.fbAsyncInit = function() {
-                    //SDK loaded, initialize it
-                    FB.init({
-                        appId      : 'your-app-id',
-                        xfbml      : true,
-                        version    : 'v2.2'
-                    });
-
-                    //check user session and refresh it
-                    FB.getLoginStatus(function(response) {
-                        if (response.status === 'connected') {
-                            //user is authorized
-                            document.getElementById('loginBtn').style.display = 'none';
-                            getUserData();
-                        } else {
-                            //user is not authorized
-                        }
-                    });
-                };
-
-                //load the JavaScript SDK
-                (function(d, s, id){
-                    var js, fjs = d.getElementsByTagName(s)[0];
-                    if (d.getElementById(id)) {return;}
-                    js = d.createElement(s); js.id = id;
-                    js.src = "http://connect.facebook.com/en_US/sdk.js";
-                    fjs.parentNode.insertBefore(js, fjs);
-                }(document, 'script', 'facebook-jssdk'));
-
-                //add event listener to login button
-                document.getElementById('loginBtn').addEventListener('click', function() {
-                    //do the login
-                    FB.init();
-
-                    FB.login(function(response) {
-                        if (response.authResponse) {
-                            //user just authorized your app
-                            document.getElementById('loginBtn').style.display = 'none';
-                            getUserData();
-                        }
-                    }, {scope: 'email,public_profile', return_scopes: true});
-                }, false);
-            </script>
+            <a class="btn btn-default" onclick="$('#genlogin').show();$('#genbtns').hide();" style="display:block;width:100%;margin-bottom:10px;color:#727272;font-weight:bold;text-transform:uppercase;">Fazer Login</a>
+            <a class="btn btn-default" href="quero-cadastrar.html" style="display:block;width:100%;color:#727272;margin-bottom:10px;font-weight:bold;text-transform:uppercase;">Fazer Inscrição</a>
+            <a class="btn btn-default" scope="public_profile" onclick="login();" style="display:block;width:100%;color:#727272;font-weight:bold;text-transform:uppercase;">Logar com Facebook</a>
         </div>
         <div id="genesqueceu" style="display:none;">
             <div class="well col-md-12 col-xs-12">
@@ -113,6 +138,7 @@
       app.initialize();
   </script>
   <div class="loading" id="loading" style="display:none;"><img src="img/loader.gif"/></div>
-</body>
 
+
+</body>
 </html>

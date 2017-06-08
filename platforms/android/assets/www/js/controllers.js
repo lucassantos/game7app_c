@@ -30,7 +30,9 @@ game7App.controller('subcategoriaCtrl', function($scope, SubCategoria, Categoria
     }
 });
 
-game7App.controller('clienteCtrl', function($scope, Cliente, Estado, Cidade, Bairro) {
+game7App.controller('clienteCtrl', function($scope,$http, Cliente, Estado, Cidade, Bairro) {
+    enderecocep = [];
+
     $scope.et = Estado;
     $scope.et.get_estados();
 
@@ -45,7 +47,20 @@ game7App.controller('clienteCtrl', function($scope, Cliente, Estado, Cidade, Bai
         $scope.cl.get_clientes(document.getElementById("ipFiltroNome").value,document.getElementById("ipFiltroEmail").value);
     }
     $scope.atualizar = function(){
-        $scope.cl.save_cliente(document.getElementById("nome").value, document.getElementById("email").value,document.getElementById("senha").value, document.getElementById("telefone").value, document.getElementById("estado").value, document.getElementById("cidade").value,document.getElementById("bairro").value,document.getElementById("endereco").value);
+        $scope.cl.save_cliente(
+            document.getElementById("nome").value,
+            document.getElementById("email").value,
+            document.getElementById("senha").value,
+            document.getElementById("telefone").value,
+            document.getElementById("estado").value,
+            document.getElementById("cidade").value,
+            document.getElementById("bairro").value,
+            document.getElementById("endereco").value,
+            document.getElementById("numero").value,
+            document.getElementById("complemento").value,
+            document.getElementById("cep").value
+            );
+//        window.location = "index.html";
     }
     $scope.excluir = function(){
       $scope.cl.excluir_cliente();
@@ -59,27 +74,80 @@ game7App.controller('clienteCtrl', function($scope, Cliente, Estado, Cidade, Bai
     $scope.logar = function(){
         $scope.cl.logar_cliente(document.getElementById("ipEmail").value,document.getElementById("ipSenha").value);
     }
+    $scope.getcep = function(){
+        cep = $("#cep").val();
+        //Get relação de clientes
+        var url = "http://viacep.com.br/ws/"+ cep + "/json/";
+        var params = {
+        }
+        $http({
+            method: "GET",
+            params: params,
+            url: url,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(function successCallback(response) {
+            enderecocep = response.data;
+
+            //Endereco
+            $("#endereco").val(enderecocep.logradouro);
+
+            //Estado
+            $scope.et.get_estados();
+            if(enderecocep.uf = "SP"){
+                $("#estado").val("1");
+            }
+
+            //Cidade
+            $scope.cd.get_cidades($("#estado").val());
+            $scope.cd.get_cidades_by_nome(enderecocep.cidade);
+
+            //Bairro
+            $scope.br.get_bairros($scope.cd.cidade_selecionado.id);
+            $scope.br.get_bairros_by_nome(enderecocep.bairro);
+
+
+
+
+        }, function errorCallback(response) {
+            console.log("Erro");
+        });
+    }
 });
 
-game7App.controller('empresaCtrl', function($scope, Empresa, Estado, Cidade, Bairro, Atendimento, Produto) {
+game7App.controller('empresaCtrl', function($scope, Empresa, Estado, Cidade, Bairro, Atendimento, Produto, Pedido) {
     $scope.et = Estado;
     $scope.cd = Cidade;
     $scope.br = Bairro;
     $scope.em = Empresa;
     $scope.at = Atendimento;
     $scope.pt = Produto;
+    $scope.pe = Pedido;
 
     $scope.et.get_estados();
     $scope.em.get_empresa();
     $scope.pt.get_produtos();
+    $scope.pe.get_pedidos_concluidos();
 
     if(document.getElementById('iFiltro')){
         $scope.em.get_empresas(document.getElementById('iFiltro').value,window.localStorage.getItem("c_logado"));
     }
 
+    $scope.set_avaliacao_pedido = function(nota, pedido_id){
+        $scope.pe.save_avaliacao(nota,pedido_id,$('#ipMensagem'+pedido_id).val());
+    }
+
     $scope.filtrar = function(){
         $scope.em.get_empresas(document.getElementById('iFiltro').value,window.localStorage.getItem("c_logado"));
     }
+
+    $scope.set_tipocozinha = function(nTipoCozinha){
+        $scope.em.set_tipocozinha(nTipoCozinha);
+
+        $scope.filtrar();
+    }
+
     $scope.atualizar = function(){
         $scope.em.save_empresa(
             document.getElementById("nome").value,
@@ -176,7 +244,7 @@ game7App.controller('produtoCtrl', function($scope, Produto, Empresa, Categoria,
     }
 });
 
-game7App.controller('pedidoCtrl', function($scope, Pedido, Cliente, Estado, Cidade, Bairro) {
+game7App.controller('pedidoCtrl', function($scope, Pedido, Cliente, Estado, Cidade, Bairro, Empresa) {
     $scope.pe = Pedido;
     $scope.pe.get_pedidos();
     $scope.pe.get_pedido();
@@ -189,6 +257,9 @@ game7App.controller('pedidoCtrl', function($scope, Pedido, Cliente, Estado, Cida
 
     $scope.cd = Cidade;
     $scope.br = Bairro;
+    $scope.em = Empresa;
+    $scope.em.get_empresabypedido();
+
 
     $scope.filtrar = function(){
         $scope.pe.get_pedidos(document.getElementById("ipFiltrodata").value);
@@ -199,21 +270,21 @@ game7App.controller('pedidoCtrl', function($scope, Pedido, Cliente, Estado, Cida
             document.getElementById("cidade").value,
             document.getElementById("bairro").value,
             document.getElementById("complemento").value);
+
+
     }
     $scope.atualizar_tipo_pagamento = function(){
         $scope.pe.save_tipo_pagamento(
                 $('input[name="rd_pagamento_tipo"]:checked').val()
             );
     }
-    $scope.atualizar_pagamento = function(tipo){
-        if(tipo == 'na_entrega'){
+    $scope.atualizar_pagamento = function(){
             $scope.pe.save_pagamento_obs(
-                $('input[name="rd_forma_pagamento"]:checked').val()
+                $('#troco_para').val(),
+                $('#outro_cartao').val(),
+                $('input[name="cpf_nota"]:checked').val(),
+                $('#selbandeira').val()
             );
-        }
-        if(tipo == 'mercado_pago'){
-            alert('outro;')
-        }
     }
     $scope.excluir = function(){
       $scope.pt.excluir_produto();
@@ -227,13 +298,36 @@ game7App.controller('pedidoCtrl', function($scope, Pedido, Cliente, Estado, Cida
     $scope.getbairros = function(){
         $scope.br.get_bairros(document.getElementById("cidade").value);
     }
+
+    $scope.pagarmercadopago = function(request){
+        $scope.list = [];
+
+        console.log(request);
+
+        if ($scope.text) {
+            $scope.list.push(this.text);
+            $scope.text = '';
+
+            alert($scope.list);
+        }
+        //http://127.0.0.1:8010/js/efetuar-pagamento
+
+    }
 });
 
 game7App.controller('loginCtrl', function($scope, Cliente) {
     $scope.cl = Cliente;
+    $scope.cl.verifica_login();
     $scope.logar = function(){
         $scope.cl.logar_cliente(document.getElementById("ipEmail").value,document.getElementById("ipSenha").value);
     }
+    $scope.esqueceusenha = function(){
+        $scope.cl.esqueceusenha(document.getElementById("ipEmailEsqueceu").value);
+    }
+    $scope.logarfacebook = function(nome, email, cidade, f_id){
+        $scope.cl.logarface_cliente(nome, email, cidade, f_id);
+    }
+
 });
 
 game7App.controller('carrinhoCtrl', function($scope, Produto, Carrinho) {
@@ -268,4 +362,13 @@ game7App.controller('carrinhoCtrl', function($scope, Produto, Carrinho) {
 
         window.location = "carrinho.html";
     }
+});
+
+game7App.controller('pagamentoCtrl', function($scope, Pedido, Pagamento) {
+    $scope.pe = Pedido;
+    $scope.pe.get_pedido();
+
+    $scope.pg = Pagamento;
+    $scope.pg.get_pagamento();
+
 });

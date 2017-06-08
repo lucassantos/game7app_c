@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular.cookies.js"></script>
+    <script src="js/game7_app.js"></script>
+    <script src="js/models.js"></script>
+    <script src="js/views.js"></script>
+    <script src="js/controllers.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/app.css" />
+    <script src="https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js"></script>
+    <title>WebMenu</title>
+</head>
+
+<body>
+  <div ng-app="game7App" ng-controller="pedidoCtrl" class="app" role="main" class="content">
+    <div style="margin:0px;padding:0px;">
+        <div class="col-xs-12 head" style="background-color:#FB4000;padding:15px;">
+            <a href="home.html"><img src="img/logo.png" class="img-circle" style="width:80px;margin:0px auto;display:block;" alt="webMenu"></a>
+            <b class="ttl">TIPO DE PAGAMENTO</b>
+        </div>
+        <div style="font-size:10px;">
+
+            <div ng-show="em.empresapedido.aceita_pagamentoonline">
+                <div style="padding: 10px 12px;background-color:#F2F2F2;">
+                    <img src="img/ico-wifi.png" class="img-rounded" style="width:20px;margin-right:5px" alt="webMenu">
+                    Pague Online
+                </div>
+
+                <ul class="list-group" style="margin-bottom:0px;">
+                    <li class="list-group-item" style="border-radius:0px; border-left:0px; border-right:0px;"><input type="radio" name="rd_pagamento_tipo" value="mercado_pago"> Cartão de Crédito<br></li>
+                </ul>
+            </div>
+
+            <div ng-show="em.empresapedido.restaurante_status == 'ok'">
+                <div style="padding: 10px 12px;background-color:#F2F2F2;">
+                    <img src="img/ico-wallet.png" class="img-rounded" style="width:20px;margin-right:5px" alt="webMenu">
+                    Pague na Entrega
+                </div>
+
+                <ul class="list-group" style="margin-bottom:0px;">
+                  <li ng-show="em.empresapedido.aceita_cartao" class="list-group-item" style="border-radius:0px; border-left:0px; border-right:0px;"><input type="radio" name="rd_pagamento_tipo" value="na_entrega_cartao" checked="true" > Cartão de débito/crédito<br></li>
+                  <li class="list-group-item" style="border-radius:0px; border-left:0px; border-right:0px;"><input type="radio" name="rd_pagamento_tipo" value="na_entrega_dinheiro" checked="true" > Dinheiro<br></li>
+                </ul>
+
+                <div ng-show="em.empresapedido.aceita_valerefeicao" >
+                    <div style="padding: 10px 12px;background-color:#F2F2F2;">
+                        <img src="img/ico-vr.png" class="img-rounded" style="width:20px;margin-right:5px" alt="webMenu">
+                        Vale Refeição
+                    </div>
+
+                    <ul class="list-group" style="margin-bottom:80px;">
+                      <li class="list-group-item" style="border-radius:0px; border-left:0px; border-right:0px;"><input type="radio" name="rd_pagamento_tipo" value="na_entrega_valerefeicao_sodexo" checked="true" > Sodexo<br></li>
+                      <li class="list-group-item" style="border-radius:0px; border-left:0px; border-right:0px;"><input type="radio" name="rd_pagamento_tipo" value="na_entrega_valerefeicao_visavale" checked="true" > Visa Vale<br></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 rodape-pedido">
+            <a ng-click="atualizar_tipo_pagamento();" href="javascript:void(0);">CONFIRMAR TIPO DE PAGAMENTO <i class="glyphicon glyphicon-credit-card"></i></a>
+        </div>
+    </div>
+  </div>
+</body>
+
+</html>

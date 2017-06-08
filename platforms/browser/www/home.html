@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular.cookies.js"></script>
+    <script src="js/game7_app.js"></script>
+    <script src="js/models.js"></script>
+    <script src="js/views.js"></script>
+    <script src="js/controllers.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/app.css" />
+    <title>WebMenu</title>
+</head>
+
+<body>
+  <div ng-app="game7App" ng-controller="empresaCtrl" class="app" role="main" class="content">
+    <div style="margin:0px;padding:0px;">
+        <div class="col-xs-12 head" style="background-color:#FB4000;">
+            <!--<img src="img/logo.png" class="img-circle" style="width:40px;margin:10px auto;display:block;" alt="FoodExpress - Cliente">-->
+            <div class="input-group input-group-lg filtro">
+                <span class="input-group-addon lupa" id="sizing-addon1"><i class="glyphicon glyphicon-search"></i></span>
+                <input class="form-control" type="text" id="iFiltro" ng-keyup="filtrar();" placeholder="Buscar pratos e restaurantes" />
+            </div>
+
+            <div class="col-md-12 col-xs-12 menu-categorias">
+              <ul>
+                <li class="col-md-3 col-xs-3">
+                  <a ng-click="set_tipocozinha(4);" role="button">
+                      <img src="img/img-categoria-oriental.png"/>
+                  </a>
+                </li>
+                <li class="col-md-3 col-xs-3">
+                  <a ng-click="set_tipocozinha(3);" role="button">
+                      <img src="img/img-categoria-pizzas.png"/>
+                  </a>
+                </li>
+                <li class="col-md-3 col-xs-3">
+                  <a ng-click="set_tipocozinha(5);" role="button">
+                      <img src="img/img-categoria-massas.png"/>
+                  </a>
+                </li>
+                <li class="col-md-3 col-xs-3">
+                  <a ng-click="set_tipocozinha(2);" role="button">
+                      <img src="img/img-categoria-lanches.png"/>
+                  </a>
+                </li>
+                <!--<li>-->
+                  <!--<a href="profile.html" class="col-md-3 col-xs-3" role="button">-->
+                      <!--<img src="img/img-categoria-proximos.png"/>-->
+                  <!--</a>-->
+                <!--</li>-->
+              </ul>
+            </div>
+
+        </div>
+        <div class="col-xs-12" style="padding:0px;">
+            <ul class="col-md-12">
+                <li class="list-group-item col-md-12 col-xs-12" ng-repeat="emp in em.lista_empresas">
+                    <a href="restaurante-integra.html?e_id={[emp.id]}">
+                        <div class="col-md-12 col-xs-12" style="padding:2px;color:#bc2026;text-transform:uppercase;padding:0px; margin-bottom:2px;font-weight:bold;">
+                            <div class="col-md-2 col-xs-2" style="padding:0px;">
+                                <img class="img-rounded" style="width:41px;height:41px;" ng-src="{[em.caminho_foto]}{[emp.logotipo]}" width="40" />
+                            </div>
+                            <div class="col-md-9 col-xs-9" style="padding:0px;">
+                                <b>{[emp.nome]}</b>
+                                <p style="color:#333;">
+                                    {[emp.tipocozinha]}
+                                </p>
+                            </div>
+                            <div class="col-md-1 col-xs-1" style="padding:0px;">
+                                <img src="img/estrela_amarela.png" style="width:18px;">
+                                {[emp.nota_atual.toFixed(2)]}
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-xs-12" style="padding:0px 2px;font-size:9px;">
+                            <div class="label label-primary" style="font-size:10px;margin:2px;display:inline-block;" ng-repeat="subs in prod.subcategorias">{[subs.categoria]} - {[subs.subcategoria]}</div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-xs-12 rodape">
+            <div class="btn-group btn-group-justified" role="group">
+                <a href="home.html" class="btn btn-danger active" role="button">
+                    <img src="img/ico-restaurantes-active.png"/>
+                </a>
+                <a href="carrinho.html" class="btn btn-danger" role="button">
+                    <img src="img/ico-carrinho.png"/>
+                </a>
+                <a href="pedidos.html" class="btn btn-danger" role="button">
+                    <img src="img/ico-pedidos.png"/>
+                </a>
+                <a href="profile.html" class="btn btn-danger" role="button">
+                    <img src="img/ico-meuperfil.png"/>
+                </a>
+            </div>
+        </div>
+    </div>
+      <div class="cortina" ng-show="pe.lista_pedidos_concluidos.length"></div>
+      <div class="avaliacoes col-md-12 col-xs-12" ng-show="pe.lista_pedidos_concluidos.length">
+        <ul class="col-md-12" style="padding:0px;">
+            <li class="list-group-item col-md-12 col-xs-12" ng-repeat="ped in pe.lista_pedidos_concluidos">
+                <table class="table">
+                    <tr>
+                        <th>#</th>
+                        <th>Restaurante</th>
+                        <th>Data</th>
+                    </tr>
+                    <tr>
+                        <td>{[ped.id]}</td>
+                        <td>{[ped.empresa]}</td>
+                        <td>{[ped.data]}</td>
+                    </tr>
+                </table>
+                <table class="table">
+                    <tr>
+                        <th>Lista</th>
+                    </tr>
+                    <tr>
+                        <td style="border:0px;">
+                            <table class="table" style="margin-bottom:0px;">
+                                <tbody>
+                                    <tr ng-repeat="it in ped.itens">
+                                        <td>{[it.produto]}</td>
+                                        <td>{[it.quantidade]}</td>
+                                        <td>R$ {[it.preco_parcial.toFixed(2)]}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <table class="table">
+                    <tr>
+                        <th style="width:70%">Mensagem</th>
+                        <th>Avaliação</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <textarea rows="3" id="ipMensagem{[ped.id]}" name="ipMensagem{[ped.id]}" class="form-control"></textarea>
+                        </td>
+                        <td>
+                            <div class="rating">
+                                <span ng-click="set_avaliacao_pedido(5,ped.id);">☆</span>
+                                <span ng-click="set_avaliacao_pedido(4,ped.id);">☆</span>
+                                <span ng-click="set_avaliacao_pedido(3,ped.id);">☆</span>
+                                <span ng-click="set_avaliacao_pedido(2,ped.id);">☆</span>
+                                <span ng-click="set_avaliacao_pedido(1,ped.id);">☆</span>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </li>
+        </ul>
+      </div>
+  </div>
+</body>
+
+</html>
