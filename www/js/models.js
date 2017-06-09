@@ -516,10 +516,6 @@ game7App.factory("Cliente", function (Ajax,$http) {
         )
     };
     obj.logarfacebook = function (nome,f_id) {
-
-        alert(f_id);
-        alert(nome);
-
         var url = URL_BASE + "cliente-face-login";
 
         var f = new FormData();
@@ -531,7 +527,7 @@ game7App.factory("Cliente", function (Ajax,$http) {
                 obj.clientelogado = response;
 
                 window.localStorage.setItem("c_logado", response[0].id);
-                if(response[0].bairro.id > 0){
+                if(response[0].bairro_id > 0){
                     window.location = "home.html";
                 }
                 else{
