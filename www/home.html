@@ -52,17 +52,15 @@
                       <img src="img/img-categoria-lanches.png"/>
                   </a>
                 </li>
-                <!--<li>-->
-                  <!--<a href="profile.html" class="col-md-3 col-xs-3" role="button">-->
-                      <!--<img src="img/img-categoria-proximos.png"/>-->
-                  <!--</a>-->
-                <!--</li>-->
               </ul>
             </div>
 
         </div>
         <div class="col-xs-12" style="padding:0px;">
             <ul class="col-md-12">
+            <div ng-if="cl.clienteselecionado[0].email == null">
+                <p class="alert alert-danger" style="text-align:center;">Complete seus dados, o seu endereço é uma informação muito imporante para a realização dos pedidos. Acesse o <a href="profile.html">seu perfil</a> e complete agora mesmo</p>
+            </div>
                 <li class="list-group-item col-md-12 col-xs-12" ng-repeat="emp in em.lista_empresas">
                     <a href="restaurante-integra.html?e_id={[emp.id]}">
                         <div class="col-md-12 col-xs-12" style="padding:2px;color:#bc2026;text-transform:uppercase;padding:0px; margin-bottom:2px;font-weight:bold;">

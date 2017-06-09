@@ -116,7 +116,7 @@ game7App.controller('clienteCtrl', function($scope,$http, Cliente, Estado, Cidad
     }
 });
 
-game7App.controller('empresaCtrl', function($scope, Empresa, Estado, Cidade, Bairro, Atendimento, Produto, Pedido) {
+game7App.controller('empresaCtrl', function($scope, Empresa, Estado, Cidade, Bairro, Atendimento, Produto, Pedido, Cliente) {
     $scope.et = Estado;
     $scope.cd = Cidade;
     $scope.br = Bairro;
@@ -124,7 +124,9 @@ game7App.controller('empresaCtrl', function($scope, Empresa, Estado, Cidade, Bai
     $scope.at = Atendimento;
     $scope.pt = Produto;
     $scope.pe = Pedido;
+    $scope.cl = Cliente;
 
+    $scope.cl.get_cliente();
     $scope.et.get_estados();
     $scope.em.get_empresa();
     $scope.pt.get_produtos();

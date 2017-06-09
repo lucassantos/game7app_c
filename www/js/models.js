@@ -531,7 +531,13 @@ game7App.factory("Cliente", function (Ajax,$http) {
                 obj.clientelogado = response;
 
                 window.localStorage.setItem("c_logado", response[0].id);
-                window.location = "home.html";
+                if(response[0].bairro.id > 0){
+                    window.location = "home.html";
+                }
+                else{
+                    window.location = "profile.html";
+                }
+
             }
             else{
                 alert("Usuário ou senha incorretos");
@@ -559,18 +565,6 @@ game7App.factory("Cliente", function (Ajax,$http) {
         });
     };
     obj.get_cliente = function () {
-//navigator.geolocation.getCurrentPosition(function(position)
-//{
-//    // just to show how to access latitute and longitude
-//    var location = [position.coords.latitude, position.coords.longitude];
-//    alert(location);
-//},
-//function(error)
-//{
-//    // error getting GPS coordinates
-//    alert('code: ' + error.code + ' with message: ' + error.message + '\n');
-//},
-//{ enableHighAccuracy: true, maximumAge: 3000, timeout: 5000 });
         //Get relação de clientes
         var url = URL_BASE + "clientes";
         var params = {
@@ -585,6 +579,7 @@ game7App.factory("Cliente", function (Ajax,$http) {
             }
         }).then(function successCallback(response) {
             obj.clienteselecionado = response.data;
+
         }, function errorCallback(response) {
             console.log("Erro");
         });
