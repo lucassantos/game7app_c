@@ -1,7 +1,7 @@
-URL_BASE = "http://0.0.0.0:8010/js/";
+//URL_BASE = "http://0.0.0.0:8010/js/";
 //URL_BASE = "http://127.0.0.1:8010/js/";
 //URL_BASE = "http://127.0.0.1:8000/js/";
-//URL_BASE = "http://menuweb.com.br/js/";
+URL_BASE = "http://menuweb.com.br/js/";
 // URL_BASE = "https://serene-atoll-63219.herokuapp.com/js/"
 
 function getTokens(){
@@ -515,13 +515,15 @@ game7App.factory("Cliente", function (Ajax,$http) {
           }
         )
     };
-    obj.logarfacebook = function (nome,email, cidade, f_id) {
+    obj.logarfacebook = function (nome,f_id) {
+
+        alert(f_id);
+        alert(nome);
+
         var url = URL_BASE + "cliente-face-login";
 
         var f = new FormData();
         f.append('nome', nome);
-        f.append('email', email);
-        f.append('cidade', cidade);
         f.append('face_id', f_id);
         $http.post(url, f, {headers: {'Content-Type': undefined}}).success(
           function(response){

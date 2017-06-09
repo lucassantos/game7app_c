@@ -518,6 +518,7 @@ game7App.factory("Cliente", function (Ajax,$http) {
     obj.logarfacebook = function (nome,f_id) {
 
         alert(f_id);
+        alert(nome);
 
         var url = URL_BASE + "cliente-face-login";
 
