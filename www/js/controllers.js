@@ -74,6 +74,9 @@ game7App.controller('clienteCtrl', function($scope,$http, Cliente, Estado, Cidad
     $scope.logar = function(){
         $scope.cl.logar_cliente(document.getElementById("ipEmail").value,document.getElementById("ipSenha").value);
     }
+    $scope.sair = function(){
+        $scope.cl.sair_cliente();
+    }
     $scope.getcep = function(){
         cep = $("#cep").val();
         //Get relação de clientes

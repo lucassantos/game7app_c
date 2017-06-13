@@ -1,7 +1,7 @@
-URL_BASE = "http://0.0.0.0:8010/js/";
+//URL_BASE = "http://0.0.0.0:8010/js/";
 //URL_BASE = "http://127.0.0.1:8010/js/";
 //URL_BASE = "http://127.0.0.1:8000/js/";
-//URL_BASE = "http://menuweb.com.br/js/";
+URL_BASE = "http://menuweb.com.br/js/";
 // URL_BASE = "https://serene-atoll-63219.herokuapp.com/js/"
 
 function getTokens(){
@@ -515,6 +515,38 @@ game7App.factory("Cliente", function (Ajax,$http) {
           }
         )
     };
+    obj.sair_cliente = function () {
+        alert('sdfghjkl');
+        window.localStorage.removeItem("c_logado");
+        window.location = "index.html";
+
+    };
+    obj.logarfacebook = function (nome,f_id) {
+        var url = URL_BASE + "cliente-face-login";
+
+        var f = new FormData();
+        f.append('nome', nome);
+        f.append('face_id', f_id);
+        $http.post(url, f, {headers: {'Content-Type': undefined}}).success(
+          function(response){
+            if(response.length > 0){
+                obj.clientelogado = response;
+
+                window.localStorage.setItem("c_logado", response[0].id);
+                if(response[0].bairro_id > 0){
+                    window.location = "home.html";
+                }
+                else{
+                    window.location = "profile.html";
+                }
+
+            }
+            else{
+                alert("Usuário ou senha incorretos");
+            }
+          }
+        )
+    };
     obj.esqueceusenha = function (email_cliente) {
         var url = URL_BASE + "esqueceusenha_cliente";
         var params = {
@@ -535,18 +567,6 @@ game7App.factory("Cliente", function (Ajax,$http) {
         });
     };
     obj.get_cliente = function () {
-//navigator.geolocation.getCurrentPosition(function(position)
-//{
-//    // just to show how to access latitute and longitude
-//    var location = [position.coords.latitude, position.coords.longitude];
-//    alert(location);
-//},
-//function(error)
-//{
-//    // error getting GPS coordinates
-//    alert('code: ' + error.code + ' with message: ' + error.message + '\n');
-//},
-//{ enableHighAccuracy: true, maximumAge: 3000, timeout: 5000 });
         //Get relação de clientes
         var url = URL_BASE + "clientes";
         var params = {
@@ -561,6 +581,7 @@ game7App.factory("Cliente", function (Ajax,$http) {
             }
         }).then(function successCallback(response) {
             obj.clienteselecionado = response.data;
+
         }, function errorCallback(response) {
             console.log("Erro");
         });

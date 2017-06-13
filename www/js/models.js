@@ -515,6 +515,11 @@ game7App.factory("Cliente", function (Ajax,$http) {
           }
         )
     };
+    obj.sair_cliente = function () {
+        window.localStorage.removeItem("c_logado");
+        window.location = "index.html";
+
+    };
     obj.logarfacebook = function (nome,f_id) {
         var url = URL_BASE + "cliente-face-login";
 

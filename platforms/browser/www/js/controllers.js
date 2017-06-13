@@ -74,6 +74,10 @@ game7App.controller('clienteCtrl', function($scope,$http, Cliente, Estado, Cidad
     $scope.logar = function(){
         $scope.cl.logar_cliente(document.getElementById("ipEmail").value,document.getElementById("ipSenha").value);
     }
+    $scope.sair = function(){
+        alert('dfffss');
+        $scope.cl.sair_cliente();
+    }
     $scope.getcep = function(){
         cep = $("#cep").val();
         //Get relação de clientes
@@ -116,7 +120,7 @@ game7App.controller('clienteCtrl', function($scope,$http, Cliente, Estado, Cidad
     }
 });
 
-game7App.controller('empresaCtrl', function($scope, Empresa, Estado, Cidade, Bairro, Atendimento, Produto, Pedido) {
+game7App.controller('empresaCtrl', function($scope, Empresa, Estado, Cidade, Bairro, Atendimento, Produto, Pedido, Cliente) {
     $scope.et = Estado;
     $scope.cd = Cidade;
     $scope.br = Bairro;
@@ -124,7 +128,9 @@ game7App.controller('empresaCtrl', function($scope, Empresa, Estado, Cidade, Bai
     $scope.at = Atendimento;
     $scope.pt = Produto;
     $scope.pe = Pedido;
+    $scope.cl = Cliente;
 
+    $scope.cl.get_cliente();
     $scope.et.get_estados();
     $scope.em.get_empresa();
     $scope.pt.get_produtos();
@@ -324,6 +330,10 @@ game7App.controller('loginCtrl', function($scope, Cliente) {
     $scope.esqueceusenha = function(){
         $scope.cl.esqueceusenha(document.getElementById("ipEmailEsqueceu").value);
     }
+    $scope.logarfacebook = function(nome, f_id){
+        $scope.cl.logarfacebook(nome, f_id);
+    }
+
 });
 
 game7App.controller('carrinhoCtrl', function($scope, Produto, Carrinho) {
