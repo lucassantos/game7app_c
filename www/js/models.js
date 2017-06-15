@@ -929,7 +929,8 @@ game7App.factory("Produto", function (Ajax,$http) {
         foto_principal:123
     };
     obj.get_produtos= function (nome_produto) {
-        var url = URL_BASE + "produtos";
+//        var url = URL_BASE + "produtos";
+        var url = URL_BASE + "cardapio";
         var params = {
             empresa_id:TOKENS["e_id"],
             nome:nome_produto

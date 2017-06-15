@@ -50,24 +50,27 @@
             <div class="tab-content clearfix">
                 <div class="tab-pane active" id="cardapio">
                     <div class="col-md-12 col-xs-12"  style="padding:0px;">
-                        <ul class="col-md-12 col-xs-12" style="padding:0px;">
-                            <li class="list-group-item col-md-12 col-xs-12" ng-repeat="prod in pt.lista_produtos">
-                                <a href="produto-integra.html?p_id={[prod.id]}">
-                                    <div class="col-md-12 col-xs-12" style="padding:2px;color:#bc2026;text-transform:uppercase;padding:0px; margin-bottom:2px;font-weight:bold;">
-                                        <div class="col-md-2 col-xs-2" style="padding:0px;">
-                                            <img class="img-rounded" src="{[pt.caminho_foto]}{[prod.foto]}" width="40" />
+                        <div ng-repeat="prodscat in pt.lista_produtos">
+                            <b style="font-size:10px;margin:10px;text-transform:uppercase;">{[prodscat.subcategoria]}</b>
+                            <ul class="col-md-12 col-xs-12" style="padding:0px;">
+                                <li class="list-group-item col-md-12 col-xs-12" ng-repeat="prod in prodscat.produtos">
+                                    <a href="produto-integra.html?p_id={[prod.id]}">
+                                        <div class="col-md-12 col-xs-12" style="padding:2px;color:#bc2026;text-transform:uppercase;padding:0px; margin-bottom:2px;font-weight:bold;">
+                                            <div class="col-md-2 col-xs-2" style="padding:0px;">
+                                                <img class="img-rounded" src="{[pt.caminho_foto]}{[prod.foto]}" width="40" />
+                                            </div>
+                                            <div class="col-md-7 col-xs-7" style="padding:0px;">
+                                                <b>{[prod.nome]}</b>
+                                                <p style="color:#333;font-size:7px;">{[prod.descricao]}</p>
+                                            </div>
+                                            <div class="col-md-3 col-xs-3">
+                                                R$ {[prod.preco.toFixed(2)]}
+                                            </div>
                                         </div>
-                                        <div class="col-md-7 col-xs-7" style="padding:0px;">
-                                            <b>{[prod.nome]}</b>
-                                            <p style="color:#333;font-size:7px;">{[prod.descricao]}</p>
-                                        </div>
-                                        <div class="col-md-3 col-xs-3">
-                                            R$ {[prod.preco.toFixed(2)]}
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <div class="tab-pane" id="avaliacoes">
