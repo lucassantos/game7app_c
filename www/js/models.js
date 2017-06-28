@@ -1,7 +1,7 @@
-//URL_BASE = "http://0.0.0.0:8010/js/";
+URL_BASE = "http://0.0.0.0:8010/js/";
 //URL_BASE = "http://127.0.0.1:8010/js/";
 //URL_BASE = "http://127.0.0.1:8000/js/";
-URL_BASE = "http://menuweb.com.br/js/";
+//URL_BASE = "http://menuweb.com.br/js/";
 // URL_BASE = "https://serene-atoll-63219.herokuapp.com/js/"
 
 function getTokens(){
@@ -964,7 +964,6 @@ game7App.factory("Produto", function (Ajax,$http) {
             }
         }).then(function successCallback(response) {
             obj.produtoselecionado = response.data;
-//            obj.produtoselecionado[0].preco = formatReal(obj.produtoselecionado[0].preco*100)
         }, function errorCallback(response) {
             console.log("Erro");
         });

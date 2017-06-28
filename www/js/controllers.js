@@ -343,8 +343,71 @@ game7App.controller('carrinhoCtrl', function($scope, Produto, Carrinho) {
     $scope.cr = Carrinho;
     $scope.cr.get_carrinhos();
 
-//    $scope.tp = TipoPagamento;
-//    $scope.tp.get_tipospagamentos();
+    $scope.add_opcao_quantidade = function(opcional_id, opcao_id){
+        for (x = 0; x < $scope.pt.produtoselecionado[0].opcionais.length; x++){
+            if($scope.pt.produtoselecionado[0].opcionais[x].opcional_id == opcional_id){
+                for (y = 0; y < $scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes.length; y++){
+                    if($scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes[y].opcao_id == opcao_id){
+                        $scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes[y].opcao_quantidade ++;
+                        $scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes[y].opcao_selecionado = true;
+                    }
+                }
+            }
+        }
+    }
+
+    $scope.rm_opcao_quantidade = function(opcional_id, opcao_id){
+        for (x = 0; x < $scope.pt.produtoselecionado[0].opcionais.length; x++){
+            if($scope.pt.produtoselecionado[0].opcionais[x].opcional_id == opcional_id){
+                for (y = 0; y < $scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes.length; y++){
+                    if($scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes[y].opcao_id == opcao_id){
+                        if($scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes[y].opcao_quantidade > 0){
+                            $scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes[y].opcao_quantidade --;
+                            if($scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes[y].opcao_quantidade == 0){
+                                $scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes[y].opcao_selecionado = false;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+    $scope.seleciona_opcao_multiplo = function(opcional_id, opcao_id){
+        for (x = 0; x < $scope.pt.produtoselecionado[0].opcionais.length; x++){
+            if($scope.pt.produtoselecionado[0].opcionais[x].opcional_id == opcional_id){
+                for (y = 0; y < $scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes.length; y++){
+                    if($scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes[y].opcao_id == opcao_id){
+                        if($scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes[y].opcao_selecionado){
+                            $scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes[y].opcao_selecionado = false;
+                            $scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes[y].opcao_quantidade = 0;
+                        }
+                        else{
+                            $scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes[y].opcao_selecionado = true;
+                            $scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes[y].opcao_quantidade = 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    $scope.seleciona_opcao_unico = function(opcional_id, opcao_id){
+        for (x = 0; x < $scope.pt.produtoselecionado[0].opcionais.length; x++){
+            if($scope.pt.produtoselecionado[0].opcionais[x].opcional_id == opcional_id){
+                for (y = 0; y < $scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes.length; y++){
+                    $scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes[y].opcao_selecionado = false;
+                    $scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes[y].opcao_quantidade = 0;
+
+                    if($scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes[y].opcao_id == opcao_id){
+                        $scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes[y].opcao_selecionado = true;
+                        $scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes[y].opcao_quantidade = 1;
+                    }
+                }
+            }
+        }
+    }
 
     $scope.add_quantidade = function(){
         $scope.cr.qtd_atual = $scope.cr.qtd_atual + 1;
@@ -366,6 +429,27 @@ game7App.controller('carrinhoCtrl', function($scope, Produto, Carrinho) {
         $scope.cr.excluir_carrinho(car_id);
 
         window.location = "carrinho.html";
+    }
+
+    $scope.getOpcionalSelecionado = function(){
+
+        texto_selecionado = "";
+
+        for (x = 0; x < $scope.pt.produtoselecionado[0].opcionais.length; x++){
+            texto_selecionado = texto_selecionado + $scope.pt.produtoselecionado[0].opcionais[x].opcional_titulo + "\n";
+            for (y = 0; y < $scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes.length; y++){
+                if($scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes[y].opcao_selecionado){
+                    texto_selecionado = texto_selecionado +  $scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes[y].opcao_quantidade + " x " + $scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes[y].opcao_titulo + "\n";
+                    $scope.pt.produtoselecionado[0].preco = $scope.pt.produtoselecionado[0].preco + ($scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes[y].opcao_quantidade * $scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes[y].opcao_valor);
+                }
+            }
+            texto_selecionado = texto_selecionado + "\n\n";
+        }
+
+        $("#genopcionais").hide();
+        $("#gencarrinho").show();
+
+        $("#ipObservacao").val(texto_selecionado);
     }
 });
 
