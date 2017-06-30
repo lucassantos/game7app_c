@@ -348,8 +348,14 @@ game7App.controller('carrinhoCtrl', function($scope, Produto, Carrinho) {
             if($scope.pt.produtoselecionado[0].opcionais[x].opcional_id == opcional_id){
                 for (y = 0; y < $scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes.length; y++){
                     if($scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes[y].opcao_id == opcao_id){
-                        $scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes[y].opcao_quantidade ++;
-                        $scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes[y].opcao_selecionado = true;
+                        if($scope.pt.produtoselecionado[0].opcionais[x].opcional_quantidade_selecionado < $scope.pt.produtoselecionado[0].opcionais[x].opcional_quantidade){
+                            $scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes[y].opcao_quantidade ++;
+                            $scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes[y].opcao_selecionado = true;
+                            $scope.pt.produtoselecionado[0].opcionais[x].opcional_quantidade_selecionado ++;
+                        }
+                        else{
+                            alert("Você já atingiu o limite de opcionais");
+                        }
                     }
                 }
             }
@@ -379,13 +385,22 @@ game7App.controller('carrinhoCtrl', function($scope, Produto, Carrinho) {
             if($scope.pt.produtoselecionado[0].opcionais[x].opcional_id == opcional_id){
                 for (y = 0; y < $scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes.length; y++){
                     if($scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes[y].opcao_id == opcao_id){
-                        if($scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes[y].opcao_selecionado){
-                            $scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes[y].opcao_selecionado = false;
-                            $scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes[y].opcao_quantidade = 0;
+                        opc_selecionado = "#opc_" + $scope.pt.produtoselecionado[0].opcionais[x].opcional_id + " #" + $scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes[y].opcao_id;
+                        if($(opc_selecionado)[0].checked){
+                            if($scope.pt.produtoselecionado[0].opcionais[x].opcional_quantidade_selecionado < $scope.pt.produtoselecionado[0].opcionais[x].opcional_quantidade){
+                                $scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes[y].opcao_selecionado = true;
+                                $scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes[y].opcao_quantidade = 1;
+                                $scope.pt.produtoselecionado[0].opcionais[x].opcional_quantidade_selecionado ++;
+                            }
+                            else{
+                                alert("Você já atingiu o limite de opcionais");
+                                $(opc_selecionado)[0].checked = false;
+                            }
                         }
                         else{
-                            $scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes[y].opcao_selecionado = true;
-                            $scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes[y].opcao_quantidade = 1;
+                            $scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes[y].opcao_selecionado = false;
+                            $scope.pt.produtoselecionado[0].opcionais[x].opcional_opcoes[y].opcao_quantidade = 0;
+                            $scope.pt.produtoselecionado[0].opcionais[x].opcional_quantidade_selecionado --;
                         }
                     }
                 }
