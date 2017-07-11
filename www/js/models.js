@@ -60,7 +60,7 @@ game7App.factory("Carrinho", function (Ajax,$http) {
             obj.frete = response.data.frete;
 
             if(obj.lista_compra.length > 0){
-                obj.var_total_geral = obj.lista_compra[0].total_compra + obj.frete;
+                obj.var_total_geral = response.data.total_compra + obj.frete;
 
 
 

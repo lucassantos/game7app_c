@@ -30,7 +30,7 @@ game7App.controller('subcategoriaCtrl', function($scope, SubCategoria, Categoria
     }
 });
 
-game7App.controller('clienteCtrl', function($scope,$http, Cliente, Estado, Cidade, Bairro) {
+game7App.controller('clienteCtrl', function($scope, $http, Cliente, Estado, Cidade, Bairro) {
     enderecocep = [];
 
     $scope.et = Estado;
