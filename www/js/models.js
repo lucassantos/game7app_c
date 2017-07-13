@@ -1,7 +1,7 @@
-//URL_BASE = "http://0.0.0.0:8010/js/";
+URL_BASE = "http://0.0.0.0:8010/js/";
 //URL_BASE = "http://127.0.0.1:8010/js/";
 //URL_BASE = "http://127.0.0.1:8000/js/";
-URL_BASE = "http://menuweb.com.br/js/";
+//URL_BASE = "http://menuweb.com.br/js/";
 // URL_BASE = "https://serene-atoll-63219.herokuapp.com/js/"
 
 function getTokens(){
@@ -70,17 +70,19 @@ game7App.factory("Carrinho", function (Ajax,$http) {
         });
     };
 
-    obj.save_carrinho = function (produto_id, quantidade, observacao) {
+    obj.save_carrinho = function (produto_id, quantidade, observacao, valor) {
         var url = URL_BASE + "savecarrinho";
 
         var f = new FormData();
         f.append('produto_id', produto_id);
         f.append('quantidade', quantidade);
         f.append('observacao', observacao);
+        f.append('valor', valor);
         f.append('cliente_id', window.localStorage.getItem("c_logado"));
         $http.post(url, f, {headers: {'Content-Type': undefined}}).success(
           function(response){
             obj.retorno = response;
+            window.location = "carrinho.html";
           }
         )
 
@@ -99,6 +101,7 @@ game7App.factory("Carrinho", function (Ajax,$http) {
             }
         }).then(function successCallback(response) {
             obj.retorno = response.data;
+            window.location = "carrinho.html";
         }, function errorCallback(response) {
             console.log("Erro");
         });

@@ -435,15 +435,11 @@ game7App.controller('carrinhoCtrl', function($scope, Produto, Carrinho) {
     }
 
     $scope.add_lista = function(){
-        $scope.cr.save_carrinho($scope.pt.produtoselecionado[0].id, $scope.cr.qtd_atual ,document.getElementById("ipObservacao").value);
-
-        window.location = "carrinho.html";
+        $scope.cr.save_carrinho($scope.pt.produtoselecionado[0].id, $scope.cr.qtd_atual ,document.getElementById("ipObservacao").value, $scope.pt.produtoselecionado[0].preco);
     }
 
     $scope.rm_lista = function(car_id){
         $scope.cr.excluir_carrinho(car_id);
-
-        window.location = "carrinho.html";
     }
 
     $scope.getOpcionalSelecionado = function(){
@@ -462,7 +458,7 @@ game7App.controller('carrinhoCtrl', function($scope, Produto, Carrinho) {
         }
 
         $("#genopcionais").hide();
-        $("#gencarrinho").show();
+        $("#gencarrinho").attr("style", "display:block!important;");
 
         $("#ipObservacao").val(texto_selecionado);
     }
@@ -475,4 +471,83 @@ game7App.controller('pagamentoCtrl', function($scope, Pedido, Pagamento) {
     $scope.pg = Pagamento;
     $scope.pg.get_pagamento();
 
+});
+
+game7App.controller('cadastrarCtrl', function($scope, $http, Cliente, Estado, Cidade, Bairro) {
+    enderecocep = [];
+
+    $scope.et = Estado;
+    $scope.et.get_estados();
+
+    $scope.cd = Cidade;
+
+    $scope.br = Bairro;
+
+    $scope.cl = Cliente;
+
+    $scope.atualizar = function(){
+        $scope.cl.save_cliente(
+            document.getElementById("nome").value,
+            document.getElementById("email").value,
+            document.getElementById("senha").value,
+            document.getElementById("telefone").value,
+            document.getElementById("estado").value,
+            document.getElementById("cidade").value,
+            document.getElementById("bairro").value,
+            document.getElementById("endereco").value,
+            document.getElementById("numero").value,
+            document.getElementById("complemento").value,
+            document.getElementById("cep").value
+            );
+//        window.location = "index.html";
+    }
+    $scope.excluir = function(){
+      $scope.cl.excluir_cliente();
+    }
+    $scope.getcidades = function(){
+        $scope.cd.get_cidades(document.getElementById("estado").value);
+    }
+    $scope.getbairros = function(){
+        $scope.br.get_bairros(document.getElementById("cidade").value);
+    }
+    $scope.getcep = function(){
+        cep = $("#cep").val();
+        //Get relação de clientes
+        var url = "http://viacep.com.br/ws/"+ cep + "/json/";
+        var params = {
+        }
+        $http({
+            method: "GET",
+            params: params,
+            url: url,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(function successCallback(response) {
+            enderecocep = response.data;
+
+            //Endereco
+            $("#endereco").val(enderecocep.logradouro);
+
+            //Estado
+            $scope.et.get_estados();
+            if(enderecocep.uf = "SP"){
+                $("#estado").val("1");
+            }
+
+            //Cidade
+            $scope.cd.get_cidades($("#estado").val());
+            $scope.cd.get_cidades_by_nome(enderecocep.cidade);
+
+            //Bairro
+            $scope.br.get_bairros($scope.cd.cidade_selecionado.id);
+            $scope.br.get_bairros_by_nome(enderecocep.bairro);
+
+
+
+
+        }, function errorCallback(response) {
+            console.log("Erro");
+        });
+    }
 });
