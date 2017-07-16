@@ -46,7 +46,6 @@
             $("#btnContinuarFace").show();
             openFB.login('email',
                 function(response) {
-                    alert(response);
                     if(response.status === 'connected') {
                         alert('Facebook login succeeded, got access token: ' + response.authResponse.accessToken);
 
