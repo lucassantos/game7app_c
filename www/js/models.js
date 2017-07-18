@@ -81,7 +81,12 @@ game7App.factory("Carrinho", function (Ajax,$http) {
         f.append('cliente_id', window.localStorage.getItem("c_logado"));
         $http.post(url, f, {headers: {'Content-Type': undefined}}).success(
           function(response){
-            obj.retorno = response;
+            if(response == true){
+                obj.retorno = response;
+            }
+            else{
+                alert('Por favor, antes de realizar um novo pedido em outro restaurante é necessário a conclusão do primeiro.');
+            }
             window.location = "carrinho.html";
           }
         )
