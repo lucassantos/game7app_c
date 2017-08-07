@@ -52,10 +52,14 @@
                 <label for="outro_cartao">Outro</label><br>
                 <input type="text" class="form-control" id="outro_cartao" >
             </div>
-
             <br>
+
             <label for="cpf_nota">CPF na nota?</label><br>
             <input type="checkbox" name="cpf_nota" id="cpf_nota" value="1"> Sim
+            <br>
+
+            <label for="docNumber">CPF</label>
+            <input type="text" id="docNumber" data-checkout="docNumber" placeholder="12345678" class="form-control" />
         </div>
         <div class="col-xs-12 rodape-pedido" >
             <a ng-click="atualizar_pagamento();" href="javascript:void(0);">CONCLUIR PAGAMENTO <i class="glyphicon glyphicon-credit-card"></i></a>

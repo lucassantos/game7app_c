@@ -288,7 +288,8 @@ game7App.controller('pedidoCtrl', function($scope, Pedido, Cliente, Estado, Cida
                 $('#troco_para').val(),
                 $('#outro_cartao').val(),
                 $('input[name="cpf_nota"]:checked').val(),
-                $('#selbandeira').val()
+                $('#selbandeira').val(),
+                $('#docNumber').val()
             );
     }
     $scope.excluir = function(){

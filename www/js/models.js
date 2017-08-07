@@ -1216,7 +1216,7 @@ game7App.factory("Pedido", function (Ajax,$http) {
         )
     };
 
-    obj.save_pagamento_obs = function (troco,outro,cpfnanota,bandeira) {
+    obj.save_pagamento_obs = function (troco,outro,cpfnanota,bandeira,cpf) {
         var url = URL_BASE + "saveobspagamentopedido";
         var f = new FormData();
 
@@ -1232,6 +1232,7 @@ game7App.factory("Pedido", function (Ajax,$http) {
         f.append('cpfnanota', cpfnanota);
         f.append('bandeira', bandeira);
         f.append('tipo', TOKENS['t']);
+        f.append('cpf', cpf);
         $http.post(url, f, {headers: {'Content-Type': undefined}}).success(
           function(response){
             obj.retorno = response.data;
