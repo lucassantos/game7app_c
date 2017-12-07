@@ -60,7 +60,7 @@ game7App.factory("Carrinho", function (Ajax,$http) {
             obj.frete = response.data.frete;
 
             if(obj.lista_compra.length > 0){
-                obj.var_total_geral = obj.lista_compra[0].total_compra + obj.frete;
+                obj.var_total_geral = response.data.total_compra + obj.frete;
 
 
 
@@ -70,17 +70,24 @@ game7App.factory("Carrinho", function (Ajax,$http) {
         });
     };
 
-    obj.save_carrinho = function (produto_id, quantidade, observacao) {
+    obj.save_carrinho = function (produto_id, quantidade, observacao, valor) {
         var url = URL_BASE + "savecarrinho";
 
         var f = new FormData();
         f.append('produto_id', produto_id);
         f.append('quantidade', quantidade);
         f.append('observacao', observacao);
+        f.append('valor', valor);
         f.append('cliente_id', window.localStorage.getItem("c_logado"));
         $http.post(url, f, {headers: {'Content-Type': undefined}}).success(
           function(response){
-            obj.retorno = response;
+            if(response == true){
+                obj.retorno = response;
+            }
+            else{
+                alert('Por favor, antes de realizar um novo pedido em outro restaurante é necessário a conclusão do primeiro.');
+            }
+            window.location = "carrinho.html";
           }
         )
 
@@ -99,6 +106,7 @@ game7App.factory("Carrinho", function (Ajax,$http) {
             }
         }).then(function successCallback(response) {
             obj.retorno = response.data;
+            window.location = "carrinho.html";
         }, function errorCallback(response) {
             console.log("Erro");
         });
@@ -473,7 +481,8 @@ game7App.factory("Cliente", function (Ajax,$http) {
         lista_clientes: [],
         clienteselecionado: [],
         retorno : false,
-        clientelogado :[]
+        clientelogado :[],
+        caminho_foto: 'http://menuweb.com.br/static/media/cliente/'
     };
     obj.get_clientes = function (nome_cliente, email_cliente) {
         var url = URL_BASE + "clientes";
@@ -516,7 +525,6 @@ game7App.factory("Cliente", function (Ajax,$http) {
         )
     };
     obj.sair_cliente = function () {
-        alert('sdfghjkl');
         window.localStorage.removeItem("c_logado");
         window.location = "index.html";
 
@@ -930,7 +938,8 @@ game7App.factory("Produto", function (Ajax,$http) {
         foto_principal:123
     };
     obj.get_produtos= function (nome_produto) {
-        var url = URL_BASE + "produtos";
+//        var url = URL_BASE + "produtos";
+        var url = URL_BASE + "cardapio";
         var params = {
             empresa_id:TOKENS["e_id"],
             nome:nome_produto
@@ -964,7 +973,6 @@ game7App.factory("Produto", function (Ajax,$http) {
             }
         }).then(function successCallback(response) {
             obj.produtoselecionado = response.data;
-//            obj.produtoselecionado[0].preco = formatReal(obj.produtoselecionado[0].preco*100)
         }, function errorCallback(response) {
             console.log("Erro");
         });
@@ -1209,7 +1217,7 @@ game7App.factory("Pedido", function (Ajax,$http) {
         )
     };
 
-    obj.save_pagamento_obs = function (troco,outro,cpfnanota,bandeira) {
+    obj.save_pagamento_obs = function (troco,outro,cpfnanota,bandeira,cpf) {
         var url = URL_BASE + "saveobspagamentopedido";
         var f = new FormData();
 
@@ -1225,6 +1233,7 @@ game7App.factory("Pedido", function (Ajax,$http) {
         f.append('cpfnanota', cpfnanota);
         f.append('bandeira', bandeira);
         f.append('tipo', TOKENS['t']);
+        f.append('cpf', cpf);
         $http.post(url, f, {headers: {'Content-Type': undefined}}).success(
           function(response){
             obj.retorno = response.data;

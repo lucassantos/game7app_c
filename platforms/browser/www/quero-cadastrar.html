@@ -21,12 +21,11 @@
 </head>
 
 <body>
-  <div ng-app="game7App" ng-controller="clienteCtrl" class="app" role="main" class="content">
+  <div ng-app="game7App" ng-controller="cadastrarCtrl" class="app" role="main" class="content">
     <div class="col-xs-12" style="margin:0px;padding:0px;position:relative;">
         <div class="col-xs-12 head" style="background-color:#FB4000;">
             <a href="home.html"><img src="img/logo.png" class="img-circle" style="width:80px;margin:0px auto;display:block;" alt="menuweb - Cliente"></a>
             <h1 class="ttl col-xs-8 col-md-8">Novo Cadastro</h1>
-            <a class="btn btn-sm btn-default" ng-click="atualizar()" style="float:right;margin-bottom:10px;">Cadastrar</a>
         </div>
         <div class="col-xs-12" style="margin-top:20px;">
             <div ng-if="cl.retorno">
@@ -83,7 +82,7 @@
                 <input type="text" id="complemento" type="text" name="complemento" required="True" value="{[cl.clienteselecionado[0].complemento]}" class="form-control"/>
                 <br/>
             </form>
-
+            <a class="btn btn-lg btn-default" ng-click="atualizar()" style="display:block;margin-bottom:10px;">Cadastrar</a>
         </div>
     </div>
   </div>

@@ -481,7 +481,8 @@ game7App.factory("Cliente", function (Ajax,$http) {
         lista_clientes: [],
         clienteselecionado: [],
         retorno : false,
-        clientelogado :[]
+        clientelogado :[],
+        caminho_foto: 'http://menuweb.com.br/static/media/cliente/'
     };
     obj.get_clientes = function (nome_cliente, email_cliente) {
         var url = URL_BASE + "clientes";

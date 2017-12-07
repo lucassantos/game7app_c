@@ -29,37 +29,81 @@
             <a style="color:#fff;" href="home.html"><i class="glyphicon glyphicon-arrow-left"></i></a>
             <b class="ttl" style="margin-left:20px;">{[pt.produtoselecionado[0].nome]}</b>
         </div>
-        <div class="col-xs-12" style="padding:0px;font-size:10px;">
-            <div class="col-xs-12">
 
-                <div class="col-md-12 col-xs-12" style="padding:0px;">
-                    <b style="text-transform:uppercase;">{[pt.produtoselecionado[0].nome]}</b>
-                    <p style="color:#333;">
-                        {[pt.produtoselecionado[0].descricao]}
-                    </p>
-                </div>
-                <div class="col-md-12 col-xs-12" style="padding:0px 0px 10px 0px;border-bottom: #c3c1c1 1px solid;">
-                    <div class="col-xs-7" style="padding:0px;">
-                        <b>Valor Unitário: R$ {[ pt.produtoselecionado[0].preco.toFixed(2) ]}</b>
-                    </div>
-                    <div class="col-xs-5" style="padding:0px;width:98px;float:right;">
-                        <a ng-click="rm_quantidade();" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-minus-sign"></i></a>
-                        <p style="display:inline-block;margin:0 15px;">{[cr.qtd_atual]}</p>
-                        <a ng-click="add_quantidade();" class="btn btn-xs btn-success"><i class="glyphicon glyphicon-plus-sign"></i></a>
-                    </div>
-                </div>
+        <div id="genopcionais" ng-if="pt.produtoselecionado[0].opcionais[0]">
+            <div class="col-xs-12 col-md-12" id="opc_{[opc.opcional_id]}" ng-repeat="opc in pt.produtoselecionado[0].opcionais" style="margin-bottom:10px;" >
+                <ul class="list-group col-xs-12 col-md-12" style="margin-bottom:0px;padding:0px;">
+                   <li class="list-group-item active col-xs-12 col-md-12">{[opc.opcional_titulo]} (Selecione {[opc.opcional_quantidade]} opção(ões))</li>
+
+                    <li class="list-group-item col-xs-12 col-md-12" id="opc_{[opc.opcional_id]}" ng-if="opc.opcional_tipo=='M'" ng-repeat="opcao in opc.opcional_opcoes">
+                        <div class="col-md-7 col-xs-7">
+                            <input type="checkbox" value="{[opcao.opcao_id]}" ng-click="seleciona_opcao_multiplo(opc.opcional_id,opcao.opcao_id);" id="{[opcao.opcao_id]}"/>
+                            {[opcao.opcao_titulo]}
+                        </div>
+                        <div class="col-xs-5 col-md-5">
+                            R$ {[opcao.opcao_valor.toFixed(2)]}
+                        </div>
+                    </li>
+
+                    <li class="list-group-item col-xs-12 col-md-12" id="opc_{[opc.opcional_id]}" ng-if="opc.opcional_tipo=='U'" ng-repeat="opcao in opc.opcional_opcoes">
+                        <div class="col-md-7 col-xs-7">
+                            <input type="radio" value="{[opcao.opcao_id]}" ng-click="seleciona_opcao_unico(opc.opcional_id,opcao.opcao_id);" name="{[opc.opcional_id]}"/>
+                            {[opcao.opcao_titulo]}
+                        </div>
+                        <div class="col-xs-5 col-md-5">
+                            R$ {[opcao.opcao_valor.toFixed(2)]}
+                        </div>
+                    </li>
+
+                    <li class="list-group-item col-xs-12 col-md-12" id="opc_{[opc.opcional_id]}" ng-if="opc.opcional_tipo=='Q'" ng-repeat="opcao in opc.opcional_opcoes">
+                        <div class="col-xs-5 col-md-5">
+                            <b>{[opcao.opcao_titulo]}</b>
+                        </div>
+                        <div class="col-xs-3 col-md-3">
+                            R$ {[opcao.opcao_valor.toFixed(2)]}
+                        </div>
+                        <div class="col-xs-4 col-md-4">
+                            <a ng-click="rm_opcao_quantidade(opc.opcional_id,opcao.opcao_id);" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-minus-sign"></i></a>
+                            <p style="display:inline-block;margin:0 15px;">{[opcao.opcao_quantidade]}</p>
+                            <a ng-click="add_opcao_quantidade(opc.opcional_id,opcao.opcao_id);" class="btn btn-xs btn-success"><i class="glyphicon glyphicon-plus-sign"></i></a>
+                        </div>
+                    </li>
+                </ul>
             </div>
-
-            <div class="col-md-12 col-xs-12" style="margin-top: 20px;text-align:right;">
-                <p style="font-size:12px;color:#15ab15;">
-                    <b style="font-size:12px;color:#000;">Total:</b> R$ {[(cr.qtd_atual * pt.produtoselecionado[0].preco).toFixed(2)]}
-                </p>
-
-                <textarea class="form-control" id="ipObservacao" rows="6" style="font-size:10px;" placeholder="Observações"></textarea>
-            </div>
+            <a class="btn btn-sm btn-default col-md-12 col-xs-12" style="display:block;" ng-click="getOpcionalSelecionado();"><i class="glyphicon glyphicon-ok"></i> Próximo</a>
         </div>
-        <div class="col-xs-12 rodape-pedido" >
-            <a ng-click="add_lista();" href="javascript:void(0);">ADICIONAR AO CARRINHO <i class="glyphicon glyphicon-shopping-cart"></i></a>
+        <div id="gencarrinho" ng-show="!pt.produtoselecionado[0].opcionais[0]">
+            <div class="col-xs-12" style="padding:0px;font-size:10px;">
+                <div class="col-xs-12">
+
+                    <div class="col-md-12 col-xs-12" style="padding:0px;">
+                        <p style="color:#333;">
+                            {[pt.produtoselecionado[0].descricao]}
+                        </p>
+                    </div>
+                    <div class="col-md-12 col-xs-12" style="padding:0px 0px 10px 0px;border-bottom: #c3c1c1 1px solid;">
+                        <div class="col-xs-7" style="padding:0px;">
+                            <b>Valor Unitário: R$ {[ pt.produtoselecionado[0].preco.toFixed(2) ]}</b>
+                        </div>
+                        <div class="col-xs-5" style="padding:0px;width:98px;float:right;">
+                            <a ng-click="rm_quantidade();" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-minus-sign"></i></a>
+                            <p style="display:inline-block;margin:0 15px;">{[cr.qtd_atual]}</p>
+                            <a ng-click="add_quantidade();" class="btn btn-xs btn-success"><i class="glyphicon glyphicon-plus-sign"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 col-xs-12" style="margin-top: 20px;text-align:right;">
+                    <p style="font-size:12px;color:#15ab15;">
+                        <b style="font-size:12px;color:#000;">Total:</b> R$ {[(cr.qtd_atual * pt.produtoselecionado[0].preco).toFixed(2)]}
+                    </p>
+
+                    <textarea class="form-control" id="ipObservacao" rows="6" style="font-size:10px;" placeholder="Observações"></textarea>
+                </div>
+            </div>
+            <div class="col-xs-12 rodape-pedido" >
+                <a ng-click="add_lista();" href="javascript:void(0);">ADICIONAR AO CARRINHO <i class="glyphicon glyphicon-shopping-cart"></i></a>
+            </div>
         </div>
     </div>
   </div>
