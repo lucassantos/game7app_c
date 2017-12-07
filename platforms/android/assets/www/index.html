@@ -23,83 +23,83 @@
 </head>
 <body style="background:url('img/fd_login.jpg') no-repeat;">
   <div ng-app="game7App" ng-controller="loginCtrl" class="app" id="genLoginCtrl" role="main" class="content">
-<script>
-     // Defaults to sessionStorage for storing the Facebook token
-     openFB.init({appId: '223379834835091'});
+    <script>
+         // Defaults to sessionStorage for storing the Facebook token
+         openFB.init({appId: '223379834835091'});
 
-    //  Uncomment the line below to store the Facebook token in localStorage instead of sessionStorage
-    //  openFB.init({appId: '223379834835091', tokenStore: window.localStorage});
+        //  Uncomment the line below to store the Facebook token in localStorage instead of sessionStorage
+        //  openFB.init({appId: '223379834835091', tokenStore: window.localStorage});
 
 
-    function getInfo() {
-        openFB.api({
-            path: '/me',
-            success: function(data) {
-                console.log(JSON.stringify(data));
-                angular.element(document.getElementById('genLoginCtrl')).scope().logarfacebook(data.name,data.id);
-            },
-            error: errorHandler});
-    }
-
-    function login() {
-            $("#btnLoginFace").hide();
-            $("#btnContinuarFace").show();
-            openFB.login('email',
-                function(response) {
-                    if(response.status === 'connected') {
-                        alert('Facebook login succeeded, got access token: ' + response.authResponse.accessToken);
-
-                    } else {
-                        alert('Facebook login failed: ' + response.error);
-                    }
-                }, {scope: 'email,read_stream,publish_actions'});
-    }
-
-    function share() {
-        openFB.api({
-            method: 'POST',
-            path: '/me/feed',
-            params: {
-                message: document.getElementById('Message').value || 'Testing Facebook APIs'
-            },
-            success: function() {
-                alert('the item was posted on Facebook');
-            },
-            error: errorHandler});
-    }
-
-    function readPermissions() {
-        openFB.api({
-            method: 'GET',
-            path: '/me/permissions',
-            success: function(result) {
-                alert(JSON.stringify(result.data));
-            },
-            error: errorHandler
-        });
-    }
-
-    function revoke() {
-        openFB.revokePermissions(
-                function() {
-                    alert('Permissions revoked');
+        function getInfo() {
+            openFB.api({
+                path: '/me',
+                success: function(data) {
+                    console.log(JSON.stringify(data));
+                    angular.element(document.getElementById('genLoginCtrl')).scope().logarfacebook(data.name,data.id);
                 },
-                errorHandler);
-    }
+                error: errorHandler});
+        }
 
-    function logout() {
-        openFB.logout(
-                function() {
-                    alert('Logout successful');
+        function login() {
+                $("#btnLoginFace").hide();
+                $("#btnContinuarFace").show();
+                openFB.login('email',
+                    function(response) {
+                        if(response.status === 'connected') {
+                            alert('Facebook login succeeded, got access token: ' + response.authResponse.accessToken);
+
+                        } else {
+                            alert('Facebook login failed: ' + response.error);
+                        }
+                    }, {scope: 'email,read_stream,publish_actions'});
+        }
+
+        function share() {
+            openFB.api({
+                method: 'POST',
+                path: '/me/feed',
+                params: {
+                    message: document.getElementById('Message').value || 'Testing Facebook APIs'
                 },
-                errorHandler);
-    }
+                success: function() {
+                    alert('the item was posted on Facebook');
+                },
+                error: errorHandler});
+        }
 
-    function errorHandler(error) {
-        alert(error.message);
-    }
+        function readPermissions() {
+            openFB.api({
+                method: 'GET',
+                path: '/me/permissions',
+                success: function(result) {
+                    alert(JSON.stringify(result.data));
+                },
+                error: errorHandler
+            });
+        }
 
-</script>
+        function revoke() {
+            openFB.revokePermissions(
+                    function() {
+                        alert('Permissions revoked');
+                    },
+                    errorHandler);
+        }
+
+        function logout() {
+            openFB.logout(
+                    function() {
+                        alert('Logout successful');
+                    },
+                    errorHandler);
+        }
+
+        function errorHandler(error) {
+            alert(error.message);
+        }
+
+    </script>
 
     <div class="col-xs-12">
         <img src="img/logo.png" class="img-circle" style="width:250px;margin:80px auto 0px;display:block;" alt="WebMenu">

@@ -481,7 +481,8 @@ game7App.factory("Cliente", function (Ajax,$http) {
         lista_clientes: [],
         clienteselecionado: [],
         retorno : false,
-        clientelogado :[]
+        clientelogado :[],
+        caminho_foto: 'http://menuweb.com.br/static/media/cliente/'
     };
     obj.get_clientes = function (nome_cliente, email_cliente) {
         var url = URL_BASE + "clientes";
@@ -1216,7 +1217,7 @@ game7App.factory("Pedido", function (Ajax,$http) {
         )
     };
 
-    obj.save_pagamento_obs = function (troco,outro,cpfnanota,bandeira) {
+    obj.save_pagamento_obs = function (troco,outro,cpfnanota,bandeira,cpf) {
         var url = URL_BASE + "saveobspagamentopedido";
         var f = new FormData();
 
@@ -1232,6 +1233,7 @@ game7App.factory("Pedido", function (Ajax,$http) {
         f.append('cpfnanota', cpfnanota);
         f.append('bandeira', bandeira);
         f.append('tipo', TOKENS['t']);
+        f.append('cpf', cpf);
         $http.post(url, f, {headers: {'Content-Type': undefined}}).success(
           function(response){
             obj.retorno = response.data;

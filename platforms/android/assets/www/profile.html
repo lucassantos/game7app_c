@@ -39,8 +39,11 @@
             <div ng-if="cl.clienteselecionado[0].email == null">
                 <p class="alert alert-danger" style="text-align:center;">Complete seus dados, o seu endereço é uma informação muito imporante para a realização dos pedidos!</p>
             </div>
+            <div class="col-xs-4 col-xs-offset-4">
+                <img class="img-circle" ng-src="{[cl.caminho_foto]}{[cl.clienteselecionado[0].foto]}" style="border:1px solid;width:150px;padding:10px;display:block;margin:20px auto;" />
+            </div>
+            <form enctype="multipart/form-data" method="post" class="col-xs-12">
 
-            <form enctype="multipart/form-data" method="post">
                 <label class="control-label">Nome</label><br/>
                 <input id="nome" name="nome" placeholder="{[cl.clienteselecionado[0].nome]}" required="True" class="form-control"/>
                 <br>
